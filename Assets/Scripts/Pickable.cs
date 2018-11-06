@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Pickable : MonoBehaviour, IInteractable
 {
+    public Sprite image;
+
     [SerializeField]
     private GameObject player;
     [SerializeField]
@@ -12,9 +14,11 @@ public class Pickable : MonoBehaviour, IInteractable
     private bool isInteractable;
 
     private Inventory inventory;
+    private CanvasManager canvasManager;
 
     void Start()
     {
+        canvasManager = CanvasManager.Instance;
         if (player != null)
         {
             inventory = player.GetComponent<Inventory>();
@@ -31,14 +35,17 @@ public class Pickable : MonoBehaviour, IInteractable
         if (isInteractable)
         {
             int index = 0;
-            foreach (GameObject p in inventory.Inv)
+            foreach (GameObject go in inventory.Slots)
             {
-                if (p == null && gameObject.GetComponent<Pickable>() != null)
+                if (go == null && GetComponent<Pickable>() != null)
                 {
-                    inventory.Inv[index] = gameObject;
-                    if (inventory.Inv[index] != null)
-                        Debug.Log(inventory.Inv[index].name);
-                    Destroy(gameObject);
+                    inventory.Slots[index] = gameObject;
+                    Debug.Log("Index: " + index + " " + inventory.Slots[index].name);
+                    transform.position = player.transform.position;
+                    transform.SetParent(player.transform);
+                    gameObject.SetActive(false);
+                    canvasManager.ManageInventoryItemsImages(inventory);
+                    break;
                 }
                 index++;
             }
