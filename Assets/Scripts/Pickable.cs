@@ -31,11 +31,14 @@ public class Pickable : MonoBehaviour, IInteractable
         if (isInteractable)
         {
             int index = 0;
-            foreach (Pickable p in inventory.Inv)
+            foreach (GameObject p in inventory.Inv)
             {
-                if (p == null)
+                if (p == null && gameObject.GetComponent<Pickable>() != null)
                 {
-                    inventory.Inv[index] = this; 
+                    inventory.Inv[index] = gameObject;
+                    if (inventory.Inv[index] != null)
+                        Debug.Log(inventory.Inv[index].name);
+                    Destroy(gameObject);
                 }
                 index++;
             }
