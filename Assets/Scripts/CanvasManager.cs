@@ -11,9 +11,10 @@ public class CanvasManager : MonoBehaviour
     private GameObject interactionPanel;
     [SerializeField]
     private Text interactionText;
+    [SerializeField]
+    private Sprite defaultInventorySlotImage;
 
     private Transform inventorySlots;
-    private bool[] slots;
 
     void Awake()
     {
@@ -28,10 +29,7 @@ public class CanvasManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        slots = new bool[5];
         HideInteractionPanel();
-
-        inventorySlots = transform.GetChild(0);
     }
 
     public void HideInteractionPanel()
@@ -47,24 +45,29 @@ public class CanvasManager : MonoBehaviour
         interactionText.enabled = true;
     }
 
-    public void ManageInventoryItemsImages(Inventory inv)
+    public void ManageInventoryItemsImages(IEnumerable<Interactable> inventory)
     {
-        int index = 0;
-        foreach (GameObject go in inv.Slots)
+        int i = 0;
+        foreach (Interactable interactable in inventory)
         {
-            if (go != null && slots[index] == false)
+            inventorySlots = transform.GetChild(0).GetChild(i).GetChild(0);
+
+            if (interactable != null && CheckInventorySlotImage())
             {
-                Sprite img = inv.Slots[index].GetComponent<Pickable>().image;
-                slots[index] = true;
-                inventorySlots.GetChild(index).GetChild(0).GetComponent<Image>().sprite = img;
-                Debug.Log(inventorySlots.GetChild(index).name);
-                break;
+                // Set inventory slot image as the item picked
+                inventorySlots.GetComponent<Image>().sprite = interactable.image;
             }
             else
             {
-                // Default Image
+                // Set inventory slot image as default
+                inventorySlots.GetComponent<Image>().sprite = defaultInventorySlotImage;
             }
-            index++;
+            i++;
         }
+    }
+
+    private bool CheckInventorySlotImage()
+    {
+        return inventorySlots.GetComponent<Image>().sprite == defaultInventorySlotImage;
     }
 }
