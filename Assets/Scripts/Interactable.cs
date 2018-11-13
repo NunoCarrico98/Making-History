@@ -18,7 +18,8 @@ public class Interactable : MonoBehaviour
     private bool isActive;
     [SerializeField]
     private bool isPickable;
-
+    [SerializeField]
+    private bool isTalkable;
     [SerializeField]
     private Interactable[] inventoryRequirements;
     [SerializeField]
@@ -26,6 +27,14 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     private Interactable[] indirectActivations;
     [SerializeField]
+    private Dialogue dialogue;
+
+    private DialogueManager dialogueManager;
+
+    private void Start()
+    {
+        dialogueManager = DialogueManager.Instance;
+    }
 
     public void Interact()
     {
@@ -90,7 +99,13 @@ public class Interactable : MonoBehaviour
         isActive = true;
     }
 
+    public void ActivateDialogue()
+    {
+        isInteractable = false;
+        dialogueManager.StartDialogue(dialogue);
+    }
 
+    #region Getters for private variables
     /* ******************************
      * Getters for private variables
      * ******************************/
@@ -120,4 +135,11 @@ public class Interactable : MonoBehaviour
     {
         return isInteractable;
     }
+
+    public bool GetIsTalkable()
+    {
+        return isTalkable;
+    }
+
+    #endregion
 }

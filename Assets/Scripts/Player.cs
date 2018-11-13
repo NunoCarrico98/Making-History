@@ -2,49 +2,96 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class that defines player actions.
+/// </summary>
 public class Player : MonoBehaviour
 {
+    /// <summary>
+    /// Variable to define the maximum distance the player can interact with 
+    /// objects.
+    /// </summary>
     [SerializeField]
     private float maxInteractionDistance;
+    /// <summary>
+    /// Variable to define the inventory size.
+    /// </summary>
     [SerializeField]
-    private int InventorySize;
+    private int inventorySize;
 
+    /// <summary>
+    /// Variable that contains the canvas manager instance.
+    /// </summary>
     private CanvasManager canvasManager;
+    /// <summary>
+    /// Variable that contains the player camera.
+    /// </summary>
     private Camera cam;
+    /// <summary>
+    /// Variable to hold information about the object the raycast is detecting.
+    /// </summary>
     private RaycastHit raycastHit;
+    /// <summary>
+    /// Variable to hold the current detected object.
+    /// </summary>
     private Interactable currentInteractable;
+    /// <summary>
+    /// List to hold the objects the player picks up.
+    /// </summary>
     private List<Interactable> inventory;
 
-    private void Start()
+    /// <summary>
+    /// Unity method called when the program begins.
+    /// </summary>
+    void Start()
     {
+        // Initialise canvas manager
         canvasManager = CanvasManager.Instance;
+        // Initialise camera
         cam = GetComponentInChildren<Camera>();
+        // Initialise current interactable
         currentInteractable = null;
-        inventory = new List<Interactable>(InventorySize);
+        // Initialise inventory
+        inventory = new List<Interactable>(inventorySize);
     }
 
-    // Update is called once per frame
-    private void Update()
+    /// <summary>
+    /// Method that is called once per frame.
+    /// </summary>
+    void Update()
     {
+        // Check if the player is in front of any interactable
         CheckForInteractable();
-        CheckForInteractionClick();
+
+        // Check if the player wants to interact the detected item
+        CheckForInteraction();
     }
 
-    private void CheckForInteractionClick()
+    /// <summary>
+    /// Method that checks for player input.
+    /// </summary>
+    private void CheckForInteraction()
     {
-        if (Input.GetMouseButtonDown(0) && currentInteractable != null)
+        if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
         {
             if (currentInteractable.GetIsPickable())
             {
-                AddToInventory(currentInteractable);
+                AddToInventory();
             }
-            else if (HasRequirements(currentInteractable))
+            else if (currentInteractable.GetIsTalkable())
             {
-                Interact(currentInteractable);
+                TalkWithNPC();
+            }
+            else if (HasRequirements())
+            {
+                Interact();
             }
         }
     }
 
+    /// <summary>
+    /// Method that checks if the player is in front of an interactable.
+    /// </summary>
     private void CheckForInteractable()
     {
         if (Physics.Raycast(cam.transform.position,
@@ -69,11 +116,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method that sets
+    /// </summary>
+    /// <param name="newInteractable">Dete </param>
     private void SetInteractable(Interactable newInteractable)
     {
         currentInteractable = newInteractable;
 
-        if (HasRequirements(currentInteractable))
+        if (HasRequirements())
         {
             canvasManager.ShowInteractionPanel(currentInteractable.GetInteractionText());
         }
@@ -90,9 +141,9 @@ public class Player : MonoBehaviour
         canvasManager.HideInteractionPanel();
     }
 
-    private bool HasRequirements(Interactable interactable)
+    private bool HasRequirements()
     {
-        foreach(Interactable i in interactable.GetInventoryRequirements())
+        foreach (Interactable i in currentInteractable.GetInventoryRequirements())
         {
             if (!HasInInventory(i))
             {
@@ -102,26 +153,24 @@ public class Player : MonoBehaviour
         return true;
     }
 
-    private void Interact(Interactable interactable)
+    private void Interact()
     {
-
-        foreach (Interactable i in interactable.GetInventoryRequirements())
+        foreach (Interactable i in currentInteractable.GetInventoryRequirements())
         {
             RemoveFromInventory(i);
         }
 
-        interactable.Interact();
+        currentInteractable.Interact();
     }
 
-    private void AddToInventory(Interactable pickable)
+    private void AddToInventory()
     {
-        if (inventory.Count < InventorySize)
+        if (inventory.Count < inventorySize)
         {
-            inventory.Add(pickable);
-            pickable.gameObject.SetActive(false);
+            inventory.Add(currentInteractable);
+            currentInteractable.gameObject.SetActive(false);
         }
         canvasManager.ManageInventoryItemsImages(inventory);
-
     }
 
     private bool HasInInventory(Interactable pickable)
@@ -133,6 +182,10 @@ public class Player : MonoBehaviour
     {
         inventory.Remove(pickable);
         canvasManager.ManageInventoryItemsImages(inventory);
+    }
 
+    private void TalkWithNPC()
+    {
+        currentInteractable.ActivateDialogue();
     }
 }
