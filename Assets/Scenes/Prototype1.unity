@@ -250,7 +250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cd576bf40521248b11cdb1fa46708b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
   requirementText: Needs item 1
   interactionText: Use item 1
   isInteractable: 1
@@ -265,6 +264,7 @@ MonoBehaviour:
   dialogue:
     name: 
     sentences: []
+  image: {fileID: 0}
 --- !u!65 &96073474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1569,7 +1569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cd576bf40521248b11cdb1fa46708b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
   requirementText: 
   interactionText: Speak with Fred
   isInteractable: 1
@@ -1583,10 +1582,10 @@ MonoBehaviour:
   dialogue:
     name: Fred Flintstone
     sentences:
-    - Hey there! What do you need?
-    - I can get that for you if you do something for me...
-    - Find the most precious rock on the other side of the mountain and I'll give
-      what you need.
+    - Hello ma friend!
+    - This is some text dialogue...
+    - Hope you enjoyed this beautiful text!
+  image: {fileID: 0}
 --- !u!65 &743617781
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3311,7 +3310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cd576bf40521248b11cdb1fa46708b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 123a229ab23c3394990cdbf17cb789f0, type: 3}
   requirementText: 
   interactionText: Pick up item 2
   isInteractable: 1
@@ -3325,6 +3323,7 @@ MonoBehaviour:
   dialogue:
     name: 
     sentences: []
+  image: {fileID: 21300000, guid: 123a229ab23c3394990cdbf17cb789f0, type: 3}
 --- !u!65 &1446867241
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4533,7 +4532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cd576bf40521248b11cdb1fa46708b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 123a229ab23c3394990cdbf17cb789f0, type: 3}
   requirementText: 
   interactionText: Pick up item 1
   isInteractable: 1
@@ -4547,6 +4545,7 @@ MonoBehaviour:
   dialogue:
     name: 
     sentences: []
+  image: {fileID: 21300000, guid: 123a229ab23c3394990cdbf17cb789f0, type: 3}
 --- !u!65 &2085648421
 BoxCollider:
   m_ObjectHideFlags: 0
