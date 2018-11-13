@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public Sprite image;
-
     [SerializeField]
     private string requirementText;
     [SerializeField]
@@ -30,6 +26,8 @@ public class Interactable : MonoBehaviour
     private Dialogue dialogue;
 
     private DialogueManager dialogueManager;
+
+    public Sprite image;
 
     private void Start()
     {
@@ -103,6 +101,12 @@ public class Interactable : MonoBehaviour
     {
         isInteractable = false;
         dialogueManager.StartDialogue(dialogue);
+        dialogueManager.OnDialogueEndCallback += ReActivateNPC;
+    }
+
+    private void ReActivateNPC()
+    {
+        isInteractable = true;
     }
 
     #region Getters for private variables

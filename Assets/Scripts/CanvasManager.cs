@@ -4,17 +4,17 @@ using UnityEngine.UI;
 
 public class CanvasManager : MonoBehaviour
 {
-    //private static CanvasManager instance;
-    public static CanvasManager Instance { get; private set; }
-
     [SerializeField]
     private GameObject interactionPanel;
     [SerializeField]
     private Text interactionText;
     [SerializeField]
     private Sprite defaultInventorySlotImage;
+    [SerializeField]
+    private Image[] inventorySlotsUI;
 
-    private Transform inventorySlots;
+    //private static CanvasManager instance;
+    public static CanvasManager Instance { get; private set; }
 
     void Awake()
     {
@@ -45,29 +45,18 @@ public class CanvasManager : MonoBehaviour
         interactionText.enabled = true;
     }
 
-    public void ManageInventoryItemsImages(IEnumerable<Interactable> inventory)
+    public void ManageInventoryItemsImages(List<Interactable> inventory)
     {
-        int i = 0;
-        foreach (Interactable interactable in inventory)
+        for (int i = 0; i < inventorySlotsUI.Length; i++)
         {
-            inventorySlots = transform.GetChild(0).GetChild(i).GetChild(0);
-
-            if (interactable != null && CheckInventorySlotImage())
+            if (i < inventory.Count)
             {
-                // Set inventory slot image as the item picked
-                inventorySlots.GetComponent<Image>().sprite = interactable.image;
+                inventorySlotsUI[i].sprite = inventory[i].image;
             }
             else
             {
-                // Set inventory slot image as default
-                inventorySlots.GetComponent<Image>().sprite = defaultInventorySlotImage;
+                inventorySlotsUI[i].sprite = defaultInventorySlotImage;
             }
-            i++;
         }
-    }
-
-    private bool CheckInventorySlotImage()
-    {
-        return inventorySlots.GetComponent<Image>().sprite == defaultInventorySlotImage;
     }
 }

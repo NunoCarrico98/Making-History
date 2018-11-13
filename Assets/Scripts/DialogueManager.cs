@@ -20,6 +20,9 @@ public class DialogueManager : MonoBehaviour
 
     public static DialogueManager Instance { get; private set; }
 
+    public delegate void OnDialogueEnd();
+    public OnDialogueEnd OnDialogueEndCallback;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -85,5 +88,6 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         animator.SetBool("isActive", false);
+        OnDialogueEndCallback.Invoke();
     }
 }

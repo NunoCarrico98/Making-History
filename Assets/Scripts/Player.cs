@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 /// <summary>
 /// Class that defines player actions.
@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     /// Variable that contains the canvas manager instance.
     /// </summary>
     private CanvasManager canvasManager;
+    private DialogueManager dialogueManager;
     /// <summary>
     /// Variable that contains the player camera.
     /// </summary>
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
     {
         // Initialise canvas manager
         canvasManager = CanvasManager.Instance;
+        dialogueManager = DialogueManager.Instance;
         // Initialise camera
         cam = GetComponentInChildren<Camera>();
         // Initialise current interactable
@@ -187,5 +189,17 @@ public class Player : MonoBehaviour
     private void TalkWithNPC()
     {
         currentInteractable.ActivateDialogue();
+        DisablePlayerMovement();
+        dialogueManager.OnDialogueEndCallback += EnablePlayerMovement;
+    }
+
+    private void EnablePlayerMovement()
+    {
+        GetComponent<FirstPersonController>().enabled = true;
+    }
+
+    private void DisablePlayerMovement()
+    {
+        GetComponent<FirstPersonController>().enabled = false;
     }
 }
