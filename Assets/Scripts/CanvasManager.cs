@@ -45,13 +45,13 @@ public class CanvasManager : MonoBehaviour
         interactionText.enabled = true;
     }
 
-    public void ManageInventoryItemsImages(List<Interactable> inventory)
+    public void ManageInventoryItemIcons(List<Interactable> inventory)
     {
         for (int i = 0; i < inventorySlotsUI.Length; i++)
         {
             if (i < inventory.Count)
             {
-                inventorySlotsUI[i].sprite = inventory[i].image;
+                inventorySlotsUI[i].sprite = inventory[i].inventoryIcon;
             }
             else
             {

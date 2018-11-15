@@ -15,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     private Text dialogueText;
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private int maxNumberOfSentences;
 
     private Queue<string> sentences;
 
@@ -47,37 +49,76 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, NPCState state)
     {
+        // Activate the Dialogue Box
         animator.SetBool("isActive", true);
+
+        // Set NPC name on UI
         nameText.text = dialogue.name;
 
+        // Clear the queue
         sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
+        foreach (string sentence in SetDialogue(dialogue, state))
         {
+            // Queue sentences to write
             sentences.Enqueue(sentence);
         }
 
+        // Write Next Sentence
         DisplayNextSentence();
+    }
+
+    public string[] SetDialogue(Dialogue dialogue, NPCState state)
+    {
+        string[] sentencesToType = new string[maxNumberOfSentences];
+
+        // Set NPC dialogue according to his state
+        switch (state)
+        {
+            case NPCState.Neutral:
+                sentencesToType = dialogue.neutralsentences;
+                break;
+            case NPCState.InQuestNoItems:
+                sentencesToType = dialogue.inQuestNoItemSentences;
+                break;
+            case NPCState.InQuestWithItems:
+                sentencesToType = dialogue.inQuestWithItemSentences;
+                break;
+            case NPCState.AfterQuest:
+                sentencesToType = dialogue.afterQuestSentences;
+                break;
+        }
+        // Return dialogue
+        return sentencesToType;
     }
 
     public void DisplayNextSentence()
     {
+        // If there no more sentences to write
         if (sentences.Count == 0)
         {
             EndDialogue();
             return;
         }
 
+        // Dequeue sentence that's going to be written
         string sentence = sentences.Dequeue();
+
+        // Stop typing if player presses continue while sentence is not complete
         StopAllCoroutines();
+
+        // Type sentence
         StartCoroutine(TypeSentence(sentence));
     }
 
     IEnumerator TypeSentence(string sentence)
     {
+        // Initialise UI text with no letters
         dialogueText.text = "";
+
+        // Go through the string and write each letter with delay
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
@@ -87,7 +128,9 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        // Deactivate the Dialogue Box
         animator.SetBool("isActive", false);
+
         OnDialogueEndCallback.Invoke();
     }
 }

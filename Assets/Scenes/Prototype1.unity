@@ -257,14 +257,18 @@ MonoBehaviour:
   isActive: 1
   isPickable: 0
   isTalkable: 0
+  activateInventoryRequirements: 1
   inventoryRequirements:
   - {fileID: 2085648420}
   indirectInteractables: []
   indirectActivations: []
   dialogue:
     name: 
-    sentences: []
-  image: {fileID: 0}
+    neutralsentences: []
+    inQuestNoItemSentences: []
+    inQuestWithItemSentences: []
+    afterQuestSentences: []
+  inventoryIcon: {fileID: 0}
 --- !u!65 &96073474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -897,6 +901,7 @@ MonoBehaviour:
   nameText: {fileID: 1624289744}
   dialogueText: {fileID: 46808525}
   animator: {fileID: 1330960426}
+  maxNumberOfSentences: 10
 --- !u!4 &505241558
 Transform:
   m_ObjectHideFlags: 0
@@ -1569,23 +1574,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cd576bf40521248b11cdb1fa46708b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requirementText: 
+  requirementText: Speak With Fred
   interactionText: Speak with Fred
   isInteractable: 1
-  allowsMultipleInteractions: 0
+  allowsMultipleInteractions: 1
   isActive: 1
   isPickable: 0
   isTalkable: 1
-  inventoryRequirements: []
+  activateInventoryRequirements: 0
+  inventoryRequirements:
+  - {fileID: 1446867240}
   indirectInteractables: []
   indirectActivations: []
   dialogue:
     name: Fred Flintstone
-    sentences:
-    - Hello ma friend!
-    - This is some text dialogue...
-    - Hope you enjoyed this beautiful text!
-  image: {fileID: 0}
+    neutralsentences:
+    - Hey... How are you?
+    - I Have a quest for you!
+    inQuestNoItemSentences:
+    - You don't have what I need yet!
+    - Go get it asshole!!!
+    inQuestWithItemSentences:
+    - Took you long enough... (sigh)
+    - Thank you very much :)
+    afterQuestSentences:
+    - Hey thanks for that shit the other time!
+    - Now go find someone else to bother!
+  inventoryIcon: {fileID: 0}
 --- !u!65 &743617781
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1639,7 +1654,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 743617779}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &743617784
 Transform:
   m_ObjectHideFlags: 0
@@ -1647,8 +1662,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 743617779}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 58.8, y: 0.5, z: -12}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalPosition: {x: 58.8, y: 0.96, z: -12}
+  m_LocalScale: {x: 0.75636, y: 0.75636, z: 0.75636}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -3317,13 +3332,17 @@ MonoBehaviour:
   isActive: 1
   isPickable: 1
   isTalkable: 0
+  activateInventoryRequirements: 1
   inventoryRequirements: []
   indirectInteractables: []
   indirectActivations: []
   dialogue:
     name: 
-    sentences: []
-  image: {fileID: 21300000, guid: 123a229ab23c3394990cdbf17cb789f0, type: 3}
+    neutralsentences: []
+    inQuestNoItemSentences: []
+    inQuestWithItemSentences: []
+    afterQuestSentences: []
+  inventoryIcon: {fileID: 21300000, guid: 123a229ab23c3394990cdbf17cb789f0, type: 3}
 --- !u!65 &1446867241
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4539,13 +4558,17 @@ MonoBehaviour:
   isActive: 1
   isPickable: 1
   isTalkable: 0
+  activateInventoryRequirements: 1
   inventoryRequirements: []
   indirectInteractables: []
   indirectActivations: []
   dialogue:
     name: 
-    sentences: []
-  image: {fileID: 21300000, guid: 123a229ab23c3394990cdbf17cb789f0, type: 3}
+    neutralsentences: []
+    inQuestNoItemSentences: []
+    inQuestWithItemSentences: []
+    afterQuestSentences: []
+  inventoryIcon: {fileID: 21300000, guid: 123a229ab23c3394990cdbf17cb789f0, type: 3}
 --- !u!65 &2085648421
 BoxCollider:
   m_ObjectHideFlags: 0

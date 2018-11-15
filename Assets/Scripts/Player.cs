@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
     /// Variable that contains the canvas manager instance.
     /// </summary>
     private CanvasManager canvasManager;
+    /// <summary>
+    /// Variable that contains the dialogue manager instance.
+    /// </summary>
     private DialogueManager dialogueManager;
     /// <summary>
     /// Variable that contains the player camera.
@@ -39,6 +42,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// List to hold the objects the player picks up.
     /// </summary>
+    [SerializeField]
     private List<Interactable> inventory;
 
     /// <summary>
@@ -48,11 +52,16 @@ public class Player : MonoBehaviour
     {
         // Initialise canvas manager
         canvasManager = CanvasManager.Instance;
+
+        // Initialise dialogue manager
         dialogueManager = DialogueManager.Instance;
+
         // Initialise camera
         cam = GetComponentInChildren<Camera>();
+
         // Initialise current interactable
         currentInteractable = null;
+
         // Initialise inventory
         inventory = new List<Interactable>(inventorySize);
     }
@@ -76,18 +85,13 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
         {
-            if (currentInteractable.GetIsPickable())
-            {
-                AddToInventory();
-            }
-            else if (currentInteractable.GetIsTalkable())
-            {
-                TalkWithNPC();
-            }
-            else if (HasRequirements())
-            {
+            if (HasRequirements())
                 Interact();
-            }
+
+            if (currentInteractable.GetIsPickable())
+                AddToInventory();
+            else if (currentInteractable.GetIsTalkable())
+                TalkWithNPC();
         }
     }
 
@@ -119,7 +123,7 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
-    /// Method that sets
+    /// Method that sets the interactable the player is interacting with
     /// </summary>
     /// <param name="newInteractable">Dete </param>
     private void SetInteractable(Interactable newInteractable)
@@ -162,6 +166,10 @@ public class Player : MonoBehaviour
             RemoveFromInventory(i);
         }
 
+        // Change npc state for dialogue change
+        currentInteractable.npcState = NPCState.InQuestWithItems;
+
+        // Interact with current detected interactable
         currentInteractable.Interact();
     }
 
@@ -172,22 +180,29 @@ public class Player : MonoBehaviour
             inventory.Add(currentInteractable);
             currentInteractable.gameObject.SetActive(false);
         }
-        canvasManager.ManageInventoryItemsImages(inventory);
+
+        // Update Inventory UI
+        canvasManager.ManageInventoryItemIcons(inventory);
     }
 
     private bool HasInInventory(Interactable pickable)
     {
+        // Verify if given item is in inventory
         return inventory.Contains(pickable);
     }
 
     private void RemoveFromInventory(Interactable pickable)
     {
+        // Remove item from inventory
         inventory.Remove(pickable);
-        canvasManager.ManageInventoryItemsImages(inventory);
+
+        // Update inventory UI
+        canvasManager.ManageInventoryItemIcons(inventory);
     }
 
     private void TalkWithNPC()
     {
+        // Talk with NPC
         currentInteractable.ActivateDialogue();
         DisablePlayerMovement();
         dialogueManager.OnDialogueEndCallback += EnablePlayerMovement;
@@ -195,11 +210,13 @@ public class Player : MonoBehaviour
 
     private void EnablePlayerMovement()
     {
+        // Enable First Person Controller script
         GetComponent<FirstPersonController>().enabled = true;
     }
 
     private void DisablePlayerMovement()
     {
+        // Enable First Person Controller script
         GetComponent<FirstPersonController>().enabled = false;
     }
 }
