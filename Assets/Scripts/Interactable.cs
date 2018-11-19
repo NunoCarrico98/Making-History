@@ -28,6 +28,8 @@ public class Interactable : MonoBehaviour
     private Dialogue dialogue;
     [SerializeField]
     private GameObject destroyAfterQuest;
+    [SerializeField]
+    private GameObject enableAfterQuest;
 
     private DialogueManager dialogueManager;
 
@@ -120,11 +122,8 @@ public class Interactable : MonoBehaviour
         // Reactivate NPC when the dialogue ends
         dialogueManager.OnDialogueEndCallback += ReActivateNPC;
 
-        // Reactivate NPC when the dialogue ends
-        if (destroyAfterQuest != null && npcState == NPCState.AfterQuest)
-        {
-            dialogueManager.OnDialogueEndCallback += DestroyObjectAfterQuest;
-        }
+        // Enable / Destroy objects after quest
+        dialogueManager.OnDialogueEndCallback += ManageObjectAfterQuest;
     }
 
     private void ReActivateNPC()
@@ -146,7 +145,24 @@ public class Interactable : MonoBehaviour
 
     public void DestroyObjectAfterQuest()
     {
-        Destroy(destroyAfterQuest);
+        if (destroyAfterQuest != null && npcState == NPCState.AfterQuest)
+        {
+            Destroy(destroyAfterQuest);
+        }
+    }
+
+    public void EnableObjectAfterQuest()
+    {
+        if (enableAfterQuest != null && npcState == NPCState.AfterQuest)
+        {
+            enableAfterQuest.SetActive(true);
+        }
+    }
+
+    public void ManageObjectAfterQuest()
+    {
+        DestroyObjectAfterQuest();
+        EnableObjectAfterQuest();
     }
 
     #region Getters for private variables
