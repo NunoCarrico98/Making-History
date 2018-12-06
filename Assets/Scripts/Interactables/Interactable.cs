@@ -1,35 +1,21 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField]
-    private string requirementText;
-    [SerializeField]
-    private string interactionText;
-    [SerializeField]
-    private bool isInteractable;
-    [SerializeField]
-    private bool allowsMultipleInteractions;
-    [SerializeField]
-    private bool isActive;
-    [SerializeField]
-    private bool isPickable;
-    [SerializeField]
-    private bool isTalkable;
-    [SerializeField]
-    private bool activateInventoryRequirements = true;
-    [SerializeField]
-    private Interactable[] inventoryRequirements;
-    [SerializeField]
-    private Interactable[] indirectInteractables;
-    [SerializeField]
-    private Interactable[] indirectActivations;
-    [SerializeField]
-    private Dialogue dialogue;
-    [SerializeField]
-    private GameObject destroyAfterQuest;
-    [SerializeField]
-    private GameObject enableAfterQuest;
+    [SerializeField] private string requirementText;
+    [SerializeField] private string interactionText;
+    [SerializeField] private bool isInteractable;
+    [SerializeField] private bool allowsMultipleInteractions;
+    [SerializeField] private bool isActive;
+    [SerializeField] private bool isPickable;
+    [SerializeField] private bool isTalkable;
+    [SerializeField] private bool activateInventoryRequirements = true;
+    [SerializeField] private Interactable[] inventoryRequirements;
+    [SerializeField] private Interactable[] indirectInteractables;
+    [SerializeField] private Interactable[] indirectActivations;
+    [SerializeField] private Dialogue dialogue;
+    [SerializeField] private GameObject destroyAfterQuest;
+    [SerializeField] private GameObject enableAfterQuest;
 
     private DialogueManager dialogueManager;
 
