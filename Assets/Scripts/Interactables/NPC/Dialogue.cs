@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 [System.Serializable]
 public class Dialogue
@@ -12,14 +12,14 @@ public class Dialogue
 
     // Sentences when player is on a quest and does not have the required items
     [TextArea(3, 10)]
-    public string[] inQuestNoItemSentences;
+    public string[] neutralsentences2;
 
     // Sentences when player is on a quest and has the required items
     [TextArea(3, 10)]
-    public string[] inQuestWithItemSentences;
+    public string[] neutralsentences3;
 
     // Sentences after completing the quest
     [TextArea(3, 10)]
-    public string[] afterQuestSentences;
+    public string[] neutralsentences4;
 }
 

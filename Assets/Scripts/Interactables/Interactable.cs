@@ -106,10 +106,10 @@ public class Interactable : MonoBehaviour
         SetNPCState();
 
         // Reactivate NPC when the dialogue ends
-        dialogueManager.OnDialogueEndCallback += ReActivateNPC;
+        dialogueManager.DialogueEnded += ReActivateNPC;
 
         // Enable / Destroy objects after quest
-        dialogueManager.OnDialogueEndCallback += ManageObjectAfterQuest;
+        dialogueManager.DialogueEnded += ManageObjectAfterQuest;
     }
 
     private void ReActivateNPC()

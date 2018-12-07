@@ -1,7 +1,10 @@
 public interface IInteractable
 {
-	bool isInteractable { get; set; }
-	string interactionText { get; set; }
-	string requirementText { get; set; }
-	IInteractable[] inventoryRequirements { get; set; }
+	bool			IsInteractable { get; }
+	string			InteractionText { get; }
+	string			RequirementText { get; }
+	InventoryItem[] InventoryRequirements { get; }
+
+	void Interact();
+	void PlayInteractAnimation();
 }

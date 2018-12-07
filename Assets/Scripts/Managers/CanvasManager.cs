@@ -1,62 +1,58 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CanvasManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject interactionPanel;
-    [SerializeField]
-    private Text interactionText;
-    [SerializeField]
-    private Sprite defaultInventorySlotImage;
-    [SerializeField]
-    private Image[] inventorySlotsUI;
+    [SerializeField] private GameObject _interactionPanel;
+    [SerializeField] private Text		_interactionText;
+    [SerializeField] private Sprite		_defaultInventorySlotImage;
+    [SerializeField] private Image[]	_inventorySlotsUI;
 
-    //private static CanvasManager instance;
     public static CanvasManager Instance { get; private set; }
 
-    void Awake()
+    private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-
         if (Instance == null)
-        {
             Instance = this;
-        }
-    }
+		else if (Instance != null)
+			Destroy(gameObject);
+
+		DontDestroyOnLoad(gameObject);
+	}
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         HideInteractionPanel();
     }
 
     public void HideInteractionPanel()
     {
-        interactionPanel.SetActive(false);
-        interactionText.enabled = false;
+        _interactionPanel.SetActive(false);
+        _interactionText.enabled = false;
     }
 
     public void ShowInteractionPanel(string text)
     {
-        interactionText.text = text;
-        interactionPanel.SetActive(true);
-        interactionText.enabled = true;
+        _interactionText.text = text;
+        _interactionPanel.SetActive(true);
+        _interactionText.enabled = true;
     }
 
-    public void ManageInventoryItemIcons(List<Interactable> inventory)
-    {
-        for (int i = 0; i < inventorySlotsUI.Length; i++)
-        {
-            if (i < inventory.Count)
-            {
-                inventorySlotsUI[i].sprite = inventory[i].inventoryIcon;
-            }
-            else
-            {
-                inventorySlotsUI[i].sprite = defaultInventorySlotImage;
-            }
-        }
-    }
+	private void ClearAllInventorySlotIcons()
+	{
+		for (int i = 0; i < _inventorySlotsUI.Length; ++i)
+			ClearInventorySlotIcon(i);
+	}
+
+	public void ClearInventorySlotIcon(int slotIndex)
+	{
+		_inventorySlotsUI[slotIndex].sprite = _defaultInventorySlotImage;
+	}
+
+	public void SetInventorySlotIcon(int slotIndex, Sprite icon)
+	{
+		_inventorySlotsUI[slotIndex].sprite = icon;
+	}
 }
