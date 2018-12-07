@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class InventoryItem : MonoBehaviour, IInteractable
 {
-
-	#region Variables
 	[SerializeField] private bool				_isInteractable = true;
+	[SerializeField] private int				_ID;
+	[SerializeField] private string				_itemName;
 	[SerializeField] private string				_interactionText;
 	[SerializeField] private string				_requirementText;
 	[SerializeField] private Sprite				_inventoryIcon;
 	[SerializeField] private InventoryItem[]	_inventoryRequirements;
 
+	public int				ID						=> _ID;
+	public string			Name					=> _itemName;
 	public string			InteractionText			=> _interactionText;
 	public string			RequirementText			=> _requirementText;
 	public Sprite			InventoryIcon			=> _inventoryIcon;
@@ -28,7 +30,6 @@ public class InventoryItem : MonoBehaviour, IInteractable
 			_isInteractable = value;
 		}
 	}
-	#endregion
 
 	public void Interact()
 	{

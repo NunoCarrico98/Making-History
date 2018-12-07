@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour, IInteractable
 {
-	#region Variables
 	[SerializeField] private bool				_isInteractable = true;
+	[SerializeField] private string				_NPCName;
 	[SerializeField] private string				_interactionText;
 	[SerializeField] private string				_requirementText;
 	[SerializeField] private InventoryItem[]	_inventoryRequirements;
-	[SerializeField] private Dialogue			_normalDialogue;
-	[SerializeField] private Quest				_quest;
 
-	private bool			_activateInventoryRequirements = false;
+	[Header("Non-Quest Dialogue")]
+	[SerializeField] private Dialogue _dialogue;
+
+	[Header("Multiple Choices Buttons Text")]
+	[SerializeField] private string[] _optionsText;
+
 	private DialogueManager _dialogueManager;
 
-	public string InteractionText => _interactionText;
-	public string RequirementText => _requirementText;
+	public string NPCName						 => _NPCName;
+	public string InteractionText				 => _interactionText;
+	public string RequirementText				 => _requirementText;
 	public InventoryItem[] InventoryRequirements => _inventoryRequirements;
-	public Dialogue Dialogue => _normalDialogue;
-	public NPCState NPCState { get; set; }
+	public Dialogue Dialogue					 => _dialogue;
+
+	public string[] OptionsText					 => _optionsText;
 
 	public bool IsInteractable
 	{
@@ -32,7 +37,6 @@ public class NPC : MonoBehaviour, IInteractable
 			_isInteractable = value;
 		}
 	}
-	#endregion
 
 	private void Awake()
 	{
@@ -67,23 +71,20 @@ public class NPC : MonoBehaviour, IInteractable
 	public void Talk()
 	{
 		// Start dialogue
-		_dialogueManager.StartDialogue(Dialogue, NPCState);
+		_dialogueManager.ActivateDialogue(this);
 
 		// Make sure player can't reinteract with the NPC
 		IsInteractable = false;
-
-		// Activate quest
-		_activateInventoryRequirements = true;
 	}
 
 	public void SetNPCState()
 	{
-		if (NPCState == NPCState.Neutral)
-			NPCState = NPCState.InQuestNoItems;
-		else if (NPCState == NPCState.InQuestWithItems)
-			NPCState = NPCState.AfterQuest;
-		else if (NPCState == NPCState.InQuestNoItems)
-			NPCState = NPCState.InQuestWithItems;
+		//if (NPCState == NPCState.Neutral)
+		//	NPCState = NPCState.InQuestNoItems;
+		//else if (NPCState == NPCState.InQuestWithItems)
+		//	NPCState = NPCState.AfterQuest;
+		//else if (NPCState == NPCState.InQuestNoItems)
+		//	NPCState = NPCState.InQuestWithItems;
 	}
 
 	private void ManageObjectsAfterQuest()
@@ -94,16 +95,16 @@ public class NPC : MonoBehaviour, IInteractable
 
 	private void DestroyObjectsAfterQuest()
 	{
-		if (_quest.destroyAfterQuest != null && NPCState == NPCState.AfterQuest)
-			foreach(GameObject go in _quest.destroyAfterQuest)
-				Destroy(go);
+		//if (_quest.destroyAfterQuest != null && NPCState == NPCState.AfterQuest)
+		//	foreach(GameObject go in _quest.destroyAfterQuest)
+		//		Destroy(go);
 	}
 
 	private void EnableObjectsAfterQuest()
 	{
-		if (_quest.enableAfterQuest != null && NPCState == NPCState.AfterQuest)
-			foreach (GameObject go in _quest.enableAfterQuest)
-				go.SetActive(true);
+		//if (_quest.enableAfterQuest != null && NPCState == NPCState.AfterQuest)
+		//	foreach (GameObject go in _quest.enableAfterQuest)
+		//		go.SetActive(true);
 	}
 
 	private void OnDialogueEnd()

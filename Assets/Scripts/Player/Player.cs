@@ -1,41 +1,41 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class Player : MonoBehaviour
 {
-	[SerializeField] private float					_maxInteractionDistance;
-	[SerializeField] private int					_inventorySize;
-	[SerializeField] private List<InventoryItem>	_inventory;
+	[SerializeField] private float _maxInteractionDistance;
 
 	private CanvasManager	_canvasManager;
 	private DialogueManager _dialogueManager;
 	private Camera			_cam;
 	private RaycastHit		_raycastHit;
 	private IInteractable	_currentInteractable;
+	private Inventory		_inventory;
 
 	private void Awake()
 	{
 		_canvasManager = CanvasManager.Instance;
 		_dialogueManager = DialogueManager.Instance;
+		_inventory = GetComponent<Inventory>();
 		_cam = GetComponentInChildren<Camera>();
 	}
 
 	private void Start()
 	{
 		_currentInteractable = null;
-		_inventory = new List<InventoryItem>(_inventorySize);
 	}
 
 	private void OnEnable()
 	{
-		_dialogueManager.DialogueBegun += OnDialogueBegin;
+		_dialogueManager.DialogueBegin += OnDialogueBegin;
 		_dialogueManager.DialogueEnded += OnDialogueEnd;
 	}
 
 	private void OnDisable()
 	{
-		_dialogueManager.DialogueBegun -= OnDialogueBegin;
+		_dialogueManager.DialogueBegin -= OnDialogueBegin;
 		_dialogueManager.DialogueEnded -= OnDialogueEnd;
 	}
 
@@ -51,9 +51,6 @@ public class Player : MonoBehaviour
 		CheckForInteraction();
 	}
 
-	/// <summary>
-	/// Method that checks for player input.
-	/// </summary>
 	private void CheckForInteraction()
 	{
 		if (Input.GetKeyDown(KeyCode.E) && _currentInteractable != null)
@@ -65,9 +62,6 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	/// <summary>
-	/// Method that checks if the player is in front of an interactable.
-	/// </summary>
 	private void CheckForInteractable()
 	{
 		if (Physics.Raycast(_cam.transform.position,
@@ -100,7 +94,7 @@ public class Player : MonoBehaviour
 	{
 		_currentInteractable = newInteractable;
 
-		if (HasRequirements())
+		if (_inventory.HasRequirements(_currentInteractable))
 		{
 			_canvasManager.ShowInteractionPanel(_currentInteractable.InteractionText);
 		}
@@ -117,61 +111,24 @@ public class Player : MonoBehaviour
 		_canvasManager.HideInteractionPanel();
 	}
 
-	private bool HasRequirements()
-	{
-		foreach (InventoryItem i in _currentInteractable.InventoryRequirements)
-		{
-			if (!HasInInventory(i))
-			{
-				return false;
-			}
-		}
-		return true;
-	}
 
 	private void InteractWithItem()
 	{
-		if (HasRequirements())
+		if (_inventory.HasRequirements(_currentInteractable as InventoryItem))
 			foreach (InventoryItem i in _currentInteractable.InventoryRequirements)
-				RemoveFromInventory(i);
+				_inventory.RemoveFromInventory(i);
 
-		AddToInventory();
+		_inventory.AddToInventory(_currentInteractable as InventoryItem);
 
 		// Interact with current detected interactable
 		_currentInteractable.Interact();
 	}
 
-	private void AddToInventory()
-	{
-		if (_inventory.Count < _inventorySize)
-		{
-			_inventory.Add(_currentInteractable as InventoryItem);
-			(_currentInteractable as InventoryItem).gameObject.SetActive(false);
-
-			UpdateInventoryIcons();
-		}
-	}
-
-	private bool HasInInventory(InventoryItem pickable)
-	{
-		// Verify if given item is in inventory
-		return _inventory.Contains(pickable);
-	}
-
-	private void RemoveFromInventory(InventoryItem pickable)
-	{
-		// Remove item from inventory
-		_inventory.Remove(pickable);
-
-		// Update inventory UI
-		UpdateInventoryIcons();
-	}
-
 	private void TalkWithNPC()
 	{
-		if (HasRequirements())
+		if (_inventory.HasRequirements(_currentInteractable as NPC))
 			foreach (InventoryItem i in _currentInteractable.InventoryRequirements)
-				RemoveFromInventory(i);
+				_inventory.RemoveFromInventory(i);
 
 		_currentInteractable.Interact();
 	}
@@ -186,16 +143,5 @@ public class Player : MonoBehaviour
 	{
 		// Enable First Person Controller script
 		GetComponent<FirstPersonController>().enabled = false;
-	}
-
-	private void UpdateInventoryIcons()
-	{
-		for (int i = 0; i < _inventorySize; ++i)
-		{
-			if (i < _inventory.Count)
-				_canvasManager.SetInventorySlotIcon(i, _inventory[i].InventoryIcon);
-			else
-				_canvasManager.ClearInventorySlotIcon(i);
-		}
 	}
 }
