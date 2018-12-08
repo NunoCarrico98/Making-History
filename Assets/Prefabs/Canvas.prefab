@@ -1625,8 +1625,8 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 5
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
 --- !u!114 &114834678394056232
@@ -2287,6 +2287,7 @@ MonoBehaviour:
   - {fileID: 114753278703320674}
   - {fileID: 114457238282877540}
   - {fileID: 114464271369786382}
+  _defaultOptionSelected: {fileID: 114588509061014608}
   _optionsUI: {fileID: 1855238262471000}
   _optionsText:
   - {fileID: 114890970341202998}

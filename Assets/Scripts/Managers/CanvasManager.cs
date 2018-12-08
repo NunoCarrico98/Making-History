@@ -10,7 +10,8 @@ public class CanvasManager : MonoBehaviour
 	[SerializeField] private Sprite _defaultInventorySlotImage;
 	[SerializeField] private Image[] _inventorySlotsUI;
 
-	[Header("Multiple Choice UI")]
+    [Header("Multiple Choice UI")]
+    [SerializeField] private Button _defaultOptionSelected;
 	[SerializeField] private GameObject _optionsUI;
 	[SerializeField] private TextMeshProUGUI[] _optionsText;
 
@@ -24,17 +25,7 @@ public class CanvasManager : MonoBehaviour
 			Destroy(gameObject);
 
 		DontDestroyOnLoad(gameObject);
-	}
-
-	private void OnEnable()
-	{
-		DialogueManager.Instance.DialogueEnded += HideMultipleDialogueChoiceUI;
-	}
-
-	private void OnDisable()
-	{
-		DialogueManager.Instance.DialogueEnded -= HideMultipleDialogueChoiceUI;
-	}
+    }
 
 	// Use this for initialization
 	private void Start()
@@ -74,13 +65,16 @@ public class CanvasManager : MonoBehaviour
 
 	public void ShowMultipleDialogueChoiceUI(NPC npc)
 	{
-		_optionsUI.SetActive(true);
+        _defaultOptionSelected.Select();
+        _defaultOptionSelected.OnSelect(null);
+
+        _optionsUI.SetActive(true);
 		_optionsText[0].text = npc.OptionsText[0];
 		_optionsText[1].text = npc.OptionsText[1];
 		_optionsText[2].text = npc.OptionsText[2];
 	}
 
-	private void HideMultipleDialogueChoiceUI()
+	public void HideMultipleDialogueChoiceUI()
 	{
 		_optionsUI.SetActive(false);
 	}

@@ -51,17 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15340c4dab6ee854eac33a9e502328bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _continueButton: {fileID: 114998987823263008, guid: 7b8add3f7183e124da4e3135dcb29822,
-    type: 2}
-  _continueKey: 32
-  _nameText: {fileID: 114510509230209462, guid: 7b8add3f7183e124da4e3135dcb29822,
-    type: 2}
-  _dialogueText: {fileID: 114459536524508088, guid: 7b8add3f7183e124da4e3135dcb29822,
-    type: 2}
+  _continueButton: {fileID: 0}
+  _nameText: {fileID: 0}
+  _dialogueText: {fileID: 0}
   _animator: {fileID: 0}
-  _maxNumberOfSentences: 10
-  _optionsUI: {fileID: 1805642878698194, guid: 4076ed96a3ccf254c9d0a47678da9a99, type: 2}
-  _optionsText:
-  - {fileID: 114689532663447262, guid: 733fea9fb969b954086b417f0d48ec16, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
