@@ -13,8 +13,8 @@ public class NPC : MonoBehaviour, IInteractable
 	[Header("Non-Quest Dialogue")]
 	[SerializeField] private Dialogue _dialogue;
 
-	[Header("Multiple Choices Buttons Text")]
-	[SerializeField] private string[] _optionsText;
+	//[Header("Multiple Choices Buttons Text")]
+	//[SerializeField] private string[] _optionsText;
 
 	private DialogueManager _dialogueManager;
 
@@ -24,7 +24,7 @@ public class NPC : MonoBehaviour, IInteractable
 	public InventoryItem[] InventoryRequirements => _inventoryRequirements;
 	public Dialogue Dialogue					 => _dialogue;
 
-	public string[] OptionsText					 => _optionsText;
+	//public string[] OptionsText					 => _optionsText;
 
 	public bool IsInteractable
 	{

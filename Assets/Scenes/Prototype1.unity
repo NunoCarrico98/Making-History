@@ -6632,16 +6632,15 @@ MonoBehaviour:
   _inventoryRequirements:
   - {fileID: 1530715953}
   _dialogue:
-    option1:
-    - heyo
-    option2:
-    - pilinha
-    option3:
-    - Coiso
-  _optionsText:
-  - Tak about shit
-  - HALLOOO
-  - AAAAAAAAAA
+    _options:
+    - _buttonText: Talk about quest.
+      _optionText:
+      - COMEKIE KARALHO.
+      - PRECISO DA ERVA DA BOUA
+    - _buttonText: Talk about shit.
+      _optionText:
+      - HOJE TA UM DIA BONITO, N AXAS?
+      - AGORA POE-TE NO CARALHO.
 --- !u!1 &1991125094
 GameObject:
   m_ObjectHideFlags: 0

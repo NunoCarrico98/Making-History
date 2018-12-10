@@ -65,17 +65,17 @@ public class DialogueManager : MonoBehaviour
         switch (_dialogueChosen)
         {
             case 1:
-                sentencesToType = _tempNPC.Dialogue.option1;
+                sentencesToType = _tempNPC.Dialogue.Options[0].OptionText;
                 _nameText.text = _tempNPC.NPCName;
                 StartDialogue(sentencesToType);
                 break;
             case 2:
-                sentencesToType = _tempNPC.Dialogue.option2;
+                sentencesToType = _tempNPC.Dialogue.Options[1].OptionText;
                 _nameText.text = _tempNPC.NPCName;
                 StartDialogue(sentencesToType);
                 break;
             case 3:
-                sentencesToType = _tempNPC.Dialogue.option3;
+                sentencesToType = _tempNPC.Dialogue.Options[2].OptionText;
                 _nameText.text = _tempNPC.NPCName;
                 StartDialogue(sentencesToType);
                 break;
