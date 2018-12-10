@@ -6540,6 +6540,7 @@ GameObject:
   - component: {fileID: 1966244687}
   - component: {fileID: 1966244686}
   - component: {fileID: 1966244689}
+  - component: {fileID: 1966244685}
   m_Layer: 0
   m_Name: Elder
   m_TagString: Untagged
@@ -6560,6 +6561,29 @@ Transform:
   m_Father: {fileID: 701045640}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1966244685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1966244683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ac097b78effd040b97ff4b433fdc8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isInteractable: 1
+  _NPCName: 
+  _interactionText: 
+  _requirementText: 
+  _inventoryRequirements: []
+  _dialogue:
+    _options: []
+  quest:
+    _questName: 
+    _goals:
+    - goalType: 0
+    - goalType: 1
 --- !u!65 &1966244686
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6633,14 +6657,13 @@ MonoBehaviour:
   - {fileID: 1530715953}
   _dialogue:
     _options:
-    - _buttonText: Talk about quest.
+    - _buttonText: Option1
       _optionText:
       - COMEKIE KARALHO.
       - PRECISO DA ERVA DA BOUA
-    - _buttonText: Talk about shit.
+    - _buttonText: Option2
       _optionText:
-      - HOJE TA UM DIA BONITO, N AXAS?
-      - AGORA POE-TE NO CARALHO.
+      - Dialogo 2
 --- !u!1 &1991125094
 GameObject:
   m_ObjectHideFlags: 0

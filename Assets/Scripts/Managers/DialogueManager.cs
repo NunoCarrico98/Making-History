@@ -45,11 +45,6 @@ public class DialogueManager : MonoBehaviour
         _canvasManager = CanvasManager.Instance;
     }
 
-    private void LateUpdate()
-    {
-        // ContinueDialogue();
-    }
-
     public void ActivateDialogue(NPC npc)
     {
         _tempNPC = npc;

@@ -88,8 +88,13 @@ public class CanvasManager : MonoBehaviour
         }
         if (npc.Dialogue.Options.Length == 3)
         {
+            // Activate the second button
+            _optionsUI.transform.GetChild(1).gameObject.SetActive(true);
             // Activate the third button
             _optionsUI.transform.GetChild(2).gameObject.SetActive(true);
+
+            // Button 2 receives tex from the array of lists
+            _optionsText[1].text = npc.Dialogue.Options[1].ButtonText;
             // Button 3 receives text from the array of lists
             _optionsText[2].text = npc.Dialogue.Options[2].ButtonText;
         }

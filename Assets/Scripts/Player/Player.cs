@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
 	private IInteractable	_currentInteractable;
 	private Inventory		_inventory;
 
+    public event Action<IInteractable> Interacted;
+
 	private void Awake()
 	{
 		_canvasManager = CanvasManager.Instance;
@@ -144,4 +146,9 @@ public class Player : MonoBehaviour
 		// Enable First Person Controller script
 		GetComponent<FirstPersonController>().enabled = false;
 	}
+
+    protected virtual void OnInteracted(IInteractable obj)
+    {
+        Interacted?.Invoke(obj);
+    }
 }
