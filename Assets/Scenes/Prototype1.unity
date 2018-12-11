@@ -6575,15 +6575,16 @@ MonoBehaviour:
   _isInteractable: 1
   _NPCName: 
   _interactionText: 
-  _requirementText: 
+  _requirementText: 233
   _inventoryRequirements: []
   _dialogue:
     _options: []
   quest:
     _questName: 
     _goals:
-    - goalType: 0
-    - goalType: 1
+    - _goalType: 0
+      _itemID: 2
+      _requiredAmmount: 4
 --- !u!65 &1966244686
 BoxCollider:
   m_ObjectHideFlags: 0

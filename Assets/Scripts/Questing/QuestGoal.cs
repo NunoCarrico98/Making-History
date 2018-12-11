@@ -1,19 +1,36 @@
-﻿using UnityEngine;
+using UnityEngine;
+using System;
 
 [System.Serializable]
 public class QuestGoal
 {
-    [SerializeField] private GoalType goalType;
+	/*[SerializeField] */public GoalType _goalType;
+	/*[SerializeField] */public int _itemID;
+	/*[SerializeField] */public int _requiredAmmount;
 
-    public bool Completed { get; set; }
+	private int _currentAmmount = 0;
 
-    public virtual void CheckForCompletion(IInteractable obj)
-    {
-    }
+	public bool Completed { get; set; }
+	public GoalType Type
+	{
+		get { return _goalType; }
+		set { _goalType = value; }
+	}
+	public int ItemID => _itemID;
+	public int RequiredAmmount => _requiredAmmount;
 
-    private enum GoalType
-    {
-        Collect,
-        Speak
-    }
+	public virtual void CheckForCompletion(IInteractable obj)
+	{
+	}
+
+	public enum GoalType
+	{
+		Collect,
+		Speak
+	}
+
+	public static string[] GetEnumValuesAsStrings()
+	{
+		return Enum.GetNames(typeof(GoalType));
+	}
 }
