@@ -11,10 +11,9 @@ public class Player : MonoBehaviour
 	private DialogueManager _dialogueManager;
 	private Camera _cam;
 	private RaycastHit _raycastHit;
-	private IInteractable _currentInteractable;
 	private Inventory _inventory;
 
-	public IInteractable CurrentInteractable => _currentInteractable;
+	public IInteractable CurrentInteractable { get; private set; }
 
 	public event Action<IInteractable> Interacted;
 
@@ -35,7 +34,7 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
-		_currentInteractable = null;
+		CurrentInteractable = null;
 	}
 
 	private void OnEnable()
@@ -64,11 +63,11 @@ public class Player : MonoBehaviour
 
 	private void CheckForInteraction()
 	{
-		if (Input.GetKeyDown(KeyCode.E) && _currentInteractable != null)
+		if (Input.GetKeyDown(KeyCode.E) && CurrentInteractable != null)
 		{
-			if (_currentInteractable is InventoryItem)
+			if (CurrentInteractable is InventoryItem)
 				InteractWithItem();
-			else if (_currentInteractable is NPC)
+			else if (CurrentInteractable is NPC)
 				TalkWithNPC();
 		}
 	}
@@ -103,27 +102,27 @@ public class Player : MonoBehaviour
 	/// <param name="newInteractable">Dete </param>
 	private void SetInteractable(IInteractable newInteractable)
 	{
-		_currentInteractable = newInteractable;
+		CurrentInteractable = newInteractable;
 
-		if (_currentInteractable is InventoryItem)
+		if (CurrentInteractable is InventoryItem)
 		{
-			InventoryItem currentItem = _currentInteractable as InventoryItem;
+			InventoryItem currentItem = CurrentInteractable as InventoryItem;
 			if (_inventory.HasRequirements(currentItem))
 			{
-				_canvasManager.ShowInteractionPanel(_currentInteractable.InteractionText);
+				_canvasManager.ShowInteractionPanel(CurrentInteractable.InteractionText);
 			}
 			else if (currentItem)
 			{
 				_canvasManager.ShowInteractionPanel(currentItem.RequirementText);
 			}
 		}
-		else if (_currentInteractable is NPC)
-			_canvasManager.ShowInteractionPanel(_currentInteractable.InteractionText);
+		else if (CurrentInteractable is NPC)
+			_canvasManager.ShowInteractionPanel(CurrentInteractable.InteractionText);
 	}
 
 	private void ClearInteractable()
 	{
-		_currentInteractable = null;
+		CurrentInteractable = null;
 
 		_canvasManager.HideInteractionPanel();
 	}
@@ -131,20 +130,20 @@ public class Player : MonoBehaviour
 
 	private void InteractWithItem()
 	{
-		if (_inventory.HasRequirements(_currentInteractable as InventoryItem))
-			foreach (InventoryItem i in (_currentInteractable as InventoryItem).InventoryRequirements)
+		if (_inventory.HasRequirements(CurrentInteractable as InventoryItem))
+			foreach (InventoryItem i in (CurrentInteractable as InventoryItem).InventoryRequirements)
 				_inventory.RemoveFromInventory(i);
 
-		_inventory.AddToInventory(_currentInteractable as InventoryItem);
+		_inventory.AddToInventory(CurrentInteractable as InventoryItem);
 
-		OnInteracted(_currentInteractable);
+		OnInteracted(CurrentInteractable);
 		// Interact with current detected interactable
-		_currentInteractable.Interact();
+		CurrentInteractable.Interact();
 	}
 
 	private void TalkWithNPC()
 	{
-		_currentInteractable.Interact();
+		CurrentInteractable.Interact();
 	}
 
 	private void OnDialogueEnd()

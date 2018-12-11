@@ -6,10 +6,10 @@ public class QuestGiver : NPC
 {
 	[SerializeField] private Quest _quest;
 
+	[Header("Testing Only")]
 	[SerializeField] private bool _assigned;
 	[SerializeField] private bool _completed;
 	private Player player;
-	private DialogueManager _dialogueManager;
 
 	public Quest NPCQuest => _quest;
 

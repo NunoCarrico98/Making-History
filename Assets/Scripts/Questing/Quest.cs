@@ -12,6 +12,7 @@ public class Quest
 	[Header("Quest Dialogue")]
 	[SerializeField] private DialogueOnly _questDialogue;
 
+	[Header("Testing Only")]
 	[SerializeField] private bool completed;
 
 	public bool Completed { get; set; }

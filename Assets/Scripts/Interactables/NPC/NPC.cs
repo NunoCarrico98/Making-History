@@ -11,7 +11,7 @@ public class NPC : MonoBehaviour, IInteractable
 	[Header("Non-Quest Dialogue")]
 	[SerializeField] private Dialogue _dialogue;
 
-	private DialogueManager _dialogueManager;
+	protected DialogueManager _dialogueManager;
 
 	public string NPCName => _NPCName;
 	public string InteractionText => _interactionText;
