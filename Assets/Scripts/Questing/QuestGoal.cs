@@ -4,23 +4,38 @@ using System;
 [System.Serializable]
 public class QuestGoal
 {
-	/*[SerializeField] */public GoalType _goalType;
-	/*[SerializeField] */public int _itemID;
-	/*[SerializeField] */public int _requiredAmmount;
+	[SerializeField] private GoalType _goalType;
+	[SerializeField] private int _itemID;
+	[SerializeField] private int _requiredAmmount;
 
 	private int _currentAmmount = 0;
 
 	public bool Completed { get; set; }
-	public GoalType Type
-	{
-		get { return _goalType; }
-		set { _goalType = value; }
-	}
 	public int ItemID => _itemID;
 	public int RequiredAmmount => _requiredAmmount;
 
-	public virtual void CheckForCompletion(IInteractable obj)
+	public void CheckForCompletion(IInteractable interactable)
 	{
+		CheckForType(interactable);
+	}
+
+	public void CheckForType(IInteractable interactable)
+	{
+		switch (_goalType)
+		{
+			case GoalType.Collect:
+				InventoryItem item = interactable as InventoryItem;
+				if (item.ID == ItemID)
+				{
+					_currentAmmount++;
+
+					if (_currentAmmount == _requiredAmmount)
+						Completed = true;
+				}
+				break;
+			case GoalType.Speak:
+				break;
+		}
 	}
 
 	public enum GoalType

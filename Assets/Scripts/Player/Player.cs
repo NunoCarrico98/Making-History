@@ -7,17 +7,26 @@ public class Player : MonoBehaviour
 {
 	[SerializeField] private float _maxInteractionDistance;
 
-	private CanvasManager	_canvasManager;
+	private CanvasManager _canvasManager;
 	private DialogueManager _dialogueManager;
-	private Camera			_cam;
-	private RaycastHit		_raycastHit;
-	private IInteractable	_currentInteractable;
-	private Inventory		_inventory;
+	private Camera _cam;
+	private RaycastHit _raycastHit;
+	private IInteractable _currentInteractable;
+	private Inventory _inventory;
 
-    public event Action<IInteractable> Interacted;
+	public IInteractable CurrentInteractable => _currentInteractable;
+
+	public event Action<IInteractable> Interacted;
+
+	public static Player Instance { get; private set; }
 
 	private void Awake()
 	{
+		if (Instance == null)
+			Instance = this;
+		else if (Instance != null)
+			Destroy(gameObject);
+
 		_canvasManager = CanvasManager.Instance;
 		_dialogueManager = DialogueManager.Instance;
 		_inventory = GetComponent<Inventory>();
@@ -96,14 +105,20 @@ public class Player : MonoBehaviour
 	{
 		_currentInteractable = newInteractable;
 
-		if (_inventory.HasRequirements(_currentInteractable))
+		if (_currentInteractable is InventoryItem)
 		{
+			InventoryItem currentItem = _currentInteractable as InventoryItem;
+			if (_inventory.HasRequirements(currentItem))
+			{
+				_canvasManager.ShowInteractionPanel(_currentInteractable.InteractionText);
+			}
+			else if (currentItem)
+			{
+				_canvasManager.ShowInteractionPanel(currentItem.RequirementText);
+			}
+		}
+		else if (_currentInteractable is NPC)
 			_canvasManager.ShowInteractionPanel(_currentInteractable.InteractionText);
-		}
-		else
-		{
-			_canvasManager.ShowInteractionPanel(_currentInteractable.RequirementText);
-		}
 	}
 
 	private void ClearInteractable()
@@ -117,21 +132,18 @@ public class Player : MonoBehaviour
 	private void InteractWithItem()
 	{
 		if (_inventory.HasRequirements(_currentInteractable as InventoryItem))
-			foreach (InventoryItem i in _currentInteractable.InventoryRequirements)
+			foreach (InventoryItem i in (_currentInteractable as InventoryItem).InventoryRequirements)
 				_inventory.RemoveFromInventory(i);
 
 		_inventory.AddToInventory(_currentInteractable as InventoryItem);
 
+		OnInteracted(_currentInteractable);
 		// Interact with current detected interactable
 		_currentInteractable.Interact();
 	}
 
 	private void TalkWithNPC()
 	{
-		if (_inventory.HasRequirements(_currentInteractable as NPC))
-			foreach (InventoryItem i in _currentInteractable.InventoryRequirements)
-				_inventory.RemoveFromInventory(i);
-
 		_currentInteractable.Interact();
 	}
 
@@ -147,8 +159,8 @@ public class Player : MonoBehaviour
 		GetComponent<FirstPersonController>().enabled = false;
 	}
 
-    protected virtual void OnInteracted(IInteractable obj)
-    {
-        Interacted?.Invoke(obj);
-    }
+	protected virtual void OnInteracted(IInteractable obj)
+	{
+		Interacted?.Invoke(obj);
+	}
 }

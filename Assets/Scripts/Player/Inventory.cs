@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour
 		UpdateInventoryIcons();
 	}
 
-	public bool HasRequirements(IInteractable interactable)
+	public bool HasRequirements(InventoryItem interactable)
 	{
 		foreach (InventoryItem i in interactable.InventoryRequirements)
 		{

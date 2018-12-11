@@ -2,24 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using UnityEditor;
 
 [System.Serializable]
 public class Quest
 {
-	public string _questName;
-	public List<QuestGoal> _goals;
+	[SerializeField] private string _questName;
+	[SerializeField] private List<QuestGoal> _goals;
+
+	[Header("Quest Dialogue")]
+	[SerializeField] private DialogueOnly _questDialogue;
+
+	[SerializeField] private bool completed;
 
 	public bool Completed { get; set; }
 	public List<QuestGoal> Goals => _goals;
+	public DialogueOnly QuestDialogue => _questDialogue;
 
-	public void CheckForCompletion()
+	public void CheckForCompletion(IInteractable interactable)
 	{
 		foreach (QuestGoal goal in Goals)
 		{
-			//goal.CheckForCompletion
+			goal.CheckForCompletion(interactable);
 		}
 		// Completed is true if all goals are true
 		Completed = Goals.All(g => g.Completed);
+		completed = Completed;
 	}
 }

@@ -4,27 +4,18 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour, IInteractable
 {
-	[SerializeField] private bool				_isInteractable = true;
-	[SerializeField] private string				_NPCName;
-	[SerializeField] private string				_interactionText;
-	[SerializeField] private string				_requirementText;
-	[SerializeField] private InventoryItem[]	_inventoryRequirements;
+	[SerializeField] private bool _isInteractable = true;
+	[SerializeField] private string _NPCName;
+	[SerializeField] private string _interactionText;
 
 	[Header("Non-Quest Dialogue")]
 	[SerializeField] private Dialogue _dialogue;
 
-	//[Header("Multiple Choices Buttons Text")]
-	//[SerializeField] private string[] _optionsText;
-
 	private DialogueManager _dialogueManager;
 
-	public string NPCName						 => _NPCName;
-	public string InteractionText				 => _interactionText;
-	public string RequirementText				 => _requirementText;
-	public InventoryItem[] InventoryRequirements => _inventoryRequirements;
-	public Dialogue Dialogue					 => _dialogue;
-
-	//public string[] OptionsText					 => _optionsText;
+	public string NPCName => _NPCName;
+	public string InteractionText => _interactionText;
+	public Dialogue Dialogue => _dialogue;
 
 	public bool IsInteractable
 	{
@@ -77,39 +68,18 @@ public class NPC : MonoBehaviour, IInteractable
 		IsInteractable = false;
 	}
 
-	public void SetNPCState()
-	{
-		//if (NPCState == NPCState.Neutral)
-		//	NPCState = NPCState.InQuestNoItems;
-		//else if (NPCState == NPCState.InQuestWithItems)
-		//	NPCState = NPCState.AfterQuest;
-		//else if (NPCState == NPCState.InQuestNoItems)
-		//	NPCState = NPCState.InQuestWithItems;
-	}
-
-	private void ManageObjectsAfterQuest()
-	{
-		DestroyObjectsAfterQuest();
-		EnableObjectsAfterQuest();
-	}
-
-	private void DestroyObjectsAfterQuest()
-	{
-		//if (_quest.destroyAfterQuest != null && NPCState == NPCState.AfterQuest)
-		//	foreach(GameObject go in _quest.destroyAfterQuest)
-		//		Destroy(go);
-	}
-
-	private void EnableObjectsAfterQuest()
-	{
-		//if (_quest.enableAfterQuest != null && NPCState == NPCState.AfterQuest)
-		//	foreach (GameObject go in _quest.enableAfterQuest)
-		//		go.SetActive(true);
-	}
-
 	private void OnDialogueEnd()
 	{
 		IsInteractable = true;
-		ManageObjectsAfterQuest();
+	}
+
+	public virtual List<string> GetDialogue(int i)
+	{
+		return Dialogue.GetDialogue(i);
+	}
+
+	public virtual string GetButtonText(int i)
+	{
+		return Dialogue.GetButtonText(i);
 	}
 }

@@ -7,173 +7,176 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-    [Header("Button UI")]
-    [SerializeField] private Button _continueButton;
+	[Header("Button UI")]
+	[SerializeField] private Button _continueButton;
 
-    [Header("Dialogue UI")]
-    [SerializeField] private TextMeshProUGUI _nameText;
-    [SerializeField] private TextMeshProUGUI _dialogueText;
-    [SerializeField] private Animator _animator;
+	[Header("Dialogue UI")]
+	[SerializeField] private TextMeshProUGUI _nameText;
+	[SerializeField] private TextMeshProUGUI _dialogueText;
+	[SerializeField] private Animator _animator;
 
-    private Queue<string> _sentences;
-    private Dialogue _tempDialogue;
-    private CanvasManager _canvasManager;
-    private NPC _tempNPC;
-    private int _dialogueChosen;
+	private Queue<string> _sentences;
+	private CanvasManager _canvasManager;
+	private NPC _tempNPC;
 
-    public Button ContinueButton => _continueButton;
+	public Button ContinueButton => _continueButton;
 
-    public event Action DialogueEnded;
-    public event Action DialogueBegin;
+	public event Action DialogueEnded;
+	public event Action DialogueBegin;
 
-    public static DialogueManager Instance { get; private set; }
+	public int DialogueChosen { get; private set; }
 
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else if (Instance != null)
-            Destroy(gameObject);
+	public static DialogueManager Instance { get; private set; }
 
-        DontDestroyOnLoad(gameObject);
-    }
+	private void Awake()
+	{
+		if (Instance == null)
+			Instance = this;
+		else if (Instance != null)
+			Destroy(gameObject);
 
-    // Use this for initialization
-    void Start()
-    {
-        _sentences = new Queue<string>();
-        _canvasManager = CanvasManager.Instance;
-    }
+		DontDestroyOnLoad(gameObject);
+	}
 
-    public void ActivateDialogue(NPC npc)
-    {
-        _tempNPC = npc;
-        OnDialogueBegin();
-        _canvasManager.ShowMultipleDialogueChoiceUI(npc);
-        _continueButton.enabled = false;
-    }
+	// Use this for initialization
+	void Start()
+	{
+		_sentences = new Queue<string>();
+		_canvasManager = CanvasManager.Instance;
+	}
 
-    public void SetDialogue()
-    {
-        List<string> sentencesToType = new List<string>();
+	public void ActivateDialogue(NPC npc)
+	{
+		_tempNPC = npc;
+		OnDialogueBegin();
+		_canvasManager.ShowMultipleDialogueChoiceUI(npc);
+		_continueButton.enabled = false;
+	}
 
-        switch (_dialogueChosen)
-        {
-            case 1:
-                sentencesToType = _tempNPC.Dialogue.Options[0].OptionText;
-                _nameText.text = _tempNPC.NPCName;
-                StartDialogue(sentencesToType);
-                break;
-            case 2:
-                sentencesToType = _tempNPC.Dialogue.Options[1].OptionText;
-                _nameText.text = _tempNPC.NPCName;
-                StartDialogue(sentencesToType);
-                break;
-            case 3:
-                sentencesToType = _tempNPC.Dialogue.Options[2].OptionText;
-                _nameText.text = _tempNPC.NPCName;
-                StartDialogue(sentencesToType);
-                break;
-            case 4:
-                EndDialogue();
-                break;
-        }
-    }
+	public void SetDialogue()
+	{
+		List<string> sentencesToType = new List<string>();
 
-    public void StartDialogue(IEnumerable<string> sentencesToType)
-    {
-        // Space Button is now selected in dialogues
-        _continueButton.Select();
-        // Activate Dialogue Continue Button
-        _continueButton.enabled = true;
-        _canvasManager.HideMultipleDialogueChoiceUI();
+		_nameText.text = _tempNPC.NPCName;
 
-        // Activate the Dialogue Box
-        _animator.SetBool("isActive", true);
+		switch (DialogueChosen)
+		{
+			case 1:
+				sentencesToType = _tempNPC.GetDialogue(DialogueChosen - 1);
+				StartDialogue(sentencesToType);
+				break;
+			case 2:
+				sentencesToType = _tempNPC.GetDialogue(DialogueChosen - 1);
+				StartDialogue(sentencesToType);
+				break;
+			case 3:
+				sentencesToType = _tempNPC.GetDialogue(DialogueChosen - 1);
+				StartDialogue(sentencesToType);
+				break;
+			case 4:
+				EndDialogue();
+				break;
+		}
 
-        // Clear the queue
-        _sentences.Clear();
+		if (_tempNPC is QuestGiver)
+			(_tempNPC as QuestGiver).CheckQuestState();
+	}
 
-        foreach (string sentence in sentencesToType)
-        {
-            // Queue sentences to write
-            _sentences.Enqueue(sentence);
-        }
+	public void StartDialogue(IEnumerable<string> sentencesToType)
+	{
+		// Space Button is now selected in dialogues
+		_continueButton.Select();
+		// Activate Dialogue Continue Button
+		_continueButton.enabled = true;
+		_canvasManager.HideMultipleDialogueChoiceUI();
 
-        DisplayNextSentence();
-    }
+		// Activate the Dialogue Box
+		_animator.SetBool("isActive", true);
 
-    public void DisplayNextSentence()
-    {
-        // If there no more sentences to write
-        if (_sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
-        }
+		// Clear the queue
+		_sentences.Clear();
 
-        // Dequeue sentence that's going to be written
-        string sentence = _sentences.Dequeue();
+		foreach (string sentence in sentencesToType)
+		{
+			// Queue sentences to write
+			_sentences.Enqueue(sentence);
+		}
 
-        // Stop typing if player presses continue while sentence is not complete
-        StopAllCoroutines();
+		DisplayNextSentence();
+	}
 
-        // Type sentence
-        StartCoroutine(TypeSentence(sentence));
-    }
+	public void DisplayNextSentence()
+	{
+		// If there no more sentences to write
+		if (_sentences.Count == 0)
+		{
+			EndDialogue();
+			return;
+		}
 
-    IEnumerator TypeSentence(string sentence)
-    {
-        // Initialise UI text with no letters
-        _dialogueText.text = "";
+		// Dequeue sentence that's going to be written
+		string sentence = _sentences.Dequeue();
 
-        // Go through the string and write each letter with delay
-        foreach (char letter in sentence)
-        {
-            _dialogueText.text += letter;
-            yield return null;
-        }
-    }
+		// Stop typing if player presses continue while sentence is not complete
+		StopAllCoroutines();
 
-    public void EndDialogue()
-    {
-        // Deactivate the Dialogue Box
-        _animator.SetBool("isActive", false);
-        OnDialogueEnded();
-        _canvasManager.HideMultipleDialogueChoiceUI();
-    }
+		// Type sentence
+		StartCoroutine(TypeSentence(sentence));
+	}
 
-    public void ChooseOption1()
-    {
-        _dialogueChosen = 1;
-        SetDialogue();
-    }
+	IEnumerator TypeSentence(string sentence)
+	{
+		// Initialise UI text with no letters
+		_dialogueText.text = "";
 
-    public void ChooseOption2()
-    {
-        _dialogueChosen = 2;
-        SetDialogue();
-    }
+		// Go through the string and write each letter with delay
+		foreach (char letter in sentence)
+		{
+			_dialogueText.text += letter;
+			yield return null;
+		}
+	}
 
-    public void ChooseOption3()
-    {
-        _dialogueChosen = 3;
-        SetDialogue();
-    }
+	public void EndDialogue()
+	{
+		DialogueChosen = 0;
+		// Deactivate the Dialogue Box
+		_animator.SetBool("isActive", false);
+		OnDialogueEnded();
+		_canvasManager.HideMultipleDialogueChoiceUI();
+	}
 
-    public void ChooseOption4()
-    {
-        _dialogueChosen = 4;
-        SetDialogue();
-    }
+	public void ChooseOption1()
+	{
+		DialogueChosen = 1;
+		SetDialogue();
+	}
 
-    protected virtual void OnDialogueEnded()
-    {
-        DialogueEnded?.Invoke();
-    }
+	public void ChooseOption2()
+	{
+		DialogueChosen = 2;
+		SetDialogue();
+	}
 
-    protected virtual void OnDialogueBegin()
-    {
-        DialogueBegin?.Invoke();
-    }
+	public void ChooseOption3()
+	{
+		DialogueChosen = 3;
+		SetDialogue();
+	}
+
+	public void ChooseOption4()
+	{
+		DialogueChosen = 4;
+		SetDialogue();
+	}
+
+	protected virtual void OnDialogueEnded()
+	{
+		DialogueEnded?.Invoke();
+	}
+
+	protected virtual void OnDialogueBegin()
+	{
+		DialogueBegin?.Invoke();
+	}
 }
