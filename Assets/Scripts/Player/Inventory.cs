@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour 
+public class Inventory : MonoBehaviour
 {
 	[SerializeField] private int _inventorySize;
 
@@ -12,7 +12,7 @@ public class Inventory : MonoBehaviour
 	public List<InventoryItem> InventoryItems { get; private set; }
 
 	// Use this for initialization
-	private void Awake () 
+	private void Awake()
 	{
 		_canvasManager = CanvasManager.Instance;
 	}
@@ -35,10 +35,8 @@ public class Inventory : MonoBehaviour
 
 	public void RemoveFromInventory(IInteractable interactable)
 	{
-		if (HasRequirements(interactable))
-			foreach (InventoryItem i in interactable.InventoryRequirements)
-				// Remove item from inventory
-				InventoryItems.Remove(i);
+		// Remove item from inventory
+		InventoryItems.Remove(interactable as InventoryItem);
 
 		// Update inventory UI
 		UpdateInventoryIcons();

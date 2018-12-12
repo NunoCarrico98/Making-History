@@ -131,7 +131,9 @@ public class Player : MonoBehaviour
 
 	private void InteractWithItem()
 	{
-		InventoryItems.RemoveFromInventory(CurrentInteractable);
+		if (InventoryItems.HasRequirements(CurrentInteractable))
+			foreach (InventoryItem i in CurrentInteractable.InventoryRequirements)
+				InventoryItems.RemoveFromInventory(i);
 
 		InventoryItems.AddToInventory(CurrentInteractable as InventoryItem);
 

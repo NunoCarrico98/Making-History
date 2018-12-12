@@ -88,10 +88,10 @@ public class QuestGiver : NPC
 
 	public void DestroyRequirementsInInventory()
 	{
-		foreach (InventoryItem i in player.InventoryItems.InventoryItems)
+		for (int i = 0; i < player.InventoryItems.InventoryItems.Count; i++)
 			foreach (InventoryItem item in InventoryRequirements)
-				if (i == item)
-					player.InventoryItems.RemoveFromInventory(i);
+				if (player.InventoryItems.InventoryItems[i] == item)
+					player.InventoryItems.RemoveFromInventory(item);
 	}
 
 	private void ManageObjectsAfterQuest()
