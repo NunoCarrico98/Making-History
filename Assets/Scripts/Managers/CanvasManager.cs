@@ -87,15 +87,23 @@ public class CanvasManager : MonoBehaviour
 
 	private void ManageButton1(NPC npc)
 	{
-		if (!(npc as QuestGiver).AfterQuest)
-			// Activate the second button
-			_optionsUI.transform.GetChild(0).gameObject.SetActive(true);
+		if (npc is QuestGiver)
+		{
+			if (!(npc as QuestGiver).AfterQuest)
+				// Activate the first button
+				_optionsUI.transform.GetChild(0).gameObject.SetActive(true);
+			else
+			{
+				// Activate the second button
+				_optionsUI.transform.GetChild(0).gameObject.SetActive(false);
+				_defaultOptionAfterQuest.Select();
+				_defaultOptionAfterQuest.OnSelect(null);
+			}
+		}
 		else
 		{
-			// Activate the second button
-			_optionsUI.transform.GetChild(0).gameObject.SetActive(false);
-			_defaultOptionAfterQuest.Select();
-			_defaultOptionAfterQuest.OnSelect(null);
+			// Activate the first button
+			_optionsUI.transform.GetChild(0).gameObject.SetActive(true);
 		}
 
 		// Button 1 always exists and receives text from the array of lists

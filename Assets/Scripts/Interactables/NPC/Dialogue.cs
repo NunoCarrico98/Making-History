@@ -13,7 +13,6 @@ public class Dialogue
 
 	public List<string> GetDialogue(int i)
 	{
-		Debug.Log(i - 1);
 		return Options[i - 1].OptionText;
 	}
 
