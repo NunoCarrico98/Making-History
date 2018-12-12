@@ -7,10 +7,12 @@ public class QuestGiver : NPC
 	[SerializeField] private Quest _quest;
 
 	[Header("Testing Only")]
-	[SerializeField] private bool _assigned;
-	[SerializeField] private bool _completed;
+	[SerializeField] private bool _assignedQuest;
+	[SerializeField] private bool _completedQuest;
 	private Player player;
 
+	public bool CompletedQuest => _completedQuest;
+	public bool AfterQuest { get; private set; }
 	public Quest NPCQuest => _quest;
 
 	private void Awake()
@@ -28,40 +30,25 @@ public class QuestGiver : NPC
 		player.Interacted -= _quest.CheckForCompletion;
 	}
 
-	public void CheckQuestState()
-	{
-		if (!_assigned && _dialogueManager.DialogueChosen == 1)
-		{
-			_assigned = true;
-		}
-		else if (_quest.Completed)
-		{
-			_completed = true;
-			_quest = null;
-		}
-	}
-
 	public override List<string> GetDialogue(int dialogueChosen)
 	{
 		List<string> questDialogue = new List<string>();
 
-		if (dialogueChosen == 1 || _quest != null)
+		if (dialogueChosen == 1)
 		{
-			if (!_assigned && !_completed)
+			CompleteQuest();
+
+			if (!_assignedQuest && !_completedQuest)
 			{
 				questDialogue = _quest.QuestDialogue.GetQuestDialogue(0);
+				AssignQuest();
 			}
-			else if (_assigned && !_completed)
-			{
+			else if (_assignedQuest && !_completedQuest)
 				questDialogue = _quest.QuestDialogue.GetQuestDialogue(1);
-			}
-			else if (_assigned && _completed)
+			else if (_assignedQuest && _completedQuest)
 			{
 				questDialogue = _quest.QuestDialogue.GetQuestDialogue(2);
-			}
-			else if (_quest == null)
-			{
-				questDialogue = _quest.QuestDialogue.GetQuestDialogue(3);
+				AfterQuest = true;
 			}
 		}
 		else questDialogue = base.GetDialogue(dialogueChosen);
@@ -69,23 +56,62 @@ public class QuestGiver : NPC
 		return questDialogue;
 	}
 
+	public void ActivateRequirements()
+	{
+		foreach (InventoryItem i in InventoryRequirements)
+			i.IsActive = true;
+	}
+
+	public void AssignQuest()
+	{
+		if (DialogueManager.Instance.DialogueChosen == 1)
+		{
+			if (!_assignedQuest)
+			{
+				_assignedQuest = true;
+				ActivateRequirements();
+			}
+		}
+	}
+
+	public void CompleteQuest()
+	{
+		if (DialogueManager.Instance.DialogueChosen == 1)
+		{
+			if (_quest.Completed && player.InventoryItems.HasRequirements(this))
+			{
+				_completedQuest = true;
+				DestroyRequirementsInInventory();
+			}
+		}
+	}
+
+	public void DestroyRequirementsInInventory()
+	{
+		foreach (InventoryItem i in player.InventoryItems.InventoryItems)
+			foreach (InventoryItem item in InventoryRequirements)
+				if (i == item)
+					player.InventoryItems.RemoveFromInventory(i);
+	}
+
 	private void ManageObjectsAfterQuest()
 	{
 		DestroyObjectsAfterQuest();
 		EnableObjectsAfterQuest();
+		_quest = null;
 	}
 
 	private void DestroyObjectsAfterQuest()
 	{
-		//if (_quest.destroyAfterQuest != null && NPCState == NPCState.AfterQuest)
-		//	foreach(GameObject go in _quest.destroyAfterQuest)
-		//		Destroy(go);
+		if (_quest.DestroyAfterQuest != null)
+			foreach(GameObject go in _quest.DestroyAfterQuest)
+				Destroy(go);
 	}
 
 	private void EnableObjectsAfterQuest()
 	{
-		//if (_quest.enableAfterQuest != null && NPCState == NPCState.AfterQuest)
-		//	foreach (GameObject go in _quest.enableAfterQuest)
-		//		go.SetActive(true);
+		if (_quest.EnableAfterQuest != null)
+			foreach (GameObject go in _quest.EnableAfterQuest)
+				go.SetActive(true);
 	}
 }

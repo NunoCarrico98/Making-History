@@ -7,8 +7,9 @@ public class Inventory : MonoBehaviour
 {
 	[SerializeField] private int _inventorySize;
 
-	private List<InventoryItem> _inventoryItems;
 	private CanvasManager _canvasManager;
+
+	public List<InventoryItem> InventoryItems { get; private set; }
 
 	// Use this for initialization
 	private void Awake () 
@@ -18,30 +19,32 @@ public class Inventory : MonoBehaviour
 
 	private void Start()
 	{
-		_inventoryItems = new List<InventoryItem>();
+		InventoryItems = new List<InventoryItem>();
 	}
 
 	public void AddToInventory(InventoryItem item)
 	{
-		if (_inventoryItems.Count < _inventorySize)
+		if (InventoryItems.Count < _inventorySize)
 		{
-			_inventoryItems.Add(item);
+			InventoryItems.Add(item);
 			item.gameObject.SetActive(false);
 
 			UpdateInventoryIcons();
 		}
 	}
 
-	public void RemoveFromInventory(InventoryItem pickable)
+	public void RemoveFromInventory(IInteractable interactable)
 	{
-		// Remove item from inventory
-		_inventoryItems.Remove(pickable);
+		if (HasRequirements(interactable))
+			foreach (InventoryItem i in interactable.InventoryRequirements)
+				// Remove item from inventory
+				InventoryItems.Remove(i);
 
 		// Update inventory UI
 		UpdateInventoryIcons();
 	}
 
-	public bool HasRequirements(InventoryItem interactable)
+	public bool HasRequirements(IInteractable interactable)
 	{
 		foreach (InventoryItem i in interactable.InventoryRequirements)
 		{
@@ -56,15 +59,15 @@ public class Inventory : MonoBehaviour
 	public bool HasInInventory(InventoryItem pickable)
 	{
 		// Verify if given item is in inventory
-		return _inventoryItems.Contains(pickable);
+		return InventoryItems.Contains(pickable);
 	}
 
 	private void UpdateInventoryIcons()
 	{
 		for (int i = 0; i < _inventorySize; ++i)
 		{
-			if (i < _inventoryItems.Count)
-				_canvasManager.SetInventorySlotIcon(i, _inventoryItems[i].InventoryIcon);
+			if (i < InventoryItems.Count)
+				_canvasManager.SetInventorySlotIcon(i, InventoryItems[i].InventoryIcon);
 			else
 				_canvasManager.ClearInventorySlotIcon(i);
 		}

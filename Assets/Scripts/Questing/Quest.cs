@@ -12,12 +12,15 @@ public class Quest
 	[Header("Quest Dialogue")]
 	[SerializeField] private DialogueOnly _questDialogue;
 
-	[Header("Testing Only")]
-	[SerializeField] private bool completed;
+	[Header("Quest Consequences")]
+	[SerializeField] private GameObject[] _destroyAfterQuest;
+	[SerializeField] private GameObject[] _enableAfterQuest;
 
 	public bool Completed { get; set; }
 	public List<QuestGoal> Goals => _goals;
 	public DialogueOnly QuestDialogue => _questDialogue;
+	public GameObject[] DestroyAfterQuest => _destroyAfterQuest;
+	public GameObject[] EnableAfterQuest => _enableAfterQuest;
 
 	public void CheckForCompletion(IInteractable interactable)
 	{
@@ -25,8 +28,8 @@ public class Quest
 		{
 			goal.CheckForCompletion(interactable);
 		}
+
 		// Completed is true if all goals are true
 		Completed = Goals.All(g => g.Completed);
-		completed = Completed;
 	}
 }

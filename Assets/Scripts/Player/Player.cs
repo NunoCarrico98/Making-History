@@ -11,9 +11,9 @@ public class Player : MonoBehaviour
 	private DialogueManager _dialogueManager;
 	private Camera _cam;
 	private RaycastHit _raycastHit;
-	private Inventory _inventory;
 
 	public IInteractable CurrentInteractable { get; private set; }
+	public Inventory InventoryItems { get; private set; }
 
 	public event Action<IInteractable> Interacted;
 
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
 		_canvasManager = CanvasManager.Instance;
 		_dialogueManager = DialogueManager.Instance;
-		_inventory = GetComponent<Inventory>();
+		InventoryItems = GetComponent<Inventory>();
 		_cam = GetComponentInChildren<Camera>();
 	}
 
@@ -65,7 +65,8 @@ public class Player : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.E) && CurrentInteractable != null)
 		{
-			if (CurrentInteractable is InventoryItem)
+			if (CurrentInteractable is InventoryItem &&
+				(CurrentInteractable as InventoryItem).IsActive)
 				InteractWithItem();
 			else if (CurrentInteractable is NPC)
 				TalkWithNPC();
@@ -107,11 +108,11 @@ public class Player : MonoBehaviour
 		if (CurrentInteractable is InventoryItem)
 		{
 			InventoryItem currentItem = CurrentInteractable as InventoryItem;
-			if (_inventory.HasRequirements(currentItem))
+			if (InventoryItems.HasRequirements(currentItem) && currentItem.IsActive)
 			{
 				_canvasManager.ShowInteractionPanel(CurrentInteractable.InteractionText);
 			}
-			else if (currentItem)
+			else if (!InventoryItems.HasRequirements(currentItem) || !currentItem.IsActive)
 			{
 				_canvasManager.ShowInteractionPanel(currentItem.RequirementText);
 			}
@@ -130,11 +131,9 @@ public class Player : MonoBehaviour
 
 	private void InteractWithItem()
 	{
-		if (_inventory.HasRequirements(CurrentInteractable as InventoryItem))
-			foreach (InventoryItem i in (CurrentInteractable as InventoryItem).InventoryRequirements)
-				_inventory.RemoveFromInventory(i);
+		InventoryItems.RemoveFromInventory(CurrentInteractable);
 
-		_inventory.AddToInventory(CurrentInteractable as InventoryItem);
+		InventoryItems.AddToInventory(CurrentInteractable as InventoryItem);
 
 		OnInteracted(CurrentInteractable);
 		// Interact with current detected interactable

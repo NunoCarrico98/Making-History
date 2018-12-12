@@ -7,6 +7,7 @@ public class NPC : MonoBehaviour, IInteractable
 	[SerializeField] private bool _isInteractable = true;
 	[SerializeField] private string _NPCName;
 	[SerializeField] private string _interactionText;
+	[SerializeField] private InventoryItem[] _inventoryRequirements;
 
 	[Header("Non-Quest Dialogue")]
 	[SerializeField] private Dialogue _dialogue;
@@ -16,6 +17,7 @@ public class NPC : MonoBehaviour, IInteractable
 	public string NPCName => _NPCName;
 	public string InteractionText => _interactionText;
 	public Dialogue Dialogue => _dialogue;
+	public InventoryItem[] InventoryRequirements => _inventoryRequirements;
 
 	public bool IsInteractable
 	{
@@ -36,12 +38,14 @@ public class NPC : MonoBehaviour, IInteractable
 
 	private void OnEnable()
 	{
-		_dialogueManager.DialogueEnded += OnDialogueEnd;
+		_dialogueManager.DialogueBegin += DisableNPCInteraction;
+		_dialogueManager.DialogueEnded += EnableNPCInteraction;
 	}
 
 	private void OnDisable()
 	{
-		_dialogueManager.DialogueEnded -= OnDialogueEnd;
+		_dialogueManager.DialogueBegin -= DisableNPCInteraction;
+		_dialogueManager.DialogueEnded -= EnableNPCInteraction;
 	}
 
 	public void Interact()
@@ -62,15 +66,17 @@ public class NPC : MonoBehaviour, IInteractable
 	public void Talk()
 	{
 		// Start dialogue
-		_dialogueManager.ActivateDialogue(this);
-
-		// Make sure player can't reinteract with the NPC
-		IsInteractable = false;
+		DialogueManager.Instance.ActivateDialogue(this);
 	}
 
-	private void OnDialogueEnd()
+	private void EnableNPCInteraction()
 	{
 		IsInteractable = true;
+	}
+
+	private void DisableNPCInteraction()
+	{
+		IsInteractable = false;
 	}
 
 	public virtual List<string> GetDialogue(int i)

@@ -24,17 +24,23 @@ public class QuestGoal
 		switch (_goalType)
 		{
 			case GoalType.Collect:
-				InventoryItem item = interactable as InventoryItem;
-				if (item.ID == ItemID)
-				{
-					_currentAmmount++;
-
-					if (_currentAmmount == _requiredAmmount)
-						Completed = true;
-				}
+				CollectComplete(interactable);
 				break;
 			case GoalType.Speak:
 				break;
+		}
+	}
+
+	private void CollectComplete(IInteractable interactable)
+	{
+		InventoryItem item = interactable as InventoryItem;
+		if (item.ID == ItemID)
+		{
+			_currentAmmount++;
+			if (_currentAmmount == _requiredAmmount)
+			{
+				Completed = true;
+			}
 		}
 	}
 

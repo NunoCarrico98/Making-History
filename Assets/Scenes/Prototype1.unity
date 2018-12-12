@@ -394,30 +394,40 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114727672310763006, guid: f85bc86dc67519343874d0ae01e4ae23,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114702196745462476, guid: f85bc86dc67519343874d0ae01e4ae23,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 114862428434102632, guid: f85bc86dc67519343874d0ae01e4ae23,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 857918234}
+    - target: {fileID: 114727672310763006, guid: f85bc86dc67519343874d0ae01e4ae23,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 857918234}
+    - target: {fileID: 114702196745462476, guid: f85bc86dc67519343874d0ae01e4ae23,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 857918234}
     - target: {fileID: 114588509061014608, guid: f85bc86dc67519343874d0ae01e4ae23,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 857918234}
     - target: {fileID: 114834678394056232, guid: f85bc86dc67519343874d0ae01e4ae23,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 857918234}
+    - target: {fileID: 114921288646689518, guid: f85bc86dc67519343874d0ae01e4ae23,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114921288646689518, guid: f85bc86dc67519343874d0ae01e4ae23,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114180014800169478, guid: f85bc86dc67519343874d0ae01e4ae23,
         type: 2}
@@ -425,6 +435,36 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114180014800169478, guid: f85bc86dc67519343874d0ae01e4ae23,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114781751806463774, guid: f85bc86dc67519343874d0ae01e4ae23,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114781751806463774, guid: f85bc86dc67519343874d0ae01e4ae23,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114256224144407402, guid: f85bc86dc67519343874d0ae01e4ae23,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114256224144407402, guid: f85bc86dc67519343874d0ae01e4ae23,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114920526672808022, guid: f85bc86dc67519343874d0ae01e4ae23,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114920526672808022, guid: f85bc86dc67519343874d0ae01e4ae23,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -455,46 +495,6 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114384853561581006, guid: f85bc86dc67519343874d0ae01e4ae23,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114921288646689518, guid: f85bc86dc67519343874d0ae01e4ae23,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114921288646689518, guid: f85bc86dc67519343874d0ae01e4ae23,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920526672808022, guid: f85bc86dc67519343874d0ae01e4ae23,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920526672808022, guid: f85bc86dc67519343874d0ae01e4ae23,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114256224144407402, guid: f85bc86dc67519343874d0ae01e4ae23,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114256224144407402, guid: f85bc86dc67519343874d0ae01e4ae23,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114781751806463774, guid: f85bc86dc67519343874d0ae01e4ae23,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114781751806463774, guid: f85bc86dc67519343874d0ae01e4ae23,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -2568,6 +2568,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 841811247}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &857918234 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114401376940212192, guid: 95fd84d7951a020429f975d7b614dcee,
+    type: 2}
+  m_PrefabInternal: {fileID: 2014471494}
+  m_Script: {fileID: 11500000, guid: 15340c4dab6ee854eac33a9e502328bd, type: 3}
 --- !u!1 &884910093
 GameObject:
   m_ObjectHideFlags: 0
@@ -4976,6 +4982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isInteractable: 1
+  _isActive: 0
   _ID: 1
   _itemName: Cannabis Leaf
   _interactionText: Pick Up Leaf
@@ -6506,6 +6513,8 @@ MonoBehaviour:
   _isInteractable: 1
   _NPCName: Freddy
   _interactionText: Speak To Elder
+  _inventoryRequirements:
+  - {fileID: 1530715953}
   _dialogue:
     _options:
     - _buttonText: Talk abot quest
@@ -6534,9 +6543,10 @@ MonoBehaviour:
         - y u here
       - _onlyDialogue:
         - thanks
-    completed: 0
-  _assigned: 0
-  _completed: 0
+    _destroyAfterQuest: []
+    _enableAfterQuest: []
+  _assignedQuest: 0
+  _completedQuest: 0
 --- !u!65 &1966244686
 BoxCollider:
   m_ObjectHideFlags: 0

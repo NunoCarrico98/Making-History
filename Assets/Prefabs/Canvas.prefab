@@ -2288,6 +2288,7 @@ MonoBehaviour:
   - {fileID: 114457238282877540}
   - {fileID: 114464271369786382}
   _defaultOptionSelected: {fileID: 114588509061014608}
+  _defaultOptionAfterQuest: {fileID: 114862428434102632}
   _optionsUI: {fileID: 1855238262471000}
   _optionsText:
   - {fileID: 114890970341202998}

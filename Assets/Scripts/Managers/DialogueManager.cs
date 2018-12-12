@@ -62,24 +62,21 @@ public class DialogueManager : MonoBehaviour
 		switch (DialogueChosen)
 		{
 			case 1:
-				sentencesToType = _tempNPC.GetDialogue(DialogueChosen - 1);
+				sentencesToType = _tempNPC.GetDialogue(DialogueChosen);
 				StartDialogue(sentencesToType);
 				break;
 			case 2:
-				sentencesToType = _tempNPC.GetDialogue(DialogueChosen - 1);
+				sentencesToType = _tempNPC.GetDialogue(DialogueChosen);
 				StartDialogue(sentencesToType);
 				break;
 			case 3:
-				sentencesToType = _tempNPC.GetDialogue(DialogueChosen - 1);
+				sentencesToType = _tempNPC.GetDialogue(DialogueChosen);
 				StartDialogue(sentencesToType);
 				break;
 			case 4:
 				EndDialogue();
 				break;
 		}
-
-		if (_tempNPC is QuestGiver)
-			(_tempNPC as QuestGiver).CheckQuestState();
 	}
 
 	public void StartDialogue(IEnumerable<string> sentencesToType)
@@ -140,6 +137,7 @@ public class DialogueManager : MonoBehaviour
 	public void EndDialogue()
 	{
 		DialogueChosen = 0;
+		_tempNPC = null;
 		// Deactivate the Dialogue Box
 		_animator.SetBool("isActive", false);
 		OnDialogueEnded();

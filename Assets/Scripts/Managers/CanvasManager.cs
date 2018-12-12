@@ -15,6 +15,7 @@ public class CanvasManager : MonoBehaviour
 
 	[Header("Multiple Choice UI")]
 	[SerializeField] private Button _defaultOptionSelected;
+	[SerializeField] private Button _defaultOptionAfterQuest;
 	[SerializeField] private GameObject _optionsUI;
 	[SerializeField] private TextMeshProUGUI[] _optionsText;
 
@@ -86,6 +87,17 @@ public class CanvasManager : MonoBehaviour
 
 	private void ManageButton1(NPC npc)
 	{
+		if (!(npc as QuestGiver).AfterQuest)
+			// Activate the second button
+			_optionsUI.transform.GetChild(0).gameObject.SetActive(true);
+		else
+		{
+			// Activate the second button
+			_optionsUI.transform.GetChild(0).gameObject.SetActive(false);
+			_defaultOptionAfterQuest.Select();
+			_defaultOptionAfterQuest.OnSelect(null);
+		}
+
 		// Button 1 always exists and receives text from the array of lists
 		_optionsText[0].text = npc.GetButtonText(0);
 	}
