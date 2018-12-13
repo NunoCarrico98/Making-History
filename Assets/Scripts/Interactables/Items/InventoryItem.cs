@@ -10,13 +10,13 @@ public class InventoryItem : MonoBehaviour, IInteractable
 	[SerializeField] private string _interactionText;
 	[SerializeField] private string _requirementText;
 	[SerializeField] private Sprite _inventoryIcon;
-	[SerializeField] private InventoryItem[] _inventoryRequirements;
+	[SerializeField] private List<InventoryItem> _inventoryRequirements;
 
 	public int ID => _ID;
 	public string InteractionText => _interactionText;
 	public string RequirementText => _requirementText;
 	public Sprite InventoryIcon => _inventoryIcon;
-	public InventoryItem[] InventoryRequirements => _inventoryRequirements;
+	public List<InventoryItem> InventoryRequirements => _inventoryRequirements;
 
     public bool IsInteractable { get; private set; } = true;
 

@@ -109,12 +109,25 @@ public class Player : MonoBehaviour
         // If interactable is NPC
 		if (CurrentInteractable is NPC)
 			_canvasManager.ShowInteractionPanel(CurrentInteractable.InteractionText);
+		else if (CurrentInteractable is StaticInteractable)
+		{
+			if((CurrentInteractable as StaticInteractable).AfterQuest)
+				_canvasManager.ShowInteractionPanel(
+					(CurrentInteractable as StaticInteractable).TextAfterQuest);
+			else if(InventoryItems.HasRequirements(CurrentInteractable) 
+					&& CurrentInteractable.IsActive)
+				_canvasManager.ShowInteractionPanel(CurrentInteractable.InteractionText);
+			else
+				_canvasManager.ShowInteractionPanel(CurrentInteractable.RequirementText);
+		}
         // If interactable is a map object
         else
         {
-            if (InventoryItems.HasRequirements(CurrentInteractable) && CurrentInteractable.IsActive)
+            if (InventoryItems.HasRequirements(CurrentInteractable) 
+				&& CurrentInteractable.IsActive)
                 _canvasManager.ShowInteractionPanel(CurrentInteractable.InteractionText);
-            else if (!InventoryItems.HasRequirements(CurrentInteractable) || !CurrentInteractable.IsActive)
+            else if (!InventoryItems.HasRequirements(CurrentInteractable) 
+					 || !CurrentInteractable.IsActive)
                 _canvasManager.ShowInteractionPanel(CurrentInteractable.RequirementText);
         }
 	}

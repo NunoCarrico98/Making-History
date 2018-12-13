@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +7,15 @@ public class StaticInteractable : MonoBehaviour, IInteractable
     [SerializeField] private bool _isActive = false;
     [SerializeField] private string _interactionText;
     [SerializeField] private string _requirementText;
-    [SerializeField] private InventoryItem[] _inventoryRequirements;
+	[SerializeField] private string _textAfterQuest;
+    [SerializeField] private List<InventoryItem> _inventoryRequirements;
 
     public bool IsInteractable { get; private set; } = true;
     public string RequirementText => _requirementText;
     public string InteractionText => _interactionText;
-    public InventoryItem[] InventoryRequirements => _inventoryRequirements;
+    public string TextAfterQuest => _textAfterQuest;
+    public List<InventoryItem> InventoryRequirements => _inventoryRequirements;
+	public bool AfterQuest { get; set; }
     public bool IsActive
     {
         get { return _isActive; }

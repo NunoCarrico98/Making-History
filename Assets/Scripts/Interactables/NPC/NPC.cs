@@ -6,7 +6,7 @@ public class NPC : MonoBehaviour, IInteractable
 {
 	[SerializeField] private string _NPCName;
 	[SerializeField] private string _interactionText;
-	[SerializeField] private InventoryItem[] _inventoryRequirements;
+	[SerializeField] private List<InventoryItem> _inventoryRequirements;
 
 	[Header("Non-Quest Dialogue")]
 	[SerializeField] private Dialogue _dialogue;
@@ -16,7 +16,7 @@ public class NPC : MonoBehaviour, IInteractable
 	public string NPCName => _NPCName;
 	public string InteractionText => _interactionText;
 	public Dialogue Dialogue => _dialogue;
-	public InventoryItem[] InventoryRequirements => _inventoryRequirements;
+	public List<InventoryItem> InventoryRequirements => _inventoryRequirements;
 
     public bool IsInteractable { get; private set; } = true;
     public bool IsActive => true;

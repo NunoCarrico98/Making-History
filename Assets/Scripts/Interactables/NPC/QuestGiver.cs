@@ -23,12 +23,12 @@ public class QuestGiver : NPC
 
     private void OnEnable()
     {
-        player.Interacted += _quest.CheckForCompletion;
+       // player.Interacted += _quest.CheckForCompletion;
     }
 
     private void OnDisable()
     {
-        player.Interacted -= _quest.CheckForCompletion;
+        //player.Interacted -= _quest.CheckForCompletion;
     }
 
     public override List<string> GetDialogue(int dialogueChosen)
@@ -71,12 +71,20 @@ public class QuestGiver : NPC
                 si.IsActive = true;
     }
 
-    public void AssignQuest()
+	public void UpdateStaticObjects()
+	{
+		if (_staticObjectsToActivate != null)
+			foreach (StaticInteractable si in _staticObjectsToActivate)
+				si.AfterQuest = true;
+	}
+
+	public void AssignQuest()
     {
         if (DialogueManager.Instance.DialogueChosen == 1)
         {
             if (!_assignedQuest)
             {
+				player.Interacted += _quest.CheckForCompletion;
                 _assignedQuest = true;
                 ActivateRequirements();
                 ActivateStaticObjects();
@@ -91,24 +99,27 @@ public class QuestGiver : NPC
             if (_quest.Completed && player.InventoryItems.HasRequirements(this))
             {
                 _completedQuest = true;
-                DestroyRequirementsInInventory();
+				UpdateStaticObjects();
+                DestroyRequirements();
+				ManageObjectsAfterQuest();
             }
         }
     }
 
-    public void DestroyRequirementsInInventory()
+    public void DestroyRequirements()
     {
-        for (int i = 0; i < player.InventoryItems.InventoryItems.Count; i++)
-            foreach (InventoryItem item in InventoryRequirements)
-                if (player.InventoryItems.InventoryItems[i] == item)
-                    player.InventoryItems.RemoveFromInventory(item);
+		for (int i = 0; i < player.InventoryItems.InventoryItems.Count; i++)
+			foreach(InventoryItem item in InventoryRequirements)
+				if (player.InventoryItems.InventoryItems[i] == item)
+				{
+					player.InventoryItems.RemoveFromInventory(item);
+				}
     }
 
     private void ManageObjectsAfterQuest()
     {
         DestroyObjectsAfterQuest();
         EnableObjectsAfterQuest();
-        _quest = null;
     }
 
     private void DestroyObjectsAfterQuest()

@@ -27,7 +27,6 @@ public class QuestGoal
         switch (_goalType)
         {
             case GoalType.Collect:
-                Debug.Log("isto vais er chamado 2 xx");
                 CollectComplete(interactable);
                 break;
             case GoalType.Speak:
@@ -38,15 +37,11 @@ public class QuestGoal
     private void CollectComplete(IInteractable interactable)
     {
         InventoryItem item = interactable as InventoryItem;
-        Debug.Log(item.ID);
-        Debug.Log(ItemID);
         if (item.ID == ItemID)
         {
-            Debug.Log("isto vais er chamado 2 x");
             _currentAmmount++;
             if (_currentAmmount == _requiredAmmount)
             {
-                Debug.Log("isto vais er chamado 1 x");
                 completed = true;
                 Completed = true;
             }

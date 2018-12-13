@@ -2356,6 +2356,7 @@ MonoBehaviour:
   _isActive: 0
   _interactionText: Add logs to campfire.
   _requirementText: Looks like an incomplete campfire.
+  _textAfterQuest: A complete Campfire. Looks Cool.
   _inventoryRequirements:
   - {fileID: 2007918526}
 --- !u!65 &742611623
@@ -2731,6 +2732,26 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 48569033}
     m_Modifications:
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._questDialogue._questText.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._questDialogue._questText.Array.data[0]._onlyDialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._questDialogue._questText.Array.data[1]._onlyDialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._questDialogue._questText.Array.data[2]._onlyDialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4687434033102974, guid: c45e9705016174b4dbc2cbd12d93ba58, type: 2}
       propertyPath: m_LocalPosition.x
       value: -36.93975

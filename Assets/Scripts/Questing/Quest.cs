@@ -24,17 +24,22 @@ public class Quest
 
 	public void CheckForCompletion(IInteractable interactable)
 	{
-        if (!Completed)
-        {
-            Debug.Log("hello");
-            foreach (QuestGoal goal in Goals)
-            {
-                Debug.Log(Goals.Count);
-                goal.CheckForCompletion(interactable);
-            }
+		if (!Completed)
+		{
+			foreach (QuestGoal goal in Goals)
+			{
+				goal.CheckForCompletion(interactable);
+			}
 
-            // Completed is true if all goals are true
-            Completed = Goals.All(g => g.Completed);
-        }
+			// Completed is true if all goals are true
+			Completed = Goals.All(g => g.Completed);
+		}
+
+		IsComplete();
+	}
+
+	public void IsComplete()
+	{
+		Player.Instance.Interacted -= CheckForCompletion;
 	}
 }

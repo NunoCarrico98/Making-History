@@ -1,10 +1,12 @@
+using System.Collections.Generic;
+
 public interface IInteractable
 {
     bool IsActive { get; }
     bool IsInteractable { get; }
     string InteractionText { get; }
     string RequirementText { get; }
-    InventoryItem[] InventoryRequirements { get; }
+    List<InventoryItem> InventoryRequirements { get; }
 
     void Interact();
     void PlayInteractAnimation();
