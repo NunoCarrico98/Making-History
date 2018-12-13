@@ -9,7 +9,6 @@ public class QuestGoal
     [SerializeField] private int _requiredAmmount;
 
     private int _currentAmmount = 0;
-    public bool completed;
     public bool Completed { get; set; }
     public int ItemID => _itemID;
     public int RequiredAmmount => _requiredAmmount;
@@ -29,7 +28,8 @@ public class QuestGoal
             case GoalType.Collect:
                 CollectComplete(interactable);
                 break;
-            case GoalType.Speak:
+            case GoalType.Use:
+                UseComplete(interactable);
                 break;
         }
     }
@@ -42,8 +42,28 @@ public class QuestGoal
             _currentAmmount++;
             if (_currentAmmount == _requiredAmmount)
             {
-                completed = true;
                 Completed = true;
+            }
+        }
+    }
+
+    private void UseComplete(IInteractable interactable)
+    {
+        int id;
+        StaticInteractable mapObject = interactable as StaticInteractable;
+
+        // Cycle through List
+        for (int i = 0; i < interactable.InventoryRequirements.Count; i++)
+        {
+            // id receives item's (in list) ID
+            id = mapObject.InventoryRequirements[i].ID;
+            if (id == ItemID)
+            {
+                _currentAmmount++;
+                if (_currentAmmount == _requiredAmmount)
+                {
+                    Completed = true;
+                }
             }
         }
     }
@@ -51,7 +71,7 @@ public class QuestGoal
     public enum GoalType
     {
         Collect,
-        Speak
+        Use
     }
 
     public static string[] GetEnumValuesAsStrings()

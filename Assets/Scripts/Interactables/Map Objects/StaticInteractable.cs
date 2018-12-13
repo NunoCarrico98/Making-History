@@ -24,6 +24,7 @@ public class StaticInteractable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        ChangeRequirementText();
         PlayInteractAnimation();
     }
 
@@ -34,5 +35,10 @@ public class StaticInteractable : MonoBehaviour, IInteractable
         {
             GetComponent<Animator>().SetTrigger("Interact");
         }
+    }
+
+    public void ChangeRequirementText()
+    {
+        _requirementText = _textAfterQuest;
     }
 }

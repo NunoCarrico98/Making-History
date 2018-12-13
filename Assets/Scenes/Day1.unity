@@ -2164,7 +2164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a01daa8ae7d6a47a11ca0eb7359fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isActive: 1
+  _isActive: 0
   _ID: 3
   _itemName: Logs
   _interactionText: Pick up logs, strong one!
@@ -2734,13 +2734,23 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
         type: 2}
+      propertyPath: _quest._goals.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _inventoryRequirements.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
       propertyPath: _quest._questDialogue._questText.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
         type: 2}
       propertyPath: _quest._questDialogue._questText.Array.data[0]._onlyDialogue.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
         type: 2}
@@ -2794,6 +2804,246 @@ Prefab:
       propertyPath: _staticObjectsToActivate.Array.data[0]
       value: 
       objectReference: {fileID: 742611622}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._questName
+      value: Help Logan!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._questDialogue._questText.Array.data[0]._onlyDialogue.Array.data[0]
+      value: So, you wanna be helpful, huh?
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._questDialogue._questText.Array.data[0]._onlyDialogue.Array.data[1]
+      value: Actually I could use a hand in getting those heavy logs to the campfire.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._questDialogue._questText.Array.data[1]._onlyDialogue.Array.data[0]
+      value: What are you waiting for? Get those damn logs to the campfire!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._questDialogue._questText.Array.data[1]._onlyDialogue.Array.data[1]
+      value: Actually I could use a hand in getting those damn logs to the campfire.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._questDialogue._questText.Array.data[0]._onlyDialogue.Array.data[2]
+      value: Actually I could use a hand in getting those heavy logs to the campfire.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._questDialogue._questText.Array.data[2]._onlyDialogue.Array.data[0]
+      value: Thank you. See you around.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[1]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[1]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[2]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[2]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[3]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[3]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[4]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[4]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[5]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[5]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[6]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[6]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[7]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[7]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[8]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[8]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[9]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[9]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[10]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[10]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[11]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[11]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[12]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[12]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[13]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[13]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[14]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[14]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[15]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[15]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[16]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[16]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[17]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[17]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[18]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[18]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[19]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[19]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[20]._itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[20]._requiredAmmount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c45e9705016174b4dbc2cbd12d93ba58, type: 2}
   m_IsPrefabAsset: 0
@@ -6966,7 +7216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a01daa8ae7d6a47a11ca0eb7359fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isActive: 0
+  _isActive: 1
   _ID: 2
   _itemName: Logs
   _interactionText: Pick up logs, strong one!
