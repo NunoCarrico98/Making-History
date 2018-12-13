@@ -18,6 +18,7 @@ public class QuestGoalInspector : PropertyDrawer
 		// Serialize variables to be able to save them
 		SerializedProperty itemID = prop.FindPropertyRelative("_itemID");
 		SerializedProperty reqAmmount = prop.FindPropertyRelative("_requiredAmmount");
+		SerializedProperty completed = prop.FindPropertyRelative("completed");
 
 		// Height of rectangles will be 1 line
 		pos.height = EditorGUIUtility.singleLineHeight;
@@ -34,9 +35,11 @@ public class QuestGoalInspector : PropertyDrawer
 			new Rect(pos.x + _xOffset, pos.y + 16 * 2, _width, pos.height - _spacing);
 		Rect reqAmmountRect = 
 			new Rect(pos.x + _xOffset + 50, pos.y + 16 * 3, _width, pos.height - _spacing);
+        Rect completedRect =
+            new Rect(pos.x + _xOffset + 50, pos.y + 16 * 4, _width, pos.height - _spacing);
 
-		// Write on inspector the quest goal element
-		_folded = EditorGUI.PropertyField(elementRect, prop);
+        // Write on inspector the quest goal element
+        _folded = EditorGUI.PropertyField(elementRect, prop);
 
 		if (_folded)
 		{
@@ -63,7 +66,14 @@ public class QuestGoalInspector : PropertyDrawer
 					"Required Ammount");
 				// Add a field to input the desired required ammount
 				EditorGUI.PropertyField(reqAmmountRect, reqAmmount, GUIContent.none);
-			}
+
+                // Write on inspector the Required Ammount Text
+                EditorGUI.LabelField(
+                    new Rect(pos.x + 20, completedRect.y, pos.width, pos.height),
+                    "Completed");
+                // Add a field to input the desired required ammount
+                EditorGUI.PropertyField(completedRect, completed, GUIContent.none);
+            }
 		}
 
 		// End Property
@@ -75,7 +85,7 @@ public class QuestGoalInspector : PropertyDrawer
 		if (_folded)
 		{
 			// Set Space available to write the property variables
-			int lineCount = 3;
+			int lineCount = 4;
 			return EditorGUIUtility.singleLineHeight * lineCount +
 				EditorGUIUtility.standardVerticalSpacing * (lineCount + 2);
 		}

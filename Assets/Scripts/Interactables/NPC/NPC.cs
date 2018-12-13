@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour, IInteractable
 {
-	[SerializeField] private bool _isInteractable = true;
 	[SerializeField] private string _NPCName;
 	[SerializeField] private string _interactionText;
 	[SerializeField] private InventoryItem[] _inventoryRequirements;
@@ -19,19 +18,11 @@ public class NPC : MonoBehaviour, IInteractable
 	public Dialogue Dialogue => _dialogue;
 	public InventoryItem[] InventoryRequirements => _inventoryRequirements;
 
-	public bool IsInteractable
-	{
-		get
-		{
-			return _isInteractable;
-		}
-		private set
-		{
-			_isInteractable = value;
-		}
-	}
+    public bool IsInteractable { get; private set; } = true;
+    public bool IsActive => true;
+    public string RequirementText => "";
 
-	private void Awake()
+    private void Awake()
 	{
 		_dialogueManager = DialogueManager.Instance;
 	}
@@ -79,13 +70,7 @@ public class NPC : MonoBehaviour, IInteractable
 		IsInteractable = false;
 	}
 
-	public virtual List<string> GetDialogue(int i)
-	{
-		return Dialogue.GetDialogue(i);
-	}
+	public virtual List<string> GetDialogue(int i) => Dialogue.GetDialogue(i);
 
-	public virtual string GetButtonText(int i)
-	{
-		return Dialogue.GetButtonText(i);
-	}
+	public virtual string GetButtonText(int i) => Dialogue.GetButtonText(i);
 }

@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 	private DialogueManager _dialogueManager;
 	private Camera _cam;
 	private RaycastHit _raycastHit;
+    private List<Quest> _activeQuests;
 
 	public IInteractable CurrentInteractable { get; private set; }
 	public Inventory InventoryItems { get; private set; }
@@ -65,12 +66,12 @@ public class Player : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.E) && CurrentInteractable != null)
 		{
-			if (CurrentInteractable is InventoryItem &&
-				(CurrentInteractable as InventoryItem).IsActive)
-				InteractWithItem();
-			else if (CurrentInteractable is NPC)
-				TalkWithNPC();
-		}
+            if (CurrentInteractable is NPC)
+                CurrentInteractable.Interact();
+            else if (CurrentInteractable.IsActive)
+                Interact();
+
+        }
 	}
 
 	private void CheckForInteractable()
@@ -105,20 +106,17 @@ public class Player : MonoBehaviour
 	{
 		CurrentInteractable = newInteractable;
 
-		if (CurrentInteractable is InventoryItem)
-		{
-			InventoryItem currentItem = CurrentInteractable as InventoryItem;
-			if (InventoryItems.HasRequirements(currentItem) && currentItem.IsActive)
-			{
-				_canvasManager.ShowInteractionPanel(CurrentInteractable.InteractionText);
-			}
-			else if (!InventoryItems.HasRequirements(currentItem) || !currentItem.IsActive)
-			{
-				_canvasManager.ShowInteractionPanel(currentItem.RequirementText);
-			}
-		}
-		else if (CurrentInteractable is NPC)
+        // If interactable is NPC
+		if (CurrentInteractable is NPC)
 			_canvasManager.ShowInteractionPanel(CurrentInteractable.InteractionText);
+        // If interactable is a map object
+        else
+        {
+            if (InventoryItems.HasRequirements(CurrentInteractable) && CurrentInteractable.IsActive)
+                _canvasManager.ShowInteractionPanel(CurrentInteractable.InteractionText);
+            else if (!InventoryItems.HasRequirements(CurrentInteractable) || !CurrentInteractable.IsActive)
+                _canvasManager.ShowInteractionPanel(CurrentInteractable.RequirementText);
+        }
 	}
 
 	private void ClearInteractable()
@@ -129,21 +127,17 @@ public class Player : MonoBehaviour
 	}
 
 
-	private void InteractWithItem()
+	private void Interact()
 	{
 		if (InventoryItems.HasRequirements(CurrentInteractable))
 			foreach (InventoryItem i in CurrentInteractable.InventoryRequirements)
 				InventoryItems.RemoveFromInventory(i);
 
-		InventoryItems.AddToInventory(CurrentInteractable as InventoryItem);
+        if (CurrentInteractable is InventoryItem)
+		    InventoryItems.AddToInventory(CurrentInteractable as InventoryItem);
 
 		OnInteracted(CurrentInteractable);
 		// Interact with current detected interactable
-		CurrentInteractable.Interact();
-	}
-
-	private void TalkWithNPC()
-	{
 		CurrentInteractable.Interact();
 	}
 

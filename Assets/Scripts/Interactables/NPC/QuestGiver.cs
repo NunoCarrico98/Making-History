@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class QuestGiver : NPC
 {
+    [SerializeField] private StaticInteractable[] _staticObjectsToActivate;
     [SerializeField] private Quest _quest;
 
     [Header("Testing Only")]
@@ -63,6 +64,13 @@ public class QuestGiver : NPC
                 i.IsActive = true;
     }
 
+    public void ActivateStaticObjects()
+    {
+        if (_staticObjectsToActivate != null)
+            foreach (StaticInteractable si in _staticObjectsToActivate)
+                si.IsActive = true;
+    }
+
     public void AssignQuest()
     {
         if (DialogueManager.Instance.DialogueChosen == 1)
@@ -71,6 +79,7 @@ public class QuestGiver : NPC
             {
                 _assignedQuest = true;
                 ActivateRequirements();
+                ActivateStaticObjects();
             }
         }
     }
@@ -115,4 +124,5 @@ public class QuestGiver : NPC
             foreach (GameObject go in _quest.EnableAfterQuest)
                 go.SetActive(true);
     }
+
 }

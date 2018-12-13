@@ -37,9 +37,9 @@ GameObject:
   - component: {fileID: 33733679659008218}
   - component: {fileID: 23758743339903700}
   - component: {fileID: 64996425345782068}
-  - component: {fileID: 114613496010744150}
+  - component: {fileID: 114138781637801564}
   m_Layer: 0
-  m_Name: ElderMesh
+  m_Name: FishermanMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,8 +51,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053056056295698}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.808, y: -0.124, z: -130.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.0240173, y: -3.951341, z: 0.81809235}
   m_LocalScale: {x: 0.4944154, y: 0.4944154, z: 0.4944154}
   m_Children:
   - {fileID: 4767554248786300}
@@ -87,7 +87,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
+  - {fileID: 2100000, guid: 2195a5ccc4629d548b8b388ac4dcb646, type: 2}
   - {fileID: 2100002, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
   - {fileID: 2100004, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
   - {fileID: 2100006, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
@@ -132,7 +132,7 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
---- !u!114 &114613496010744150
+--- !u!114 &114138781637801564
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,39 +143,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ac097b78effd040b97ff4b433fdc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isInteractable: 1
+  _id: 3
   _NPCName: Freddy
-  _interactionText: Speak To Elder
+  _interactionText: Speak To Fisherman
   _inventoryRequirements:
   - {fileID: 0}
   _dialogue:
     _options:
-    - _buttonText: Talk abot quest
+    - _buttonText: Talk about helping.
+      _optionText: []
+    - _buttonText: Talk about tribe.
       _optionText:
-      - fafafs
-      - sdasdasd
-    - _buttonText: 2
-      _optionText:
-      - asdfdf
-      - dsafgfh
-      - thtehea
-    - _buttonText: 3
-      _optionText:
-      - heaa5jyrii
+      - So, you want in our tribe?
+      - I'll give you a tip. Impress the Elder.
+  _staticObjectsToActivate: []
   _quest:
-    _questName: cananbis
+    _questID: 1
+    _questName: 
+    _questOrigin: {fileID: 114138781637801564}
     _goals:
     - _goalType: 0
       _itemID: 1
       _requiredAmmount: 1
+      completed: 0
     _questDialogue:
       _questText:
       - _onlyDialogue:
-        - get me plant
+        - 
       - _onlyDialogue:
-        - y u here
+        - 
       - _onlyDialogue:
-        - thanks
+        - 
     _destroyAfterQuest: []
     _enableAfterQuest: []
   _assignedQuest: 0
