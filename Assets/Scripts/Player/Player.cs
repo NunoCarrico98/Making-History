@@ -66,10 +66,10 @@ public class Player : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.E) && CurrentInteractable != null)
 		{
-            if (CurrentInteractable is NPC)
-                CurrentInteractable.Interact();
-            else if (CurrentInteractable.IsActive)
-                Interact();
+			if (CurrentInteractable is NPC)
+				InteractWithNPC();
+			else if (CurrentInteractable.IsActive)
+				Interact();
 
         }
 	}
@@ -146,18 +146,24 @@ public class Player : MonoBehaviour
         if (CurrentInteractable is InventoryItem)
 		    InventoryItems.AddToInventory(CurrentInteractable as InventoryItem);
 
-		OnInteracted(CurrentInteractable);
-
         //Remove item from inventory
         if (InventoryItems.HasRequirements(CurrentInteractable))
         {
             // Interact with current detected interactable
             CurrentInteractable.Interact();
 
-            foreach (InventoryItem i in CurrentInteractable.InventoryRequirements)
+			OnInteracted(CurrentInteractable);
+
+			foreach (InventoryItem i in CurrentInteractable.InventoryRequirements)
                 InventoryItems.RemoveFromInventory(i);
         }
     }
+
+	private void InteractWithNPC()
+	{
+		CurrentInteractable.Interact();
+		OnInteracted(CurrentInteractable);
+	}
 
 	private void OnDialogueEnd()
 	{

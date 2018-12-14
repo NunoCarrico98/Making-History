@@ -57,7 +57,7 @@ public class DialogueManager : MonoBehaviour
 	{
 		List<string> sentencesToType = new List<string>();
 
-		_nameText.text = _tempNPC.NPCName;
+		_nameText.text = _tempNPC.Name;
 
 		switch (DialogueChosen)
 		{
