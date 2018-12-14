@@ -2735,7 +2735,7 @@ Prefab:
     - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
         type: 2}
       propertyPath: _quest._goals.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
         type: 2}
@@ -3043,6 +3043,16 @@ Prefab:
         type: 2}
       propertyPath: _quest._goals.Array.data[20]._requiredAmmount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[0]._goalType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114613496010744150, guid: c45e9705016174b4dbc2cbd12d93ba58,
+        type: 2}
+      propertyPath: _quest._goals.Array.data[1]._goalType
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c45e9705016174b4dbc2cbd12d93ba58, type: 2}
