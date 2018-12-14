@@ -96,9 +96,10 @@ public class QuestGiver : NPC
     {
         if (DialogueManager.Instance.DialogueChosen == 1)
         {
-            if (_quest.Completed && player.InventoryItems.HasRequirements(this))
+            if (_quest.Completed)
             {
                 _completedQuest = true;
+                UnlockQuests();
 				UpdateStaticObjects();
                 DestroyRequirements();
 				ManageObjectsAfterQuest();
@@ -114,6 +115,13 @@ public class QuestGiver : NPC
 				{
 					player.InventoryItems.RemoveFromInventory(item);
 				}
+    }
+
+    private void UnlockQuests()
+    {
+        if (_quest.UnlockQuests != null)
+            foreach (QuestGiver q in _quest.UnlockQuests)
+                q.NPCQuest.IsActive = true;
     }
 
     private void ManageObjectsAfterQuest()

@@ -143,8 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ac097b78effd040b97ff4b433fdc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 3
-  _NPCName: Freddy
+  _NPCName: Fisherman
   _interactionText: Speak To Fisherman
   _inventoryRequirements:
   - {fileID: 0}
@@ -158,23 +157,22 @@ MonoBehaviour:
       - I'll give you a tip. Impress the Elder.
   _staticObjectsToActivate: []
   _quest:
-    _questID: 1
-    _questName: 
-    _questOrigin: {fileID: 114138781637801564}
+    _questName: Bring DA FISH
+    _isActive: 1
+    _unlockQuests: []
+    _destroyAfterQuest: []
+    _enableAfterQuest: []
     _goals:
     - _goalType: 0
       _itemID: 1
       _requiredAmmount: 1
-      completed: 0
     _questDialogue:
       _questText:
       - _onlyDialogue:
-        - 
+        - I Need FISH
       - _onlyDialogue:
-        - 
+        - BIG FISH
       - _onlyDialogue:
-        - 
-    _destroyAfterQuest: []
-    _enableAfterQuest: []
+        - THANKS FOR FIXS
   _assignedQuest: 0
   _completedQuest: 0

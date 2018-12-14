@@ -50,8 +50,7 @@ public class QuestGoalInspector : PropertyDrawer
 				goalType.intValue, QuestGoal.GetEnumValuesAsStrings());
 
 			// If chosen type is Collect
-			if (goalType.intValue == (int)QuestGoal.GoalType.Collect 
-				|| goalType.intValue == (int)QuestGoal.GoalType.Use)
+			if (goalType.intValue == (int)QuestGoal.GoalType.Collect)
 			{
 				// Change the indentation of the GUI content
 				EditorGUI.indentLevel = 4;

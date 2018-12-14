@@ -87,7 +87,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
+  - {fileID: 2100000, guid: da7ebc9f799d82646ad0f12edc88d614, type: 2}
   - {fileID: 2100002, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
   - {fileID: 2100004, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
   - {fileID: 2100006, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
@@ -143,11 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ac097b78effd040b97ff4b433fdc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 2
   _NPCName: LOGan LOGLover
   _interactionText: Speak To LOGan
-  _inventoryRequirements:
-  - {fileID: 0}
+  _inventoryRequirements: []
   _dialogue:
     _options:
     - _buttonText: Talk about helping.
@@ -159,17 +157,26 @@ MonoBehaviour:
   _staticObjectsToActivate:
   - {fileID: 0}
   _quest:
-    _questID: 2
-    _questName: 
-    _questOrigin: {fileID: 114613496010744150}
+    _questName: Help Logan!
+    _isActive: 1
+    _unlockQuests: []
+    _destroyAfterQuest: []
+    _enableAfterQuest: []
     _goals:
     - _goalType: 0
       _itemID: 2
       _requiredAmmount: 1
-      completed: 0
+    - _goalType: 1
+      _itemID: 2
+      _requiredAmmount: 1
     _questDialogue:
-      _questText: []
-    _destroyAfterQuest: []
-    _enableAfterQuest: []
+      _questText:
+      - _onlyDialogue:
+        - So, you wanna be helpful, huh?
+        - Actually I could use a hand in getting those heavy logs to the campfire.
+      - _onlyDialogue:
+        - What are you waiting for? Get those damn logs to the campfire!
+      - _onlyDialogue:
+        - Thank you. See you around.
   _assignedQuest: 0
   _completedQuest: 0

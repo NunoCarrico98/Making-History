@@ -142,17 +142,22 @@ public class Player : MonoBehaviour
 
 	private void Interact()
 	{
-		if (InventoryItems.HasRequirements(CurrentInteractable))
-			foreach (InventoryItem i in CurrentInteractable.InventoryRequirements)
-				InventoryItems.RemoveFromInventory(i);
 
         if (CurrentInteractable is InventoryItem)
 		    InventoryItems.AddToInventory(CurrentInteractable as InventoryItem);
 
 		OnInteracted(CurrentInteractable);
-		// Interact with current detected interactable
-		CurrentInteractable.Interact();
-	}
+
+        //Remove item from inventory
+        if (InventoryItems.HasRequirements(CurrentInteractable))
+        {
+            // Interact with current detected interactable
+            CurrentInteractable.Interact();
+
+            foreach (InventoryItem i in CurrentInteractable.InventoryRequirements)
+                InventoryItems.RemoveFromInventory(i);
+        }
+    }
 
 	private void OnDialogueEnd()
 	{

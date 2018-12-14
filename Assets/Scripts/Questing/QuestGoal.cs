@@ -36,28 +36,10 @@ public class QuestGoal
 
     private void CollectComplete(IInteractable interactable)
     {
-        InventoryItem item = interactable as InventoryItem;
-        if (item.ID == ItemID)
+        if (interactable is InventoryItem)
         {
-            _currentAmmount++;
-            if (_currentAmmount == _requiredAmmount)
-            {
-                Completed = true;
-            }
-        }
-    }
-
-    private void UseComplete(IInteractable interactable)
-    {
-        int id;
-        StaticInteractable mapObject = interactable as StaticInteractable;
-
-        // Cycle through List
-        for (int i = 0; i < interactable.InventoryRequirements.Count; i++)
-        {
-            // id receives item's (in list) ID
-            id = mapObject.InventoryRequirements[i].ID;
-            if (id == ItemID)
+            InventoryItem item = interactable as InventoryItem;
+            if (item.ID == ItemID)
             {
                 _currentAmmount++;
                 if (_currentAmmount == _requiredAmmount)
@@ -66,6 +48,13 @@ public class QuestGoal
                 }
             }
         }
+    }
+
+    private void UseComplete(IInteractable interactable)
+    {
+        if (interactable is StaticInteractable)
+            if (Player.Instance.InventoryItems.HasRequirements(interactable))
+                Completed = true;
     }
 
     public enum GoalType

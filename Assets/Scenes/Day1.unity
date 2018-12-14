@@ -2880,7 +2880,8 @@ Prefab:
   m_IsPrefabAsset: 0
 --- !u!4 &830073775 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4687434033102974, guid: 2b35dfb2641345f479255a1253b394cd,
+    type: 2}
   m_PrefabInternal: {fileID: 830073774}
 --- !u!1 &830073776 stripped
 GameObject:
@@ -2917,6 +2918,10 @@ MonoBehaviour:
   - {fileID: 247746540}
   _quest:
     _questName: Help Freddy!
+    _isActive: 0
+    _unlockQuests: []
+    _destroyAfterQuest: []
+    _enableAfterQuest: []
     _goals:
     - _goalType: 0
       _itemID: 3
@@ -2939,8 +2944,6 @@ MonoBehaviour:
         - Just get the damn stones and light up the fire!
       - _onlyDialogue:
         - Ah! Much better now!
-    _destroyAfterQuest: []
-    _enableAfterQuest: []
   _assignedQuest: 0
   _completedQuest: 0
 --- !u!95 &832698293 stripped
@@ -4020,10 +4023,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c2325bb6e783d646b7e4d5453e8f2a9, type: 3}
   m_IsPrefabAsset: 0
---- !u!4 &1088425924 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 1088425923}
 --- !u!1 &1120172464
 GameObject:
   m_ObjectHideFlags: 0
@@ -5319,7 +5318,7 @@ Transform:
   m_Children:
   - {fileID: 2007918525}
   - {fileID: 95554645}
-  - {fileID: 1088425924}
+  - {fileID: 247746539}
   - {fileID: 748600112}
   - {fileID: 1775737834}
   - {fileID: 1795452600}
@@ -7498,7 +7497,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2007918521}
   m_LocalRotation: {x: 0.0127222845, y: -0.43960598, z: -0.0062275087, w: 0.89807904}
-  m_LocalPosition: {x: -36.59, y: -4.12, z: 37.25}
+  m_LocalPosition: {x: -36.59, y: -4.12, z: 37.129}
   m_LocalScale: {x: 1.9686726, y: 0.32836813, z: 0.3187259}
   m_Children: []
   m_Father: {fileID: 1440860807}

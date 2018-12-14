@@ -89,7 +89,7 @@ public class CanvasManager : MonoBehaviour
 	{
 		if (npc is QuestGiver)
 		{
-			if (!(npc as QuestGiver).AfterQuest)
+			if (!(npc as QuestGiver).AfterQuest && (npc as QuestGiver).NPCQuest.IsActive)
 				// Activate the first button
 				_optionsUI.transform.GetChild(0).gameObject.SetActive(true);
 			else
