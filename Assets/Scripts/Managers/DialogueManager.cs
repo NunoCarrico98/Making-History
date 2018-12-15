@@ -136,7 +136,7 @@ public class DialogueManager : MonoBehaviour
 
 	public void EndDialogue()
 	{
-		if (DialogueChosen == 1) _tempNPC.IsSceneChange();
+		if (DialogueChosen == 1 && _tempNPC.IsSceneChanger) LevelChanger.Instance.FadeOut();
 		DialogueChosen = 0;
 		_tempNPC = null;
 		// Deactivate the Dialogue Box

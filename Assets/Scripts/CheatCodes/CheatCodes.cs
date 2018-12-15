@@ -36,7 +36,7 @@ public class CheatCodes : MonoBehaviour
 	private void ChangeScene()
 	{
 		if (Input.GetKeyDown(KeyCode.P))
-			GameManager.Instance.ChangeScene();
+			LevelChanger.Instance.FadeOut();
 	}
 
 	private void AreCheatsActive()

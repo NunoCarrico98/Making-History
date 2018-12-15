@@ -19,6 +19,14 @@ public class CanvasManager : MonoBehaviour
 	[SerializeField] private GameObject _optionsUI;
 	[SerializeField] private TextMeshProUGUI[] _optionsText;
 
+	[Header("Transition Between Levels")]
+	[SerializeField] private Animator _animator;
+	[SerializeField] private Image _blackScreen;
+	[SerializeField] private TextMeshProUGUI _dayText;
+	[SerializeField] private float _timeOnScreen;
+
+	private bool _inSceneTransition;
+
 	public static CanvasManager Instance { get; private set; }
 
 	private void Awake()
@@ -34,10 +42,13 @@ public class CanvasManager : MonoBehaviour
 	// Use this for initialization
 	private void Start()
 	{
+		_inSceneTransition = true;
+		StartCoroutine(ManageBlackScreenTransition());
 		HideInteractionPanel();
 		HideMultipleDialogueChoiceUI();
 	}
 
+	#region Interaction UI
 	public void HideInteractionPanel()
 	{
 		_interactionPanel.SetActive(false);
@@ -50,7 +61,9 @@ public class CanvasManager : MonoBehaviour
 		_interactionPanel.SetActive(true);
 		_interactionText.gameObject.SetActive(true);
 	}
+	#endregion
 
+	#region Inventory UI
 	private void ClearAllInventorySlotIcons()
 	{
 		for (int i = 0; i < _inventorySlotsUI.Length; ++i)
@@ -66,7 +79,9 @@ public class CanvasManager : MonoBehaviour
 	{
 		_inventorySlotsUI[slotIndex].sprite = icon;
 	}
+	#endregion
 
+	#region Dialogue Choice Buttons
 	public void ShowMultipleDialogueChoiceUI(NPC npc)
 	{
 		// Default selected button is the first
@@ -142,4 +157,17 @@ public class CanvasManager : MonoBehaviour
 	{
 		_optionsUI.SetActive(false);
 	}
+	#endregion
+
+	#region Screen Transition
+	public IEnumerator ManageBlackScreenTransition()
+	{
+		_blackScreen.gameObject.SetActive(true);
+		_dayText.gameObject.SetActive(true);
+		yield return new WaitForSeconds(_timeOnScreen);
+		_blackScreen.gameObject.SetActive(false);
+		_dayText.gameObject.SetActive(true);
+		StopAllCoroutines();
+	}
+	#endregion
 }

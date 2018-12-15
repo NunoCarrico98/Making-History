@@ -74,12 +74,6 @@ public class NPC : MonoBehaviour, IInteractable
 		IsInteractable = false;
 	}
 
-	public void IsSceneChange()
-	{
-		if (_isSceneChanger)
-			GameManager.Instance.ChangeScene();
-	}
-
 	public virtual List<string> GetDialogue(int i) => Dialogue.GetDialogue(i);
 
 	public virtual string GetButtonText(int i) => Dialogue.GetButtonText(i);

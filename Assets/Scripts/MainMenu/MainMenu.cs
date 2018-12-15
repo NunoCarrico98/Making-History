@@ -1,25 +1,26 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
+public class MainMenu : MonoBehaviour
+{
 
-    public void Play()
-    {
-		GameManager.Instance.ChangeScene();
-    }
+	public void Play()
+	{
+		LevelChanger.Instance.FadeOut();
+	}
 
-    public void LoadGame()
-    {
+	public void LoadGame()
+	{
 
-    }
+	}
 
-    public void Options()
-    {
+	public void Options()
+	{
 
-    }
+	}
 
-    public void Quit()
-    {
-        Application.Quit();
-    }
+	public void Quit()
+	{
+		Application.Quit();
+	}
 }

@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 33733679659008218}
   - component: {fileID: 23758743339903700}
   - component: {fileID: 64996425345782068}
-  - component: {fileID: 114377679829119740}
+  - component: {fileID: 114251048963809238}
   m_Layer: 0
   m_Name: FreddyMesh
   m_TagString: Untagged
@@ -132,7 +132,7 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
---- !u!114 &114377679829119740
+--- !u!114 &114251048963809238
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1426821267837020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 731eb786401ce484c9d0e100ca80e92d, type: 3}
+  m_Script: {fileID: 11500000, guid: e5ac097b78effd040b97ff4b433fdc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 4
@@ -149,7 +149,17 @@ MonoBehaviour:
   _isSceneChanger: 0
   _inventoryRequirements: []
   _dialogue:
-    _options:
-    - _buttonText: Talk about something
-      _optionText:
-      - Something
+    _options: []
+  _quest:
+    _questName: 
+    _isActive: 0
+    _needsNPCToComplete: 0
+    _staticObjectsToActivate: []
+    _unlockQuests: []
+    _destroyAfterQuest: []
+    _enableAfterQuest: []
+    _questGoals: []
+    _questDialogue:
+      _questText: []
+  _assignedQuest: 0
+  _completedQuest: 0

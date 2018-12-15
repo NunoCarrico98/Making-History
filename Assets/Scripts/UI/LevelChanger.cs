@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class LevelChanger : MonoBehaviour 
 {
-	public static GameManager Instance { get; private set; }
+	[SerializeField] private Animator _animator;
+
+	public static LevelChanger Instance { get; private set; }
 
 	private void Awake()
 	{
@@ -15,7 +17,12 @@ public class GameManager : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 	}
 
-	public void ChangeScene()
+	public void FadeOut()
+	{
+		_animator.SetTrigger("FadeOut");
+	}
+
+	public void OnFadeComplete()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
