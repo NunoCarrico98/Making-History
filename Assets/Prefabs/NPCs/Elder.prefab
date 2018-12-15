@@ -143,7 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 731eb786401ce484c9d0e100ca80e92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _NPCName: Elder
+  _id: 1
+  _name: Elder
   _interactionText: Talk to Elder.
   _inventoryRequirements: []
   _dialogue:

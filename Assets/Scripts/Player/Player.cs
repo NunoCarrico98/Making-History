@@ -149,8 +149,8 @@ public class Player : MonoBehaviour
         //Remove item from inventory
         if (InventoryItems.HasRequirements(CurrentInteractable))
         {
-            // Interact with current detected interactable
-            CurrentInteractable.Interact();
+			// Interact with current detected interactable
+			CurrentInteractable.Interact();
 
 			OnInteracted(CurrentInteractable);
 
@@ -162,7 +162,6 @@ public class Player : MonoBehaviour
 	private void InteractWithNPC()
 	{
 		CurrentInteractable.Interact();
-		OnInteracted(CurrentInteractable);
 	}
 
 	private void OnDialogueEnd()

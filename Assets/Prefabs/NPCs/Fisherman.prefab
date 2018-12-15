@@ -143,7 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ac097b78effd040b97ff4b433fdc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _NPCName: Fisherman
+  _id: 2
+  _name: Fisherman
   _interactionText: Speak To Fisherman
   _inventoryRequirements:
   - {fileID: 0}
@@ -155,17 +156,19 @@ MonoBehaviour:
       _optionText:
       - So, you want in our tribe?
       - I'll give you a tip. Impress the Elder.
-  _staticObjectsToActivate: []
   _quest:
     _questName: Bring DA FISH
     _isActive: 1
+    _needsNPCToComplete: 1
+    _staticObjectsToActivate: []
     _unlockQuests: []
     _destroyAfterQuest: []
     _enableAfterQuest: []
-    _goals:
+    _questGoals:
     - _goalType: 0
       _itemID: 1
       _requiredAmmount: 1
+      _npcID: 0
     _questDialogue:
       _questText:
       - _onlyDialogue:

@@ -159,6 +159,7 @@ MonoBehaviour:
   _quest:
     _questName: Help Logan!
     _isActive: 1
+    _needsNPCToComplete: 0
     _staticObjectsToActivate:
     - {fileID: 0}
     _unlockQuests:
@@ -176,10 +177,6 @@ MonoBehaviour:
       _itemID: 2
       _requiredAmmount: 1
       _npcID: 0
-    - _goalType: 2
-      _itemID: 2
-      _requiredAmmount: 1
-      _npcID: 3
     _questDialogue:
       _questText:
       - _onlyDialogue:
