@@ -162,6 +162,7 @@ public class Player : MonoBehaviour
 	private void InteractWithNPC()
 	{
 		CurrentInteractable.Interact();
+		OnInteracted(CurrentInteractable);
 	}
 
 	private void OnDialogueEnd()

@@ -7,6 +7,7 @@ public class NPC : MonoBehaviour, IInteractable
 	[SerializeField] private int _id;
 	[SerializeField] private string _name;
 	[SerializeField] private string _interactionText;
+	[SerializeField] private bool _isSceneChanger;
 	[SerializeField] private List<InventoryItem> _inventoryRequirements;
 
 	[Header("Non-Quest Dialogue")]
@@ -17,6 +18,7 @@ public class NPC : MonoBehaviour, IInteractable
 	public int ID => _id;
 	public string Name => _name;
 	public string InteractionText => _interactionText;
+	public bool IsSceneChanger => _isSceneChanger;
 	public Dialogue Dialogue => _dialogue;
 	public List<InventoryItem> InventoryRequirements => _inventoryRequirements;
 
@@ -70,6 +72,12 @@ public class NPC : MonoBehaviour, IInteractable
 	private void DisableNPCInteraction()
 	{
 		IsInteractable = false;
+	}
+
+	public void IsSceneChange()
+	{
+		if (_isSceneChanger)
+			GameManager.Instance.ChangeScene();
 	}
 
 	public virtual List<string> GetDialogue(int i) => Dialogue.GetDialogue(i);

@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class Quest
@@ -58,6 +58,11 @@ public class Quest
 				ManageObjectsAfterQuest();
 			}
 		}
+	}
+
+	private void ChangeScene()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
 	public void UnlockQuests()

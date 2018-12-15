@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: fcd2c625726303049880769ce2185fb2,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -439,11 +440,6 @@ Prefab:
         type: 2}
       propertyPath: _dialogue._options.Array.data[0]._buttonText
       value: Talk about helping
-      objectReference: {fileID: 0}
-    - target: {fileID: 114811354095690874, guid: 6fcd8d7c1fe3bf74ba6b4ff2cc6c3aad,
-        type: 2}
-      propertyPath: _isSceneChanger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fcd8d7c1fe3bf74ba6b4ff2cc6c3aad, type: 2}
@@ -4095,7 +4091,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 43655fef7fbb5a04daf05ff735d795a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.12
+      value: -0.8499999
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 43655fef7fbb5a04daf05ff735d795a2, type: 3}
       propertyPath: m_LocalPosition.z

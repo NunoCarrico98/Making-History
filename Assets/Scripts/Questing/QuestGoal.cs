@@ -7,7 +7,6 @@ public class QuestGoal
 	[SerializeField] private GoalType _goalType;
 	[SerializeField] private int _itemID;
 	[SerializeField] private int _requiredAmmount;
-	[SerializeField] private int _npcID;
 
 	private int _currentAmmount = 0;
 
@@ -60,7 +59,7 @@ public class QuestGoal
 	public enum GoalType
 	{
 		Collect,
-		Use
+		Use,
 	}
 
 	public static string[] GetEnumValuesAsStrings()
