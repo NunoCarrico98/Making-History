@@ -21582,7 +21582,7 @@ MonoBehaviour:
   _inventorySlotsUI:
   - {fileID: 982305054}
   - {fileID: 219049704}
-  - {fileID: 0}
+  - {fileID: 1484117190}
   - {fileID: 785611938}
   - {fileID: 2054597779}
   _defaultOptionSelected: {fileID: 1724274433}
