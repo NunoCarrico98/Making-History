@@ -143,9 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ac097b78effd040b97ff4b433fdc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _NPCName: LOGan LOGLover
+  _id: 3
+  _name: LOGan LOGLover
   _interactionText: Speak To LOGan
-  _inventoryRequirements: []
+  _inventoryRequirements:
+  - {fileID: 0}
   _dialogue:
     _options:
     - _buttonText: Talk about helping.
@@ -154,21 +156,30 @@ MonoBehaviour:
       _optionText:
       - Oh, you want in?
       - You better get to work then.
-  _staticObjectsToActivate:
-  - {fileID: 0}
   _quest:
     _questName: Help Logan!
     _isActive: 1
-    _unlockQuests: []
-    _destroyAfterQuest: []
-    _enableAfterQuest: []
-    _goals:
+    _staticObjectsToActivate:
+    - {fileID: 0}
+    _unlockQuests:
+    - {fileID: 0}
+    _destroyAfterQuest:
+    - {fileID: 0}
+    _enableAfterQuest:
+    - {fileID: 0}
+    _questGoals:
     - _goalType: 0
       _itemID: 2
       _requiredAmmount: 1
+      _npcID: 0
     - _goalType: 1
       _itemID: 2
       _requiredAmmount: 1
+      _npcID: 0
+    - _goalType: 2
+      _itemID: 2
+      _requiredAmmount: 1
+      _npcID: 3
     _questDialogue:
       _questText:
       - _onlyDialogue:

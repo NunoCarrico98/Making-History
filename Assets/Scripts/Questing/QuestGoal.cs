@@ -4,67 +4,67 @@ using System;
 [System.Serializable]
 public class QuestGoal
 {
-    [SerializeField] private GoalType _goalType;
-    [SerializeField] private int _itemID;
-    [SerializeField] private int _requiredAmmount;
+	[SerializeField] private GoalType _goalType;
+	[SerializeField] private int _itemID;
+	[SerializeField] private int _requiredAmmount;
+	[SerializeField] private int _npcID;
 
-    private int _currentAmmount = 0;
-    public bool Completed { get; set; }
-    public int ItemID => _itemID;
-    public int RequiredAmmount => _requiredAmmount;
+	private int _currentAmmount = 0;
 
-    public void CheckForCompletion(IInteractable interactable)
-    {
-        if (!Completed)
-        {
-            CheckForType(interactable);
-        }
-    }
+	public bool Completed { get; set; }
 
-    public void CheckForType(IInteractable interactable)
-    {
-        switch (_goalType)
-        {
-            case GoalType.Collect:
-                CollectComplete(interactable);
-                break;
-            case GoalType.Use:
-                UseComplete(interactable);
-                break;
-        }
-    }
+	public void CheckForCompletion(IInteractable interactable)
+	{
+		if (!Completed)
+		{
+			CheckForType(interactable);
+		}
+	}
 
-    private void CollectComplete(IInteractable interactable)
-    {
-        if (interactable is InventoryItem)
-        {
-            InventoryItem item = interactable as InventoryItem;
-            if (item.ID == ItemID)
-            {
-                _currentAmmount++;
-                if (_currentAmmount == _requiredAmmount)
-                {
-                    Completed = true;
-                }
-            }
-        }
-    }
+	public void CheckForType(IInteractable interactable)
+	{
+		switch (_goalType)
+		{
+			case GoalType.Collect:
+				CollectComplete(interactable);
+				break;
+			case GoalType.Use:
+				UseComplete(interactable);
+				break;
+		}
+	}
 
-    private void UseComplete(IInteractable interactable)
-    {
-        if (interactable is StaticInteractable)
-            if (Player.Instance.InventoryItems.HasRequirements(interactable))
-                Completed = true;
-    }
+	private void CollectComplete(IInteractable interactable)
+	{
+		if (interactable is InventoryItem)
+		{
+			InventoryItem item = interactable as InventoryItem;
+			if (item.ID == _itemID)
+			{
+				_currentAmmount++;
+				if (_currentAmmount == _requiredAmmount)
+				{
+					Completed = true;
+				}
+			}
+		}
+	}
 
-    public enum GoalType
-    {
-        Collect,
-        Use
-    }
+	private void UseComplete(IInteractable interactable)
+	{
+		if (interactable is StaticInteractable)
+			if (Player.Instance.InventoryItems.HasRequirements(interactable))
+				Completed = true;
+	}
 
-    public static string[] GetEnumValuesAsStrings()
-    {
-        return Enum.GetNames(typeof(GoalType));
-    }
+	public enum GoalType
+	{
+		Collect,
+		Use
+	}
+
+	public static string[] GetEnumValuesAsStrings()
+	{
+		return Enum.GetNames(typeof(GoalType));
+	}
 }

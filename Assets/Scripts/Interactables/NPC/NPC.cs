@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour, IInteractable
 {
-	[SerializeField] private string _NPCName;
+	[SerializeField] private int _id;
+	[SerializeField] private string _name;
 	[SerializeField] private string _interactionText;
 	[SerializeField] private List<InventoryItem> _inventoryRequirements;
 
@@ -13,7 +14,8 @@ public class NPC : MonoBehaviour, IInteractable
 
 	protected DialogueManager _dialogueManager;
 
-	public string NPCName => _NPCName;
+	public int ID => _id;
+	public string Name => _name;
 	public string InteractionText => _interactionText;
 	public Dialogue Dialogue => _dialogue;
 	public List<InventoryItem> InventoryRequirements => _inventoryRequirements;
@@ -29,14 +31,14 @@ public class NPC : MonoBehaviour, IInteractable
 
 	private void OnEnable()
 	{
-		_dialogueManager.DialogueBegin += DisableNPCInteraction;
-		_dialogueManager.DialogueEnded += EnableNPCInteraction;
+		DialogueManager.Instance.DialogueBegin += DisableNPCInteraction;
+		DialogueManager.Instance.DialogueEnded += EnableNPCInteraction;
 	}
 
 	private void OnDisable()
 	{
-		_dialogueManager.DialogueBegin -= DisableNPCInteraction;
-		_dialogueManager.DialogueEnded -= EnableNPCInteraction;
+		DialogueManager.Instance.DialogueBegin -= DisableNPCInteraction;
+		DialogueManager.Instance.DialogueEnded -= EnableNPCInteraction;
 	}
 
 	public void Interact()
