@@ -1,0 +1,181 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1053056056295698}
+  m_IsPrefabAsset: 1
+--- !u!1 &1053056056295698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4687434033102974}
+  m_Layer: 0
+  m_Name: FishermanQuestGiver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1426821267837020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4767554248786300}
+  - component: {fileID: 33733679659008218}
+  - component: {fileID: 23758743339903700}
+  - component: {fileID: 64996425345782068}
+  - component: {fileID: 114138781637801564}
+  m_Layer: 0
+  m_Name: FishermanMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4687434033102974
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053056056295698}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.0240173, y: -3.951341, z: 0.81809235}
+  m_LocalScale: {x: 0.4944154, y: 0.4944154, z: 0.4944154}
+  m_Children:
+  - {fileID: 4767554248786300}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4767554248786300
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1426821267837020}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.2341, y: 2.71, z: 13.617}
+  m_LocalScale: {x: 1.1931604, y: 1.1931604, z: 1.1931604}
+  m_Children: []
+  m_Father: {fileID: 4687434033102974}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23758743339903700
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1426821267837020}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 2195a5ccc4629d548b8b388ac4dcb646, type: 2}
+  - {fileID: 2100002, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
+  - {fileID: 2100004, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
+  - {fileID: 2100006, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
+  - {fileID: 2100008, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33733679659008218
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1426821267837020}
+  m_Mesh: {fileID: 4300000, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
+--- !u!64 &64996425345782068
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1426821267837020}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
+--- !u!114 &114138781637801564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1426821267837020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ac097b78effd040b97ff4b433fdc8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 2
+  _name: Fisherman
+  _interactionText: Speak To Fisherman
+  _isSceneChanger: 0
+  _inventoryRequirements:
+  - {fileID: 0}
+  _dialogue:
+    _options:
+    - _buttonText: Talk about helping.
+      _optionText: []
+    - _buttonText: Talk about tribe.
+      _optionText:
+      - So, you want in our tribe?
+      - I'll give you a tip. Impress the Elder.
+  _quest:
+    _questName: Bring DA FISH
+    _isActive: 1
+    _needsNPCToComplete: 1
+    _staticObjectsToActivate: []
+    _unlockQuests: []
+    _destroyAfterQuest: []
+    _enableAfterQuest: []
+    _questGoals:
+    - _goalType: 0
+      _itemID: 1
+      _requiredAmmount: 1
+    _questDialogue:
+      _questText:
+      - _onlyDialogue:
+        - I Need FISH
+      - _onlyDialogue:
+        - BIG FISH
+      - _onlyDialogue:
+        - THANKS FOR FIXS
+  _assignedQuest: 0
+  _completedQuest: 0

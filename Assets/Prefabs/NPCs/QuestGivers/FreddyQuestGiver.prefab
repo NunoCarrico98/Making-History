@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4687434033102974}
   m_Layer: 0
-  m_Name: Elder
+  m_Name: FreddyQuestGiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,9 +37,9 @@ GameObject:
   - component: {fileID: 33733679659008218}
   - component: {fileID: 23758743339903700}
   - component: {fileID: 64996425345782068}
-  - component: {fileID: 114811354095690874}
+  - component: {fileID: 114377679829119740}
   m_Layer: 0
-  m_Name: ElderMesh
+  m_Name: FreddyMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053056056295698}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.61402, y: -4.275341, z: -14.241913}
+  m_LocalPosition: {x: -45.535862, y: -3.9017172, z: 21.001389}
   m_LocalScale: {x: 0.4944154, y: 0.4944154, z: 0.4944154}
   m_Children:
   - {fileID: 4767554248786300}
@@ -65,13 +65,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1426821267837020}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.2341, y: 2.71, z: 13.617}
+  m_LocalRotation: {x: -0, y: 0.36129797, z: -0, w: 0.9324505}
+  m_LocalPosition: {x: 6.2341, y: 2.08, z: -38.26}
   m_LocalScale: {x: 1.1931604, y: 1.1931604, z: 1.1931604}
   m_Children: []
   m_Father: {fileID: 4687434033102974}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 42.36, z: 0}
 --- !u!23 &23758743339903700
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -87,7 +87,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
+  - {fileID: 2100000, guid: 8f1d5e77cc8d79046aa96152c687fd6d, type: 2}
   - {fileID: 2100002, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
   - {fileID: 2100004, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
   - {fileID: 2100006, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
@@ -132,7 +132,7 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
---- !u!114 &114811354095690874
+--- !u!114 &114377679829119740
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,36 +140,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1426821267837020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5ac097b78effd040b97ff4b433fdc8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 731eb786401ce484c9d0e100ca80e92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 1
-  _name: Elder
-  _interactionText: Talk To Elder
+  _id: 4
+  _name: Freddy Flint
+  _interactionText: Speak to Freddy
+  _isSceneChanger: 0
   _inventoryRequirements: []
   _dialogue:
     _options:
-    - _buttonText: 
-      _optionText: []
-    - _buttonText: I'm lost
+    - _buttonText: Talk about something
       _optionText:
-      - This is our tribe.
-      - You should start helping people.
-  _quest:
-    _questName: Next Scene
-    _isActive: 0
-    _needsNPCToComplete: 0
-    _isSceneChanger: 1
-    _staticObjectsToActivate: []
-    _unlockQuests: []
-    _destroyAfterQuest: []
-    _enableAfterQuest: []
-    _questGoals: []
-    _questDialogue:
-      _questText:
-      - _onlyDialogue:
-        - Good. Now to the next scene
-      - _onlyDialogue: []
-      - _onlyDialogue: []
-  _assignedQuest: 0
-  _completedQuest: 0
+      - Something

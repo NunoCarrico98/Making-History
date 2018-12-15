@@ -9,75 +9,75 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1053056056295698}
+  m_RootGameObject: {fileID: 1795384105034784}
   m_IsPrefabAsset: 1
---- !u!1 &1053056056295698
+--- !u!1 &1688845537179764
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4687434033102974}
+  - component: {fileID: 4086318547463804}
+  - component: {fileID: 33005938408892526}
+  - component: {fileID: 23098520166589990}
+  - component: {fileID: 64091175386334220}
+  - component: {fileID: 114663073068345168}
   m_Layer: 0
-  m_Name: Fisherman
+  m_Name: ElderWifeMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1426821267837020
+--- !u!1 &1795384105034784
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4767554248786300}
-  - component: {fileID: 33733679659008218}
-  - component: {fileID: 23758743339903700}
-  - component: {fileID: 64996425345782068}
-  - component: {fileID: 114138781637801564}
+  - component: {fileID: 4363531251686476}
   m_Layer: 0
-  m_Name: FishermanMesh
+  m_Name: ElderWifeQuestGiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4687434033102974
+--- !u!4 &4086318547463804
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1053056056295698}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.0240173, y: -3.951341, z: 0.81809235}
-  m_LocalScale: {x: 0.4944154, y: 0.4944154, z: 0.4944154}
-  m_Children:
-  - {fileID: 4767554248786300}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4767554248786300
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1426821267837020}
+  m_GameObject: {fileID: 1688845537179764}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.2341, y: 2.71, z: 13.617}
+  m_LocalPosition: {x: 6.2341, y: 3.04, z: 13.617}
   m_LocalScale: {x: 1.1931604, y: 1.1931604, z: 1.1931604}
   m_Children: []
-  m_Father: {fileID: 4687434033102974}
+  m_Father: {fileID: 4363531251686476}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23758743339903700
+--- !u!4 &4363531251686476
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1795384105034784}
+  m_LocalRotation: {x: -0, y: 0.14489119, z: -0, w: 0.9894476}
+  m_LocalPosition: {x: -44.9918, y: -4.275341, z: -11.544617}
+  m_LocalScale: {x: 0.49442, y: 0.49442, z: 0.49442}
+  m_Children:
+  - {fileID: 4086318547463804}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 16.662, z: 0}
+--- !u!23 &23098520166589990
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1426821267837020}
+  m_GameObject: {fileID: 1688845537179764}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -87,7 +87,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 2195a5ccc4629d548b8b388ac4dcb646, type: 2}
+  - {fileID: 2100000, guid: 36c058008b696c640a9c8cc9946fa752, type: 2}
   - {fileID: 2100002, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
   - {fileID: 2100004, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
   - {fileID: 2100006, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
@@ -111,19 +111,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33733679659008218
+--- !u!33 &33005938408892526
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1426821267837020}
+  m_GameObject: {fileID: 1688845537179764}
   m_Mesh: {fileID: 4300000, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
---- !u!64 &64996425345782068
+--- !u!64 &64091175386334220
 MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1426821267837020}
+  m_GameObject: {fileID: 1688845537179764}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -132,50 +132,56 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: dc50a551c3efa5e4ca5f223aa9952ff1, type: 3}
---- !u!114 &114138781637801564
+--- !u!114 &114663073068345168
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1426821267837020}
+  m_GameObject: {fileID: 1688845537179764}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5ac097b78effd040b97ff4b433fdc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 2
-  _name: Fisherman
-  _interactionText: Speak To Fisherman
+  _id: 5
+  _name: Elder's Wife
+  _interactionText: Talk To the Elder's Wife
+  _isSceneChanger: 0
   _inventoryRequirements:
   - {fileID: 0}
   _dialogue:
     _options:
-    - _buttonText: Talk about helping.
+    - _buttonText: Talk about helping
       _optionText: []
-    - _buttonText: Talk about tribe.
+    - _buttonText: Talk about the healer
       _optionText:
-      - So, you want in our tribe?
-      - I'll give you a tip. Impress the Elder.
+      - Our healer is right by the campfire.
+      - She's very friendly, most of the time... Just don't make her mad...
   _quest:
-    _questName: Bring DA FISH
+    _questName: Next Scene
     _isActive: 1
     _needsNPCToComplete: 1
     _staticObjectsToActivate: []
-    _unlockQuests: []
+    _unlockQuests:
+    - {fileID: 0}
     _destroyAfterQuest: []
     _enableAfterQuest: []
     _questGoals:
     - _goalType: 0
       _itemID: 1
       _requiredAmmount: 1
-      _npcID: 0
     _questDialogue:
       _questText:
       - _onlyDialogue:
-        - I Need FISH
+        - Hey there, my husband is quite sick...
+        - If u were to find something that could him, I'm sure he would very grateful...
+        - Make sure that whatever you bring is special, or else it won't work...
       - _onlyDialogue:
-        - BIG FISH
+        - Hey, do you have the medicine?
+        - Well, my husband won't last forever so... hurry up!
       - _onlyDialogue:
-        - THANKS FOR FIXS
+        - Thank you for getting this!
+        - However, my husband cannot take the medicine like this...
+        - Go talk to our healer to see if she can do something.
   _assignedQuest: 0
   _completedQuest: 0
