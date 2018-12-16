@@ -10,13 +10,12 @@ public class Quest
 	[SerializeField] private bool _isActive;
 	[SerializeField] private bool _needsNPCToComplete = false;
 	[SerializeField] private StaticInteractable[] _staticObjectsToActivate;
+	[SerializeField] private InventoryItem[] _questRewards;
 	[SerializeField] private QuestGiver[] _unlockQuests;
 	[SerializeField] private GameObject[] _destroyAfterQuest;
 	[SerializeField] private GameObject[] _enableAfterQuest;
 	[SerializeField] private List<QuestGoal> _questGoals;
 	[SerializeField] private DialogueOnly _questDialogue;
-
-	private bool _activateSpeakGoal;
 
 	public bool Completed { get; set; }
 	public bool IsActive
@@ -53,6 +52,7 @@ public class Quest
 			Player.Instance.Interacted -= CheckForCompletion;
 			if (!_needsNPCToComplete)
 			{
+				GiveQuestRewards();
 				UpdateStaticObjects();
 				UnlockQuests();
 				ManageObjectsAfterQuest();
@@ -84,6 +84,13 @@ public class Quest
 		if (_staticObjectsToActivate != null)
 			foreach (StaticInteractable si in _staticObjectsToActivate)
 				si.AfterQuest = true;
+	}
+
+	public void GiveQuestRewards()
+	{
+		if (_questRewards != null)
+			foreach (InventoryItem si in _questRewards)
+				Player.Instance.InventoryItems.AddToInventory(si);
 	}
 
 	public void ManageObjectsAfterQuest()

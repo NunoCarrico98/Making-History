@@ -72,6 +72,7 @@ public class QuestGiver : NPC
 			DestroyRequirements();
 			if (_quest.NeedsNPCToComplete)
 			{
+				_quest.GiveQuestRewards();
 				_quest.UpdateStaticObjects();
 				_quest.UnlockQuests();
 				_quest.ManageObjectsAfterQuest();
