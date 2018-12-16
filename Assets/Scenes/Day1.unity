@@ -3253,6 +3253,116 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4412540827548476, guid: 920525391204ef748a596bcbcd772e38,
     type: 2}
   m_PrefabInternal: {fileID: 1906957622}
+--- !u!1001 &150853268
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1440860807}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -38.86389
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.993341
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -24.411911
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.02604975
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0009697487
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.03718839
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99896824
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4787216
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.62973475
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.47872165
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -2.979
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.22200002
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -4.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9127da72fa665534c9b2486753a4aff4, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+  m_IsPrefabAsset: 0
+--- !u!1 &150853269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 737f22bd88187c34391d6d6f2f89a8e6,
+    type: 3}
+  m_PrefabInternal: {fileID: 150853268}
+--- !u!4 &150853270 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6,
+    type: 3}
+  m_PrefabInternal: {fileID: 150853268}
+--- !u!114 &150853271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 150853269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a01daa8ae7d6a47a11ca0eb7359fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isActive: 0
+  _ID: 3
+  _itemName: Stone
+  _interactionText: Pick up stone.
+  _requirementText: A good looking stone.
+  _inventoryIcon: {fileID: 0}
+  _inventoryRequirements: []
+--- !u!65 &150853272
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 150853269}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7122277, y: 2, z: 1.8087181}
+  m_Center: {x: -0.06608253, y: 0.020527957, z: -0.09561044}
 --- !u!1001 &151732410
 Prefab:
   m_ObjectHideFlags: 0
@@ -7649,6 +7759,120 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 920525391204ef748a596bcbcd772e38, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &359384519
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1440860807}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.835121
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.281341
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -24.411911
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.025936864
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.002609527
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.10007137
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99463874
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.47872165
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.62973475
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.47872165
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -2.9280002
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.596
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -11.5060005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9127da72fa665534c9b2486753a4aff4, type: 2}
+    - target: {fileID: 100000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+      propertyPath: m_Name
+      value: fireMakingStone (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 737f22bd88187c34391d6d6f2f89a8e6, type: 3}
+  m_IsPrefabAsset: 0
+--- !u!1 &359384520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 737f22bd88187c34391d6d6f2f89a8e6,
+    type: 3}
+  m_PrefabInternal: {fileID: 359384519}
+--- !u!4 &359384521 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 737f22bd88187c34391d6d6f2f89a8e6,
+    type: 3}
+  m_PrefabInternal: {fileID: 359384519}
+--- !u!114 &359384522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 359384520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a01daa8ae7d6a47a11ca0eb7359fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isActive: 0
+  _ID: 3
+  _itemName: Stone
+  _interactionText: Pick up stone.
+  _requirementText: A good looking stone.
+  _inventoryIcon: {fileID: 0}
+  _inventoryRequirements: []
+--- !u!65 &359384523
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 359384520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7122277, y: 2, z: 1.8087181}
+  m_Center: {x: -0.06608253, y: 0.020527957, z: -0.09561044}
 --- !u!1001 &359697350
 Prefab:
   m_ObjectHideFlags: 0
@@ -18799,12 +19023,12 @@ Prefab:
         type: 2}
       propertyPath: _inventoryRequirements.Array.data[0]
       value: 
-      objectReference: {fileID: 1775737835}
+      objectReference: {fileID: 0}
     - target: {fileID: 114431315191431474, guid: 2b35dfb2641345f479255a1253b394cd,
         type: 2}
       propertyPath: _inventoryRequirements.Array.data[1]
       value: 
-      objectReference: {fileID: 1795452601}
+      objectReference: {fileID: 0}
     - target: {fileID: 114431315191431474, guid: 2b35dfb2641345f479255a1253b394cd,
         type: 2}
       propertyPath: _quest._staticObjectsToActivate.Array.data[0]
@@ -18824,12 +19048,12 @@ Prefab:
         type: 2}
       propertyPath: _inventoryRequirements.Array.data[0]
       value: 
-      objectReference: {fileID: 1775737835}
+      objectReference: {fileID: 150853271}
     - target: {fileID: 114251048963809238, guid: 2b35dfb2641345f479255a1253b394cd,
         type: 2}
       propertyPath: _inventoryRequirements.Array.data[1]
       value: 
-      objectReference: {fileID: 1795452601}
+      objectReference: {fileID: 359384522}
     - target: {fileID: 114251048963809238, guid: 2b35dfb2641345f479255a1253b394cd,
         type: 2}
       propertyPath: _dialogue._options.Array.data[0]._buttonText
@@ -24676,12 +24900,12 @@ Prefab:
         type: 2}
       propertyPath: _inventoryRequirements.Array.data[0]
       value: 
-      objectReference: {fileID: 1775737835}
+      objectReference: {fileID: 0}
     - target: {fileID: 114861320714799226, guid: a01da8b751f81ad4896635e6cc3c90a6,
         type: 2}
       propertyPath: _inventoryRequirements.Array.data[1]
       value: 
-      objectReference: {fileID: 1795452601}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a01da8b751f81ad4896635e6cc3c90a6, type: 2}
   m_IsPrefabAsset: 0
@@ -31801,8 +32025,8 @@ Transform:
   - {fileID: 95554645}
   - {fileID: 247746539}
   - {fileID: 748600112}
-  - {fileID: 1775737834}
-  - {fileID: 1795452600}
+  - {fileID: 150853270}
+  - {fileID: 359384521}
   m_Father: {fileID: 2010184322}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38164,110 +38388,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 920525391204ef748a596bcbcd772e38, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1775737833
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1775737834}
-  - component: {fileID: 1775737838}
-  - component: {fileID: 1775737837}
-  - component: {fileID: 1775737836}
-  - component: {fileID: 1775737835}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1775737834
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1775737833}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.181, y: -3.771, z: -25.447}
-  m_LocalScale: {x: 0.4627213, y: 0.4627213, z: 0.4627213}
-  m_Children: []
-  m_Father: {fileID: 1440860807}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1775737835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1775737833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52a01daa8ae7d6a47a11ca0eb7359fcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isActive: 0
-  _ID: 3
-  _itemName: Stone
-  _interactionText: Pick up stone.
-  _requirementText: A good looking stone.
-  _inventoryIcon: {fileID: 0}
-  _inventoryRequirements: []
---- !u!65 &1775737836
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1775737833}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1775737837
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1775737833}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1775737838
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1775737833}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1777273362 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4412540827548476, guid: 920525391204ef748a596bcbcd772e38,
@@ -38687,110 +38807,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4412540827548476, guid: 920525391204ef748a596bcbcd772e38,
     type: 2}
   m_PrefabInternal: {fileID: 1659733484}
---- !u!1 &1795452599
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1795452600}
-  - component: {fileID: 1795452604}
-  - component: {fileID: 1795452603}
-  - component: {fileID: 1795452602}
-  - component: {fileID: 1795452601}
-  m_Layer: 0
-  m_Name: Cube (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1795452600
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1795452599}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.8, y: -4.138, z: -25.447006}
-  m_LocalScale: {x: 0.4627213, y: 0.4627213, z: 0.4627213}
-  m_Children: []
-  m_Father: {fileID: 1440860807}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1795452601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1795452599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52a01daa8ae7d6a47a11ca0eb7359fcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isActive: 0
-  _ID: 3
-  _itemName: Stone
-  _interactionText: Pick up stone.
-  _requirementText: A good looking stone.
-  _inventoryIcon: {fileID: 0}
-  _inventoryRequirements: []
---- !u!65 &1795452602
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1795452599}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1795452603
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1795452599}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1795452604
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1795452599}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1796323223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4412540827548476, guid: 920525391204ef748a596bcbcd772e38,
