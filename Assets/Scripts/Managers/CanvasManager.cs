@@ -19,14 +19,6 @@ public class CanvasManager : MonoBehaviour
 	[SerializeField] private GameObject _optionsUI;
 	[SerializeField] private TextMeshProUGUI[] _optionsText;
 
-	[Header("Transition Between Levels")]
-	[SerializeField] private Animator _animator;
-	[SerializeField] private Image _blackScreen;
-	[SerializeField] private TextMeshProUGUI _dayText;
-	[SerializeField] private float _timeOnScreen;
-
-	private bool _inSceneTransition;
-
 	public static CanvasManager Instance { get; private set; }
 
 	private void Awake()
@@ -42,8 +34,6 @@ public class CanvasManager : MonoBehaviour
 	// Use this for initialization
 	private void Start()
 	{
-		_inSceneTransition = true;
-		StartCoroutine(ManageBlackScreenTransition());
 		HideInteractionPanel();
 		HideMultipleDialogueChoiceUI();
 	}
@@ -156,18 +146,6 @@ public class CanvasManager : MonoBehaviour
 	public void HideMultipleDialogueChoiceUI()
 	{
 		_optionsUI.SetActive(false);
-	}
-	#endregion
-
-	#region Screen Transition
-	public IEnumerator ManageBlackScreenTransition()
-	{
-		_blackScreen.gameObject.SetActive(true);
-		_dayText.gameObject.SetActive(true);
-		yield return new WaitForSeconds(_timeOnScreen);
-		_blackScreen.gameObject.SetActive(false);
-		_dayText.gameObject.SetActive(true);
-		StopAllCoroutines();
 	}
 	#endregion
 }
