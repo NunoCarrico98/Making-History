@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class CanvasManager : MonoBehaviour
@@ -19,6 +20,8 @@ public class CanvasManager : MonoBehaviour
 	[SerializeField] private GameObject _optionsUI;
 	[SerializeField] private TextMeshProUGUI[] _optionsText;
 
+	private GameObject _lastSelected;
+
 	public static CanvasManager Instance { get; private set; }
 
 	private void Awake()
@@ -36,6 +39,11 @@ public class CanvasManager : MonoBehaviour
 	{
 		HideInteractionPanel();
 		HideMultipleDialogueChoiceUI();
+	}
+
+	private void Update()
+	{
+		RefreshButtonFocus();
 	}
 
 	#region Interaction UI
@@ -146,6 +154,18 @@ public class CanvasManager : MonoBehaviour
 	public void HideMultipleDialogueChoiceUI()
 	{
 		_optionsUI.SetActive(false);
+	}
+
+	private void RefreshButtonFocus()
+	{
+		if (EventSystem.current.currentSelectedGameObject == null)
+		{
+			EventSystem.current.SetSelectedGameObject(_lastSelected);
+		}
+		else
+		{
+			_lastSelected = EventSystem.current.currentSelectedGameObject;
+		}
 	}
 	#endregion
 }
