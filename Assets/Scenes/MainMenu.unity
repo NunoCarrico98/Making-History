@@ -494,6 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a741f770fb68a428deb73d75581769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentDay: Day 1
   _animator: {fileID: 575085004}
 --- !u!95 &575085004
 Animator:
