@@ -8,19 +8,20 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1163857332434016}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1163857332434016
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4718208569623068}
   - component: {fileID: 33831592447237842}
   - component: {fileID: 23567994475825978}
+  - component: {fileID: 64780351755762302}
   m_Layer: 0
   m_Name: Forest Rock 1
   m_TagString: Untagged
@@ -31,20 +32,20 @@ GameObject:
 --- !u!4 &4718208569623068
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1163857332434016}
-  m_LocalRotation: {x: -0.5663255, y: 0.42320323, z: 0.42335096, w: 0.5665232}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 150, y: 150, z: 150}
+  m_LocalRotation: {x: -0.90446734, y: -0.21319783, z: -0.05376309, w: -0.36550665}
+  m_LocalPosition: {x: -1.0304275, y: -0.5645215, z: -0.14820941}
+  m_LocalScale: {x: 2.7877674, y: 3.8815484, z: 3.8815475}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 73.54}
+  m_LocalEulerAnglesHint: {x: 132.778, y: -90.02899, z: 163.518}
 --- !u!23 &23567994475825978
 MeshRenderer:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1163857332434016}
   m_Enabled: 1
@@ -79,7 +80,21 @@ MeshRenderer:
 --- !u!33 &33831592447237842
 MeshFilter:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1163857332434016}
+  m_Mesh: {fileID: 4300000, guid: 12f21b5077ba01c4abaa5ea9873490b9, type: 3}
+--- !u!64 &64780351755762302
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1163857332434016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 12f21b5077ba01c4abaa5ea9873490b9, type: 3}

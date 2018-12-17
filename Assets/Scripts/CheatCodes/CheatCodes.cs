@@ -51,7 +51,7 @@ public class CheatCodes : MonoBehaviour
 		{
 			_playerController.MoveSpeed /= _movementSpeedMultiplier;
 			_playerController.UseHeadBob = true;
-			_activeCheatCodes = false;
+            _activeCheatCodes = false;
 		}
 	}
 }
