@@ -12,7 +12,7 @@ public class CheatCodes : MonoBehaviour
 	private bool _activeCheatCodes = false;
 	private FirstPersonController _playerController;
 
-	private void Start()
+    private void Start()
 	{
 		_playerController = _player.GetComponent<FirstPersonController>();
 	}
