@@ -1,12 +1,17 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+	private LevelChanger _levelChanger;
+
+	private void Awake()
+	{
+		_levelChanger = FindObjectOfType<LevelChanger>();
+	}
 
 	public void Play()
 	{
-		LevelChanger.Instance.FadeOut();
+		_levelChanger.FadeOut();
 	}
 
 	public void LoadGame()

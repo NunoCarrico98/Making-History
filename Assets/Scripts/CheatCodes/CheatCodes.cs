@@ -24,11 +24,7 @@ public class CheatCodes : MonoBehaviour
 
 	private void CheckPlayerInput()
 	{
-		if (Input.GetKeyDown(KeyCode.LeftShift))
-		{
-			AreCheatsActive();
-		}
-
+		RunFast();
 		ChangeScene();
 	}
 
@@ -40,15 +36,16 @@ public class CheatCodes : MonoBehaviour
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
 	}
 
-	private void AreCheatsActive()
+	private void RunFast()
 	{
-		if (!_activeCheatCodes)
-		{
+		if (Input.GetKeyDown(KeyCode.LeftShift))
+		{ 
 			_playerController.MoveSpeed *= _movementSpeedMultiplier;
 			_playerController.UseHeadBob = false;
 			_activeCheatCodes = true;
 		}
-		else
+
+		if (Input.GetKeyUp(KeyCode.LeftShift))
 		{
 			_playerController.MoveSpeed /= _movementSpeedMultiplier;
 			_playerController.UseHeadBob = true;

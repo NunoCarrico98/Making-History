@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
 	private Queue<string> _sentences;
 	private CanvasManager _canvasManager;
 	private NPC _tempNPC;
+	private LevelChanger _levelChanger;
 
 	public Button ContinueButton => _continueButton;
 
@@ -29,6 +30,7 @@ public class DialogueManager : MonoBehaviour
 	private void Awake()
 	{
 		_canvasManager = FindObjectOfType<CanvasManager>();
+		_levelChanger = FindObjectOfType<LevelChanger>();
 	}
 
 	// Use this for initialization
@@ -125,7 +127,7 @@ public class DialogueManager : MonoBehaviour
 
 	public void EndDialogue()
 	{
-		if (DialogueChosen == 1 && _tempNPC.IsSceneChanger) LevelChanger.Instance.FadeOut();
+		if (DialogueChosen == 1 && _tempNPC.IsSceneChanger) _levelChanger.FadeOut();
 		DialogueChosen = 0;
 		_tempNPC = null;
 		OnDialogueEnded();
