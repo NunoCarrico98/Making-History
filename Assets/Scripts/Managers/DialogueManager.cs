@@ -26,23 +26,15 @@ public class DialogueManager : MonoBehaviour
 
 	public int DialogueChosen { get; private set; }
 
-	public static DialogueManager Instance { get; private set; }
-
 	private void Awake()
 	{
-		if (Instance == null)
-			Instance = this;
-		else if (Instance != null)
-			Destroy(gameObject);
-
-		DontDestroyOnLoad(gameObject);
+		_canvasManager = FindObjectOfType<CanvasManager>();
 	}
 
 	// Use this for initialization
 	void Start()
 	{
 		_sentences = new Queue<string>();
-		_canvasManager = CanvasManager.Instance;
 	}
 
 	public void ActivateDialogue(NPC npc)

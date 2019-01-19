@@ -26,21 +26,21 @@ public class NPC : MonoBehaviour, IInteractable
     public bool IsActive { get; private set; } = true;
     public string RequirementText => "";
 
-    private void Awake()
+	private void Awake()
 	{
-		_dialogueManager = DialogueManager.Instance;
+		_dialogueManager = FindObjectOfType<DialogueManager>();
 	}
 
 	private void OnEnable()
 	{
-		DialogueManager.Instance.DialogueBegin += DisableNPCInteraction;
-		DialogueManager.Instance.DialogueEnded += EnableNPCInteraction;
+		_dialogueManager.DialogueBegin += DisableNPCInteraction;
+		_dialogueManager.DialogueEnded += EnableNPCInteraction;
 	}
 
 	private void OnDisable()
 	{
-		DialogueManager.Instance.DialogueBegin -= DisableNPCInteraction;
-		DialogueManager.Instance.DialogueEnded -= EnableNPCInteraction;
+		_dialogueManager.DialogueBegin -= DisableNPCInteraction;
+		_dialogueManager.DialogueEnded -= EnableNPCInteraction;
 	}
 
 	public void Interact()
@@ -61,7 +61,7 @@ public class NPC : MonoBehaviour, IInteractable
 	public void Talk()
 	{
 		// Start dialogue
-		DialogueManager.Instance.ActivateDialogue(this);
+		_dialogueManager.ActivateDialogue(this);
 	}
 
 	private void EnableNPCInteraction()

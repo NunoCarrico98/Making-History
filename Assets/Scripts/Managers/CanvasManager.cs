@@ -14,6 +14,7 @@ public class CanvasManager : MonoBehaviour
 	[SerializeField] private Animator _inventoryPanel;
 	[SerializeField] private Sprite _defaultInventorySlotImage;
 	[SerializeField] private Image[] _inventorySlotsUI;
+	[SerializeField] private float _waitTimeBeforeHide; 
 
 	[Header("Multiple Choice UI")]
 	[SerializeField] private Button _defaultOptionSelected;
@@ -25,18 +26,6 @@ public class CanvasManager : MonoBehaviour
 	[SerializeField] private GameObject _dialogueBoxPanel;
 	
 	private GameObject _lastSelected;
-
-	public static CanvasManager Instance { get; private set; }
-
-	private void Awake()
-	{
-		if (Instance == null)
-			Instance = this;
-		else if (Instance != null)
-			Destroy(gameObject);
-
-		DontDestroyOnLoad(gameObject);
-	}
 
 	// Use this for initialization
 	private void Start()
@@ -67,8 +56,9 @@ public class CanvasManager : MonoBehaviour
 	#endregion
 
 	#region Inventory UI
-	public void HideInventory()
+	public IEnumerator HideInventory()
 	{
+		yield return new WaitForSeconds(_waitTimeBeforeHide);
 		_inventoryPanel.SetBool("isActive", false);
 	}
 

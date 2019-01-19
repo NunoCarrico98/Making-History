@@ -17,7 +17,8 @@ public class QuestGiver : NPC
 
 	private void Awake()
 	{
-		player = Player.Instance;
+		player = FindObjectOfType<Player>();
+		_dialogueManager = FindObjectOfType<DialogueManager>();
 	}
 
 	public override List<string> GetDialogue(int dialogueChosen)

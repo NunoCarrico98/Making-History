@@ -14,8 +14,8 @@ public class Inventory : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
-        _canvasManager = CanvasManager.Instance;
-    }
+        _canvasManager = FindObjectOfType<CanvasManager>();
+	}
 
     private void Start()
     {

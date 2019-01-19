@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
 		else if (Instance != null)
 			Destroy(gameObject);
 
-		_canvasManager = CanvasManager.Instance;
-		_dialogueManager = DialogueManager.Instance;
+		_canvasManager = FindObjectOfType<CanvasManager>();
+		_dialogueManager = FindObjectOfType<DialogueManager>();
 		InventoryItems = GetComponent<Inventory>();
 		_cam = GetComponentInChildren<Camera>();
 	}
@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
 	{
 		CurrentInteractable = newInteractable;
 
+		StopAllCoroutines();
 		_canvasManager.ShowInventory();
 
 		// If interactable is NPC
@@ -138,7 +139,7 @@ public class Player : MonoBehaviour
 	private void ClearInteractable()
 	{
 		_canvasManager.HideInteractionPanel();
-		_canvasManager.HideInventory();
+		StartCoroutine(_canvasManager.HideInventory());
 
 		CurrentInteractable = null;
 	}
