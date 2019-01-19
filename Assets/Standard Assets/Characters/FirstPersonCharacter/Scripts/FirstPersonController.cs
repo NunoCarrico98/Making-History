@@ -54,6 +54,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			set { m_UseHeadBob = value; }
 		}
 
+		public MouseLook MouseLook
+		{
+			get { return m_MouseLook; }
+		}
+
         // Use this for initialization
         private void Start()
         {

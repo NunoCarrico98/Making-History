@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
 	private Camera _cam;
 	private RaycastHit _raycastHit;
 	private List<Quest> _activeQuests;
+	private FirstPersonController _fpc;
+
+	private float[] _saveMouseSensitivities;
 
 	public IInteractable CurrentInteractable { get; private set; }
 	public Inventory InventoryItems { get; private set; }
@@ -31,6 +34,8 @@ public class Player : MonoBehaviour
 		_dialogueManager = FindObjectOfType<DialogueManager>();
 		InventoryItems = GetComponent<Inventory>();
 		_cam = GetComponentInChildren<Camera>();
+		_fpc = gameObject.GetComponent<FirstPersonController>();
+		_saveMouseSensitivities = new float[2];
 	}
 
 	private void Start()
@@ -40,14 +45,14 @@ public class Player : MonoBehaviour
 
 	private void OnEnable()
 	{
-		_dialogueManager.DialogueBegin += OnDialogueBegin;
-		_dialogueManager.DialogueEnded += OnDialogueEnd;
+		_dialogueManager.DialogueBegin += DisablePlayerControls;
+		_dialogueManager.DialogueEnded += EnablePlayerControls;
 	}
 
 	private void OnDisable()
 	{
-		_dialogueManager.DialogueBegin -= OnDialogueBegin;
-		_dialogueManager.DialogueEnded -= OnDialogueEnd;
+		_dialogueManager.DialogueBegin -= DisablePlayerControls;
+		_dialogueManager.DialogueEnded -= EnablePlayerControls;
 	}
 
 	/// <summary>
@@ -179,16 +184,32 @@ public class Player : MonoBehaviour
 		OnInteracted(CurrentInteractable);
 	}
 
-	private void OnDialogueEnd()
+	public void EnablePlayerControls()
 	{
 		// Enable First Person Controller script
-		GetComponent<FirstPersonController>().enabled = true;
+		_fpc.enabled = true;
 	}
 
-	private void OnDialogueBegin()
+	public void DisablePlayerControls()
 	{
 		// Enable First Person Controller script
-		GetComponent<FirstPersonController>().enabled = false;
+		_fpc.enabled = false;
+	}
+
+	public void EnableMouseLock()
+	{
+		_fpc.MouseLook.SetCursorLock(false);
+		_saveMouseSensitivities[0] = _fpc.MouseLook.XSensitivity;
+		_saveMouseSensitivities[1] = _fpc.MouseLook.YSensitivity;
+		_fpc.MouseLook.XSensitivity = 0;
+		_fpc.MouseLook.YSensitivity = 0;
+	}
+
+	public void DisableMouseLock()
+	{
+		_fpc.MouseLook.SetCursorLock(true);
+		_fpc.MouseLook.XSensitivity = _saveMouseSensitivities[0];
+		_fpc.MouseLook.YSensitivity = _saveMouseSensitivities[1];
 	}
 
 	protected virtual void OnInteracted(IInteractable obj)

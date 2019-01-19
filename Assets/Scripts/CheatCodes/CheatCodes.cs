@@ -8,7 +8,6 @@ public class CheatCodes : MonoBehaviour
 	[SerializeField] Transform _player;
 	[SerializeField] private float _movementSpeedMultiplier;
 
-	private bool _activeCheatCodes = false;
 	private FirstPersonController _playerController;
 
     private void Start()
@@ -42,14 +41,12 @@ public class CheatCodes : MonoBehaviour
 		{ 
 			_playerController.MoveSpeed *= _movementSpeedMultiplier;
 			_playerController.UseHeadBob = false;
-			_activeCheatCodes = true;
 		}
 
 		if (Input.GetKeyUp(KeyCode.LeftShift))
 		{
 			_playerController.MoveSpeed /= _movementSpeedMultiplier;
 			_playerController.UseHeadBob = true;
-            _activeCheatCodes = false;
 		}
 	}
 }
