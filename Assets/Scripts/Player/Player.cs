@@ -70,7 +70,6 @@ public class Player : MonoBehaviour
 				InteractWithNPC();
 			else if (CurrentInteractable.IsActive)
 				Interact();
-
 		}
 	}
 
@@ -106,9 +105,13 @@ public class Player : MonoBehaviour
 	{
 		CurrentInteractable = newInteractable;
 
+		_canvasManager.ShowInventory();
+
 		// If interactable is NPC
-		if (CurrentInteractable is NPC)
+		if (CurrentInteractable is NPC && CurrentInteractable.IsActive)
 			_canvasManager.ShowInteractionPanel(CurrentInteractable.InteractionText);
+		else if (CurrentInteractable is NPC && !CurrentInteractable.IsActive)
+			_canvasManager.HideInteractionPanel();
 		else if (CurrentInteractable is StaticInteractable)
 		{
 			if ((CurrentInteractable as StaticInteractable).AfterQuest)
@@ -134,9 +137,10 @@ public class Player : MonoBehaviour
 
 	private void ClearInteractable()
 	{
-		CurrentInteractable = null;
-
 		_canvasManager.HideInteractionPanel();
+		_canvasManager.HideInventory();
+
+		CurrentInteractable = null;
 	}
 
 

@@ -11,6 +11,7 @@ public class CanvasManager : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI _interactionText;
 
 	[Header("Inventory UI")]
+	[SerializeField] private Animator _inventoryPanel;
 	[SerializeField] private Sprite _defaultInventorySlotImage;
 	[SerializeField] private Image[] _inventorySlotsUI;
 
@@ -20,6 +21,9 @@ public class CanvasManager : MonoBehaviour
 	[SerializeField] private GameObject _optionsUI;
 	[SerializeField] private TextMeshProUGUI[] _optionsText;
 
+	[Header("DialogueBox")]
+	[SerializeField] private GameObject _dialogueBoxPanel;
+	
 	private GameObject _lastSelected;
 
 	public static CanvasManager Instance { get; private set; }
@@ -39,6 +43,7 @@ public class CanvasManager : MonoBehaviour
 	{
 		HideInteractionPanel();
 		HideMultipleDialogueChoiceUI();
+		HideDialogueBox();
 	}
 
 	private void Update()
@@ -62,6 +67,16 @@ public class CanvasManager : MonoBehaviour
 	#endregion
 
 	#region Inventory UI
+	public void HideInventory()
+	{
+		_inventoryPanel.SetBool("isActive", false);
+	}
+
+	public void ShowInventory()
+	{
+		_inventoryPanel.SetBool("isActive", true);
+	}
+
 	private void ClearAllInventorySlotIcons()
 	{
 		for (int i = 0; i < _inventorySlotsUI.Length; ++i)
@@ -166,6 +181,18 @@ public class CanvasManager : MonoBehaviour
 		{
 			_lastSelected = EventSystem.current.currentSelectedGameObject;
 		}
+	}
+	#endregion
+
+	#region
+	public void HideDialogueBox()
+	{
+		_dialogueBoxPanel.SetActive(false);
+	}
+
+	public void ShowDialogueBox()
+	{
+		_dialogueBoxPanel.SetActive(true);
 	}
 	#endregion
 }

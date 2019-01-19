@@ -23,7 +23,7 @@ public class NPC : MonoBehaviour, IInteractable
 	public List<InventoryItem> InventoryRequirements => _inventoryRequirements;
 
     public bool IsInteractable { get; private set; } = true;
-    public bool IsActive => true;
+    public bool IsActive { get; private set; } = true;
     public string RequirementText => "";
 
     private void Awake()
@@ -66,15 +66,14 @@ public class NPC : MonoBehaviour, IInteractable
 
 	private void EnableNPCInteraction()
 	{
-		IsInteractable = true;
+		IsActive = true;
 	}
 
 	private void DisableNPCInteraction()
 	{
-		IsInteractable = false;
+		IsActive = false;
 	}
 
 	public virtual List<string> GetDialogue(int i) => Dialogue.GetDialogue(i);
-
 	public virtual string GetButtonText(int i) => Dialogue.GetButtonText(i);
 }

@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class CheatCodes : MonoBehaviour 
@@ -36,7 +35,9 @@ public class CheatCodes : MonoBehaviour
 	private void ChangeScene()
 	{
 		if (Input.GetKeyDown(KeyCode.P))
-			LevelChanger.Instance.FadeOut();
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		if (Input.GetKeyDown(KeyCode.O))
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
 	}
 
 	private void AreCheatsActive()

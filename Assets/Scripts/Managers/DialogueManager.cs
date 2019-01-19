@@ -86,10 +86,7 @@ public class DialogueManager : MonoBehaviour
 		// Activate Dialogue Continue Button
 		_continueButton.enabled = true;
 		_canvasManager.HideMultipleDialogueChoiceUI();
-
-		// Activate the Dialogue Box
-		_animator.SetBool("isActive", true);
-
+		_canvasManager.ShowDialogueBox();
 		// Clear the queue
 		_sentences.Clear();
 
@@ -139,9 +136,8 @@ public class DialogueManager : MonoBehaviour
 		if (DialogueChosen == 1 && _tempNPC.IsSceneChanger) LevelChanger.Instance.FadeOut();
 		DialogueChosen = 0;
 		_tempNPC = null;
-		// Deactivate the Dialogue Box
-		_animator.SetBool("isActive", false);
 		OnDialogueEnded();
+		_canvasManager.HideDialogueBox();
 		_canvasManager.HideMultipleDialogueChoiceUI();
 	}
 
