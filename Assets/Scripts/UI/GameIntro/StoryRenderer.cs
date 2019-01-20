@@ -6,7 +6,7 @@ public class StoryRenderer : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI _storyTextUI;
 	[SerializeField] private List<string> _storyText;
-	[SerializeField] private float duration;
+	[SerializeField] private float _fadeDuration;
 
 	public void Start()
 	{
@@ -15,6 +15,6 @@ public class StoryRenderer : MonoBehaviour
 
 	public void ContinueStory()
 	{
-		_storyTextUI.CrossFadeAlpha(0, );
+		_storyTextUI.CrossFadeAlpha(0, _fadeDuration, false);
 	}
 }
