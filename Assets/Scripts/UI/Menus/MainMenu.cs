@@ -41,10 +41,4 @@ public class MainMenu : MonoBehaviour
 		_canvasAnim.SetBool("MoveRight", false);
 		_canvasAnim.SetBool("MoveLeft", true);
 	}
-
-	public void SetCursorLock()
-	{
-		Cursor.lockState = CursorLockMode.None;
-		Cursor.visible = true;
-	}
 }
