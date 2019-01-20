@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class LevelChanger : MonoBehaviour 
 {
@@ -14,5 +13,10 @@ public class LevelChanger : MonoBehaviour
 	public void OnFadeComplete()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	}
+
+	public void FadeOutCredits()
+	{
+
 	}
 }
