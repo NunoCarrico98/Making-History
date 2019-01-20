@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelChanger : MonoBehaviour 
+public class LevelChanger : MonoBehaviour
 {
 	[SerializeField] private Animator _animator;
+	[SerializeField] private string _nextScene;
 
 	public void FadeOut()
 	{
@@ -12,11 +13,15 @@ public class LevelChanger : MonoBehaviour
 
 	public void OnFadeComplete()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		SceneManager.LoadScene(_nextScene);
 	}
 
-	public void FadeOutCredits()
+	public void SetCursorLock()
 	{
-
+		if (SceneManager.GetActiveScene().name == "Credits")
+		{
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+		}
 	}
 }

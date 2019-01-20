@@ -27,7 +27,7 @@ public class MainMenu : MonoBehaviour
 	{
 		_camAnim.SetTrigger("ToCredits");
 		_canvasAnim.SetBool("MoveRight", true);
-		Debug.Log("pilinha");
+		_canvasAnim.SetBool("MoveLeft", false);
 	}
 
 	public void Quit()
@@ -39,5 +39,12 @@ public class MainMenu : MonoBehaviour
 	{
 		_camAnim.SetTrigger("ToMainMenu");
 		_canvasAnim.SetBool("MoveRight", false);
+		_canvasAnim.SetBool("MoveLeft", true);
+	}
+
+	public void SetCursorLock()
+	{
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 	}
 }
