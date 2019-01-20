@@ -9,6 +9,7 @@ public class StoryRenderer : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI _storyTextUI;
 	[SerializeField] private Button _nextTextButton;
 	[SerializeField] private float _fadeDuration;
+	[TextArea(3,20)]
 	[SerializeField] private List<string> _storyText;
 
 	private LevelChanger _levelChanger;
@@ -24,7 +25,7 @@ public class StoryRenderer : MonoBehaviour
 		_storyTextUI.text = _storyText[0];
 	}
 
-	public void ContinueStory2()
+	public void ContinueStoryButton()
 	{
 		StartCoroutine(ContinueStory());
 	}
