@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-	[SerializeField] private Animator _credits;
-	[SerializeField] private Animator _mainMenu;
-
 	private LevelChanger _levelChanger;
 	private Animator _camAnim;
+	private Animator _canvasAnim;
 
 	private void Awake()
 	{
 		_levelChanger = FindObjectOfType<LevelChanger>();
 		_camAnim = FindObjectOfType<Camera>().GetComponent<Animator>();
+		_canvasAnim = GetComponent<Animator>();
 	}
 
 	public void Play()
@@ -27,8 +26,8 @@ public class MainMenu : MonoBehaviour
 	public void PlayCreditsAnimation()
 	{
 		_camAnim.SetTrigger("ToCredits");
-		_credits.SetBool("ButtonsDisappear", false);
-		_mainMenu.SetBool("ButtonsDisappear", true);
+		_canvasAnim.SetBool("MoveRight", true);
+		Debug.Log("pilinha");
 	}
 
 	public void Quit()
@@ -39,7 +38,6 @@ public class MainMenu : MonoBehaviour
 	public void PlayBackToMainMenuAnimation()
 	{
 		_camAnim.SetTrigger("ToMainMenu");
-		_credits.SetBool("ButtonsDisappear", true);
-		_mainMenu.SetBool("ButtonsDisappear", false);
+		_canvasAnim.SetBool("MoveRight", false);
 	}
 }
