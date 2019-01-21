@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
 	[SerializeField] private GameObject _pauseMenu;
-	[SerializeField] private Image _levelChanger;
+	[SerializeField] private LevelChanger _levelChanger;
 
 	private Player _player;
 	private bool _paused;
@@ -52,6 +52,8 @@ public class PauseMenu : MonoBehaviour
 
 	public void BackToMainMenu()
 	{
-		SceneManager.LoadScene("MainMenu");
+		_pauseMenu.SetActive(false);
+		_levelChanger.ToMainMenu = true;
+		_levelChanger.FadeOut();
 	}
 }
