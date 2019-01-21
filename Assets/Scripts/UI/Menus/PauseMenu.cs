@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
 	[SerializeField] private GameObject _pauseMenu;
+	[SerializeField] private Image _levelChanger;
 
 	private Player _player;
 	private bool _paused;
