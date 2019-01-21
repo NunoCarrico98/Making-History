@@ -6,7 +6,6 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class Player : MonoBehaviour
 {
 	[SerializeField] private float _maxInteractionDistance;
-	[SerializeField] float _maxNpcLookDistance;
 
 	private CanvasManager _canvasManager;
 	private DialogueManager _dialogueManager;
@@ -18,7 +17,6 @@ public class Player : MonoBehaviour
 
 	private float[] _saveMouseSensitivities;
 
-	public float MaxNpcLookDistance => _maxNpcLookDistance;
 	public IInteractable CurrentInteractable { get; private set; }
 	public Inventory Inventory { get; private set; }
 
