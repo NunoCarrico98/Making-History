@@ -9,7 +9,6 @@ public class QuestGiver : NPC
 	[Header("Testing Only")]
 	[SerializeField] private bool _assignedQuest;
 	[SerializeField] private bool _completedQuest;
-	private Player player;
 
 	public bool CompletedQuest => _completedQuest;
 	public bool AfterQuest { get; private set; }
@@ -83,11 +82,9 @@ public class QuestGiver : NPC
 
 	public void DestroyRequirements()
 	{
-		for (int i = 0; i < player.InventoryItems.InventoryItems.Count; i++)
+		for (int i = 0; i < player.Inventory.InventoryItems.Count; i++)
 			foreach (InventoryItem item in InventoryRequirements)
-				if (player.InventoryItems.InventoryItems[i] == item)
-				{
-					player.InventoryItems.RemoveFromInventory(item);
-				}
+				if (player.Inventory.InventoryItems[i] == item)
+					player.Inventory.RemoveFromInventory(item);
 	}
 }

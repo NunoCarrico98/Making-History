@@ -87,19 +87,11 @@ public class StaticInteractable : MonoBehaviour, IInteractable
 		PlayInteractAnimation();
 	}
 
-	/// <summary>
-	/// Method that plays the item animation if it has one.
-	/// </summary>
 	public void PlayInteractAnimation()
 	{
-		// Get gameobject animator
 		Animator animator = GetComponent<Animator>();
-		// Check if there actually is an animator
 		if (animator != null)
-		{
-			// Play animation
-			GetComponent<Animator>().SetTrigger("Interact");
-		}
+			animator.SetTrigger("Interact");
 	}
 
 	/// <summary>

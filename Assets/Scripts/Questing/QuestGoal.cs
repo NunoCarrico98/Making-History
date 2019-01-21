@@ -52,7 +52,7 @@ public class QuestGoal
 	private void UseComplete(IInteractable interactable)
 	{
 		if (interactable is StaticInteractable)
-			if (Player.Instance.InventoryItems.HasRequirements(interactable))
+			if (Player.Instance.Inventory.HasRequirements(interactable))
 				Completed = true;
 	}
 

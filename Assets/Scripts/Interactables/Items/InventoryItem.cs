@@ -73,26 +73,9 @@ public class InventoryItem : MonoBehaviour, IInteractable
 	}
 
 	/// <summary>
-	/// Method that defines the interaction with the item.
+	/// Method that defines the interaction with the static interactable.
 	/// </summary>
 	public void Interact()
 	{
-		// Play the item animation
-		PlayInteractAnimation();
-	}
-
-	/// <summary>
-	/// Method that plays the static interactable animation if it has one.
-	/// </summary>
-	public void PlayInteractAnimation()
-	{
-		// Get gameobject animator
-		Animator animator = GetComponent<Animator>();
-		// Check if there actually is an animator
-		if (animator != null)
-		{
-			// Play animation
-			GetComponent<Animator>().SetTrigger("Interact");
-		}
 	}
 }

@@ -14,7 +14,7 @@ public class CanvasManager : MonoBehaviour
 	[SerializeField] private Animator _inventoryPanel;
 	[SerializeField] private Sprite _defaultInventorySlotImage;
 	[SerializeField] private Image[] _inventorySlotsUI;
-	[SerializeField] private float _waitTimeBeforeHide; 
+	[SerializeField] private float _waitTimeBeforeHide;
 
 	[Header("Multiple Choice UI")]
 	[SerializeField] private Button _defaultOptionSelected;
@@ -24,7 +24,7 @@ public class CanvasManager : MonoBehaviour
 
 	[Header("DialogueBox")]
 	[SerializeField] private GameObject _dialogueBoxPanel;
-	
+
 	private GameObject _lastSelected;
 
 	// Use this for initialization
@@ -52,6 +52,39 @@ public class CanvasManager : MonoBehaviour
 		_interactionText.text = text;
 		_interactionPanel.SetActive(true);
 		_interactionText.gameObject.SetActive(true);
+	}
+
+	public void SetInteractionText(IInteractable interactable, Inventory inventory)
+	{
+		SetNPCInteractionText(interactable);
+		SetStaticInteractableInteractionText(interactable);
+		SetItemInteractionText(interactable, inventory);
+	}
+
+	private void SetNPCInteractionText(IInteractable npc)
+	{
+		if (npc is NPC && npc.IsActive)
+			ShowInteractionPanel(npc.InteractionText);
+		else if (npc is NPC && !npc.IsActive)
+			HideInteractionPanel();
+	}
+
+	private void SetStaticInteractableInteractionText(IInteractable interactable)
+	{
+		if (interactable is StaticInteractable)
+			if ((interactable as StaticInteractable).AfterQuest)
+				ShowInteractionPanel((interactable as StaticInteractable).TextAfterQuest);
+	}
+
+	private void SetItemInteractionText(IInteractable interactable, Inventory inventory)
+	{
+		if (interactable is InventoryItem || interactable is StaticInteractable)
+		{
+			if (inventory.HasRequirements(interactable) && interactable.IsActive)
+				ShowInteractionPanel(interactable.InteractionText);
+			else
+				ShowInteractionPanel(interactable.RequirementText);
+		}
 	}
 	#endregion
 

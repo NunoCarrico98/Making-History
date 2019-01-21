@@ -90,7 +90,7 @@ public class Quest
 	{
 		if (_questRewards != null)
 			foreach (InventoryItem si in _questRewards)
-				Player.Instance.InventoryItems.AddToInventory(si);
+				Player.Instance.Inventory.AddToInventory(si);
 	}
 
 	public void ManageObjectsAfterQuest()

@@ -9,5 +9,4 @@ public interface IInteractable
     List<InventoryItem> InventoryRequirements { get; }
 
     void Interact();
-    void PlayInteractAnimation();
 }

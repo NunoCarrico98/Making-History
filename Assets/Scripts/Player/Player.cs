@@ -6,6 +6,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class Player : MonoBehaviour
 {
 	[SerializeField] private float _maxInteractionDistance;
+	[SerializeField] float _maxNpcLookDistance;
 
 	private CanvasManager _canvasManager;
 	private DialogueManager _dialogueManager;
@@ -17,8 +18,9 @@ public class Player : MonoBehaviour
 
 	private float[] _saveMouseSensitivities;
 
+	public float MaxNpcLookDistance => _maxNpcLookDistance;
 	public IInteractable CurrentInteractable { get; private set; }
-	public Inventory InventoryItems { get; private set; }
+	public Inventory Inventory { get; private set; }
 
 	public event Action<IInteractable> Interacted;
 
@@ -33,7 +35,7 @@ public class Player : MonoBehaviour
 
 		_canvasManager = FindObjectOfType<CanvasManager>();
 		_dialogueManager = FindObjectOfType<DialogueManager>();
-		InventoryItems = GetComponent<Inventory>();
+		Inventory = GetComponent<Inventory>();
 		_cam = GetComponentInChildren<Camera>();
 		_fpc = gameObject.GetComponent<FirstPersonController>();
 		_saveMouseSensitivities = new float[2];
@@ -114,33 +116,7 @@ public class Player : MonoBehaviour
 
 		StopAllCoroutines();
 		_canvasManager.ShowInventory();
-
-		// If interactable is NPC
-		if (CurrentInteractable is NPC && CurrentInteractable.IsActive)
-			_canvasManager.ShowInteractionPanel(CurrentInteractable.InteractionText);
-		else if (CurrentInteractable is NPC && !CurrentInteractable.IsActive)
-			_canvasManager.HideInteractionPanel();
-		else if (CurrentInteractable is StaticInteractable)
-		{
-			if ((CurrentInteractable as StaticInteractable).AfterQuest)
-				_canvasManager.ShowInteractionPanel(
-					(CurrentInteractable as StaticInteractable).TextAfterQuest);
-			else if (InventoryItems.HasRequirements(CurrentInteractable)
-					&& CurrentInteractable.IsActive)
-				_canvasManager.ShowInteractionPanel(CurrentInteractable.InteractionText);
-			else
-				_canvasManager.ShowInteractionPanel(CurrentInteractable.RequirementText);
-		}
-		// If interactable is a map object
-		else
-		{
-			if (InventoryItems.HasRequirements(CurrentInteractable)
-				&& CurrentInteractable.IsActive)
-				_canvasManager.ShowInteractionPanel(CurrentInteractable.InteractionText);
-			else if (!InventoryItems.HasRequirements(CurrentInteractable)
-					 || !CurrentInteractable.IsActive)
-				_canvasManager.ShowInteractionPanel(CurrentInteractable.RequirementText);
-		}
+		_canvasManager.SetInteractionText(CurrentInteractable, Inventory);
 	}
 
 	private void ClearInteractable()
@@ -157,12 +133,12 @@ public class Player : MonoBehaviour
 
 		if (CurrentInteractable is InventoryItem)
 		{
-			InventoryItems.AddToInventory(CurrentInteractable as InventoryItem);
+			Inventory.AddToInventory(CurrentInteractable as InventoryItem);
 			_audioSource.Play();
 		}
 
 		//Remove item from inventory
-		if (InventoryItems.HasRequirements(CurrentInteractable))
+		if (Inventory.HasRequirements(CurrentInteractable))
 		{
 			// Interact with current detected interactable
 			CurrentInteractable.Interact();
@@ -175,10 +151,10 @@ public class Player : MonoBehaviour
 	{
 		if (CurrentInteractable is InventoryItem)
 			foreach (InventoryItem i in CurrentInteractable.InventoryRequirements)
-				InventoryItems.RemoveFromInventory(i);
+				Inventory.RemoveFromInventory(i);
 		else if ((CurrentInteractable as StaticInteractable).ConsumeItem)
 			foreach (InventoryItem i in CurrentInteractable.InventoryRequirements)
-				InventoryItems.RemoveFromInventory(i);
+				Inventory.RemoveFromInventory(i);
 		else
 			(CurrentInteractable as StaticInteractable).ChangeInteractionText();
 	}

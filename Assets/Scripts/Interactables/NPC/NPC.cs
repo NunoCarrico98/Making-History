@@ -13,6 +13,7 @@ public class NPC : MonoBehaviour, IInteractable
 	[Header("Non-Quest Dialogue")]
 	[SerializeField] private Dialogue _dialogue;
 
+	protected Player player;
 	protected DialogueManager _dialogueManager;
 
 	public int ID => _id;
@@ -28,48 +29,33 @@ public class NPC : MonoBehaviour, IInteractable
 
 	private void Awake()
 	{
+		player = FindObjectOfType<Player>();
 		_dialogueManager = FindObjectOfType<DialogueManager>();
 	}
 
 	private void OnEnable()
 	{
-		_dialogueManager.DialogueBegin += DisableNPCInteraction;
-		_dialogueManager.DialogueEnded += EnableNPCInteraction;
+		_dialogueManager.DialogueBegin += OnDialogueBegin;
+		_dialogueManager.DialogueEnded += OnDialogueEnd;
 	}
 
 	private void OnDisable()
 	{
-		_dialogueManager.DialogueBegin -= DisableNPCInteraction;
-		_dialogueManager.DialogueEnded -= EnableNPCInteraction;
+		_dialogueManager.DialogueBegin -= OnDialogueBegin;
+		_dialogueManager.DialogueEnded -= OnDialogueEnd;
 	}
 
 	public void Interact()
 	{
-		Talk();
-		PlayInteractAnimation();
-	}
-
-	public void PlayInteractAnimation()
-	{
-		Animator animator = GetComponent<Animator>();
-		if (animator != null)
-		{
-			GetComponent<Animator>().SetTrigger("Interact");
-		}
-	}
-
-	public void Talk()
-	{
-		// Start dialogue
 		_dialogueManager.ActivateDialogue(this);
 	}
 
-	private void EnableNPCInteraction()
+	private void OnDialogueEnd()
 	{
 		IsActive = true;
 	}
 
-	private void DisableNPCInteraction()
+	private void OnDialogueBegin()
 	{
 		IsActive = false;
 	}
