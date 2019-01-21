@@ -6,6 +6,8 @@ public class LevelChanger : MonoBehaviour
 	[SerializeField] private Animator _animator;
 	[SerializeField] private string _nextScene;
 
+	public bool ToMainMenu { get; set; }
+
 	public void FadeOut()
 	{
 		_animator.SetTrigger("FadeOut");
@@ -13,7 +15,10 @@ public class LevelChanger : MonoBehaviour
 
 	public void OnFadeComplete()
 	{
-		SceneManager.LoadScene(_nextScene);
+		if (!ToMainMenu)
+			SceneManager.LoadScene(_nextScene);
+		else
+			SceneManager.LoadScene("MainMenu");
 	}
 
 	public void SetCursorLock()
