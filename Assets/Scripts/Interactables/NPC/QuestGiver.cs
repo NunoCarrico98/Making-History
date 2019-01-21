@@ -20,9 +20,9 @@ public class QuestGiver : NPC
 		_dialogueManager = FindObjectOfType<DialogueManager>();
 	}
 
-	public override List<string> GetDialogue(int dialogueChosen)
+	public override IEnumerable<string> GetDialogue(int dialogueChosen)
 	{
-		List<string> questDialogue = new List<string>();
+		IEnumerable<string> questDialogue = new List<string>();
 
 		if (dialogueChosen == 1)
 		{

@@ -21,7 +21,7 @@ public class Dialogue
 	/// </summary>
 	/// <param name="i">Int that defines the speaking text to return.</param>
 	/// <returns>Speaking Text to write on the screen.</returns>
-	public List<string> GetDialogue(int i) => Options[i - 1].OptionText;
+	public IEnumerable<string> GetDialogue(int i) => Options[i - 1].OptionText;
 	/// <summary>
 	/// Method that return the button text.
 	/// </summary>
@@ -55,7 +55,7 @@ public class DialogueList
 	/// <summary>
 	/// Method that returns the speaking text to write on screen.
 	/// </summary>
-    public List<string> OptionText => _optionText;
+    public IEnumerable<string> OptionText => _optionText;
 }
 /// <summary>
 /// Class that creates a list of strings to be able to visualize them on the 
@@ -73,7 +73,7 @@ public class DialogueOnlyList
 	/// <summary>
 	/// List of the texts of all the quet states.
 	/// </summary>
-	public List<string> OnlyDialogue => _onlyDialogue;
+	public IEnumerable<string> OnlyDialogue => _onlyDialogue;
 }
 
 /// <summary>
@@ -96,6 +96,6 @@ public class DialogueOnly
 	/// </summary>
 	/// <param name="i">Int that defines the text to return.</param>
 	/// <returns>Text to write on the screen.</returns>
-	public List<string> GetQuestDialogue(int i) => QuestText[i].OnlyDialogue;
+	public IEnumerable<string> GetQuestDialogue(int i) => QuestText[i].OnlyDialogue;
 }
 

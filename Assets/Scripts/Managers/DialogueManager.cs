@@ -49,7 +49,7 @@ public class DialogueManager : MonoBehaviour
 
 	public void SetDialogue()
 	{
-		List<string> sentencesToType = new List<string>();
+		IEnumerable<string> sentencesToType = new List<string>();
 
 		_nameText.text = _tempNPC.Name;
 

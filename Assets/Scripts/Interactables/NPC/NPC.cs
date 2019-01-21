@@ -60,6 +60,6 @@ public class NPC : MonoBehaviour, IInteractable
 		IsActive = false;
 	}
 
-	public virtual List<string> GetDialogue(int i) => Dialogue.GetDialogue(i);
+	public virtual IEnumerable<string> GetDialogue(int i) => Dialogue.GetDialogue(i);
 	public virtual string GetButtonText(int i) => Dialogue.GetButtonText(i);
 }
