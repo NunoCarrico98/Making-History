@@ -8,6 +8,7 @@ public class StoryRenderer : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI _storyTextUI;
 	[SerializeField] private Button _nextTextButton;
+	[SerializeField] private TextMeshProUGUI _buttonText;
 	[SerializeField] private float _fadeDuration;
 	[TextArea(3,20)]
 	[SerializeField] private List<string> _storyText;
@@ -32,19 +33,27 @@ public class StoryRenderer : MonoBehaviour
 
 	private IEnumerator ContinueStory()
 	{
-		FadeText(_storyTextUI, false);
-		FadeButton(_nextTextButton, false);
+		FadeOut();
 		yield return new WaitForSeconds(3);
 		if (_nextIndex < _storyText.Count)
-		{
-			SetNextText();
-			FadeText(_storyTextUI, true);
-			FadeButton(_nextTextButton, true);
-		}
+			FadeIn();
 		else
-		{
 			_levelChanger.FadeOut();
-		}
+	}
+
+	private void FadeOut()
+	{
+		FadeText(_storyTextUI, false);
+		FadeButton(_nextTextButton, false);
+		FadeText(_buttonText, false);
+	}
+
+	private void FadeIn()
+	{
+		SetNextText();
+		FadeText(_storyTextUI, true);
+		FadeButton(_nextTextButton, true);
+		FadeText(_buttonText, true);
 	}
 
 	public void SetNextText()
