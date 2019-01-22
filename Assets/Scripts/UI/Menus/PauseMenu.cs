@@ -22,7 +22,7 @@ public class PauseMenu : MonoBehaviour
 
 	private void PauseUnpauseGame()
 	{
-		if (Input.GetKeyDown(KeyCode.Tab))
+		if (Input.GetKeyDown(KeyCode.Escape))
 			if (!_paused)
 				PauseGame();
 			else
