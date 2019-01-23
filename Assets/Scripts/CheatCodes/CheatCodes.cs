@@ -8,7 +8,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class CheatCodes : MonoBehaviour
 {
 	/// <summary>
-	/// Multiplier for the movement speed cheat code
+	/// Multiplier for the movement speed cheat code.
 	/// </summary>
 	[Header("Go Lightning Fast")]
 	[SerializeField] private float _movementSpeedMultiplier;

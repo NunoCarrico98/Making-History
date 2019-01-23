@@ -584,7 +584,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a741f770fb68a428deb73d75581769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 850213823}
   _nextScene: Day1
 --- !u!95 &850213823
 Animator:
@@ -1124,8 +1123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _storyTextUI: {fileID: 1835051779}
-  _nextTextButton: {fileID: 367788017}
   _buttonText: {fileID: 837267264}
+  _nextTextButton: {fileID: 367788017}
   _fadeDuration: 2
   _storyText:
   - "\n\nIt was a beautiful day and \nyou were fishing with your tribe, \nuntil all

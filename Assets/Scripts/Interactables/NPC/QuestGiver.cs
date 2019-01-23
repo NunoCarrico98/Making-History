@@ -57,7 +57,7 @@ public class QuestGiver : NPC
 	{
 		if (!_assignedQuest)
 		{
-			player.Interacted += _quest.CheckForCompletion;
+			player.Interacted += _quest.IsComplete;
 			_assignedQuest = true;
 			ActivateRequirements();
 			_quest.ActivateStaticObjects();

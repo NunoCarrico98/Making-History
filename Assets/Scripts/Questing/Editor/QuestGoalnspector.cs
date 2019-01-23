@@ -1,17 +1,32 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+/// <summary>
+/// Class that overrides the Unity Editor for the QuestGoal class.
+/// </summary>
 [CustomPropertyDrawer(typeof(QuestGoal))]
 public class QuestGoalInspector : PropertyDrawer
 {
+	/// <summary>
+	/// Check if the quest goal is open or closed in inspetor.
+	/// </summary>
 	[SerializeField] private bool _folded = false;
 
-	private const float _xOffset = 90;
+	/// <summary>
+	/// Width of the box to write all the necessary text of the property on inspector.
+	/// </summary>
 	private const float _width = 320;
+	/// <summary>
+	/// Spacing between the lines of each property.
+	/// </summary>
 	private const float _spacing = 2;
 
-	// Draw the property inside the given rect
+	/// <summary>
+	/// Override the OnGUI method from Unity.
+	/// </summary>
+	/// <param name="pos">Position of the property on inspector.</param>
+	/// <param name="prop">Property to be written on inspector.</param>
+	/// <param name="label">Lable of the property on inspector.</param>
 	public override void OnGUI(Rect pos, SerializedProperty prop, GUIContent label)
 	{
 		// Serialize variables to be able to save them
@@ -47,26 +62,44 @@ public class QuestGoalInspector : PropertyDrawer
 			goalType.intValue = EditorGUI.Popup(typeRect, "Goal Type", 
 				goalType.intValue, QuestGoal.GetEnumValuesAsStrings());
 
+			// Write on the collection goal on inspector
 			ShowCollectOptions(itemIDRect, reqAmmountRect, goalType, itemID, reqAmmount);
-			//ShowSpeakOptions(itemIDRect, goalType, npcID);
 		}
 
 		// End Property
 		EditorGUI.EndProperty();
 	}
 
+	/// <summary>
+	/// Override the GetPropertyHeight method from Unity.
+	/// </summary>
+	/// <param name="prop">Analysed property.</param>
+	/// <param name="label">Label of the property.</param>
+	/// <returns></returns>
 	public override float GetPropertyHeight(SerializedProperty prop, GUIContent label)
 	{
+		// Row number
 		int rows = 3;
+		// Returns the height based on the number of rows and depending if 
+		// it's folded or not.
 		return base.GetPropertyHeight(prop, label) * (prop.isExpanded ? rows * 1.25f : 1);
 	}
 
+	/// <summary>
+	/// Method to write the Collection Goal properties on the inspector.
+	/// </summary>
+	/// <param name="itemIDRect">Rectangle for the itemID property.</param>
+	/// <param name="reqAmmountRect">Rectangle for the reqAmmount property.</param>
+	/// <param name="goalType">Goal type property. Decides which goal type.</param>
+	/// <param name="itemID">Item ID property. Decides which itemID is necessary.</param>
+	/// <param name="reqAmmount">Required Ammount property. Decides how many 
+	/// of the item is necessary.</param>
 	private void ShowCollectOptions(Rect itemIDRect, Rect reqAmmountRect, 
 		SerializedProperty goalType, SerializedProperty itemID, 
 		SerializedProperty reqAmmount)
 	{
 		// If chosen type is Collect
-		if (goalType.intValue == (int)QuestGoal.GoalType.Collect)
+		if (goalType.intValue == (int)GoalType.Collect)
 		{
 			// Change the indentation of the GUI content
 			EditorGUI.indentLevel = 4;
@@ -79,16 +112,4 @@ public class QuestGoalInspector : PropertyDrawer
 			EditorGUI.PropertyField(reqAmmountRect, reqAmmount, new GUIContent("Required Ammount"));
 		}
 	}
-
-	//private void ShowSpeakOptions(Rect itemIDRect, SerializedProperty goalType,
-	//	SerializedProperty npcID)
-	//{
-	//	if (goalType.intValue == (int)QuestGoal.GoalType.Speak)
-	//	{
-	//		// Change the indentation of the GUI content
-	//		EditorGUI.indentLevel = 4;
-	//		// Add a field to input the desired item ID
-	//		EditorGUI.PropertyField(itemIDRect, npcID, new GUIContent("NPC ID"));
-	//	}
-	//}
 }
