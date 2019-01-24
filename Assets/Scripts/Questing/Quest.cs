@@ -115,22 +115,19 @@ public class Quest
 	{
 		// Remove the quest from being a listener to the player interactions
 		Player.Instance.Interacted -= IsComplete;
-		// If quest does not need a final conversation with an NPC to be completed
-		if (!_needsNPCToComplete)
-		{
-			// Give rewards
-			GiveQuestRewards();
-			// Unlock other quests
-			UnlockQuests();
-			// Manage objects after quest
-			ManageObjectsAfterQuest();
-		}
+		// Give rewards
+		GiveQuestRewards();
+		// Unlock other quests
+		UnlockQuests();
+		// Manage objects after quest
+		ManageObjectsAfterQuest();
+
 	}
 
 	/// <summary>
 	/// Method that enables other quest after quest completion.
 	/// </summary>
-	public void UnlockQuests()
+	private void UnlockQuests()
 	{
 		if (_unlockQuests != null)
 			foreach (QuestGiver q in _unlockQuests)
@@ -150,7 +147,7 @@ public class Quest
 	/// <summary>
 	/// Method that gives the quest rewards to the player after quest completion.
 	/// </summary>
-	public void GiveQuestRewards()
+	private void GiveQuestRewards()
 	{
 		if (_questRewards != null)
 			foreach (InventoryItem si in _questRewards)
@@ -158,9 +155,9 @@ public class Quest
 	}
 
 	/// <summary>
-	/// 
+	/// Method that manages the given objects after a quest is completed.
 	/// </summary>
-	public void ManageObjectsAfterQuest()
+	private void ManageObjectsAfterQuest()
 	{
 		UpdateStaticObjects();
 		DestroyObjectsAfterQuest();
@@ -170,7 +167,7 @@ public class Quest
 	/// <summary>
 	/// Method that updates all given objects after quest completion.
 	/// </summary>
-	public void UpdateStaticObjects()
+	private void UpdateStaticObjects()
 	{
 		if (_staticObjectsToActivate != null)
 			foreach (StaticInteractable si in _staticObjectsToActivate)

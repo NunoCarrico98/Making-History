@@ -24,20 +24,13 @@ public class Inventory : MonoBehaviour
     /// <summary>
 	/// Unity Awake Method.
 	/// </summary>
-    private void Awake()
-    {
-		// Find reference
-        _canvasManager = FindObjectOfType<CanvasManager>();
-	}
+    private void Awake() =>  _canvasManager = FindObjectOfType<CanvasManager>();
 
 	/// <summary>
 	/// Unity Start Method.
 	/// </summary>
-    private void Start()
-    {
-		// Initialise inventory
+    private void Start() => // Initialise inventory
         InventoryItems = new List<InventoryItem>();
-    }
 
 	/// <summary>
 	/// Methd that adds a new item to the inventory.
@@ -92,11 +85,9 @@ public class Inventory : MonoBehaviour
 	/// </summary>
 	/// <param name="item">Item to be checked if is on inventory.</param>
 	/// <returns>Return true if item is in inventory.</returns>
-    public bool HasInInventory(InventoryItem item)
-    {
-        // Verify if given item is in inventory
-        return InventoryItems.Contains(item);
-    }
+    public bool HasInInventory(InventoryItem item) => 
+		// Verify if given item is in inventory
+        InventoryItems.Contains(item);
 
 	/// <summary>
 	/// Method that updates the inventory UI.
