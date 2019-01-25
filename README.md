@@ -1,4 +1,4 @@
-﻿# 2º Projeto de LP2 (2018)
+﻿# 3º Projeto de LP2 - Making History
 
 ## Our solution
 
