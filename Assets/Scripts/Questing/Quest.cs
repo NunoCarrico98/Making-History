@@ -91,8 +91,6 @@ public class Quest
 	{
 		if (!Completed)
 			CheckForCompletion(interactable);
-		else
-			ManageAfterQuest();
 	}
 
 	/// <summary>
@@ -106,6 +104,9 @@ public class Quest
 
 		// Completed is true if all goals are true
 		Completed = Goals.All(g => g.Completed);
+
+		// Manage quest consequences
+		ManageAfterQuest();
 	}
 
 	/// <summary>
@@ -113,21 +114,26 @@ public class Quest
 	/// </summary>
 	public void ManageAfterQuest()
 	{
-		// Remove the quest from being a listener to the player interactions
-		Player.Instance.Interacted -= IsComplete;
-		// Give rewards
-		GiveQuestRewards();
-		// Unlock other quests
-		UnlockQuests();
-		// Manage objects after quest
-		ManageObjectsAfterQuest();
-
+		//if (Completed)
+		//{
+			if (!_needsNPCToComplete)
+			{
+				// Remove the quest from being a listener to the player interactions
+				Player.Instance.Interacted -= IsComplete;
+				// Give rewards
+				GiveQuestRewards();
+				// Unlock other quests
+				UnlockQuests();
+				// Manage objects after quest
+				ManageObjectsAfterQuest();
+			}
+		//}
 	}
 
 	/// <summary>
 	/// Method that enables other quest after quest completion.
 	/// </summary>
-	private void UnlockQuests()
+	public void UnlockQuests()
 	{
 		if (_unlockQuests != null)
 			foreach (QuestGiver q in _unlockQuests)
@@ -147,7 +153,7 @@ public class Quest
 	/// <summary>
 	/// Method that gives the quest rewards to the player after quest completion.
 	/// </summary>
-	private void GiveQuestRewards()
+	public void GiveQuestRewards()
 	{
 		if (_questRewards != null)
 			foreach (InventoryItem si in _questRewards)
@@ -157,7 +163,7 @@ public class Quest
 	/// <summary>
 	/// Method that manages the given objects after a quest is completed.
 	/// </summary>
-	private void ManageObjectsAfterQuest()
+	public void ManageObjectsAfterQuest()
 	{
 		UpdateStaticObjects();
 		DestroyObjectsAfterQuest();

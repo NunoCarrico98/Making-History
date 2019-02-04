@@ -114,8 +114,14 @@ public class QuestGiver : NPC
 			DestroyRequirements();
 			// If the NPC is needed to complete
 			if (_quest.NeedsNPCToComplete)
-				// Manage everything after the quest completion
-				_quest.ManageAfterQuest();
+			{
+				// Give rewards
+				_quest.GiveQuestRewards();
+				// Unlock other quests
+				_quest.UnlockQuests();
+				// Manage objects after quest
+				_quest.ManageObjectsAfterQuest();
+			}
 		}
 	}
 

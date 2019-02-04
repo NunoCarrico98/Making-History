@@ -197,15 +197,15 @@ public class DialogueManager : MonoBehaviour
 	/// </summary>
 	public void EndDialogue()
 	{
-		// Reset dialogue option and npc
-		DialogueChosen = 0;
-		_tempNPC = null;
 		// Call event
 		OnDialogueEnded();
 		// Hide dialogue box
 		_canvasManager.HideDialogueBox();
 		// If NPC is supposed to change scene, change scene
 		if (DialogueChosen == 1 && _tempNPC.IsSceneChanger) _levelChanger.FadeOut();
+		// Reset dialogue option and npc
+		DialogueChosen = 0;
+		_tempNPC = null;
 	}
 
 	/// <summary>
