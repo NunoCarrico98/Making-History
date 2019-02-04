@@ -114,8 +114,8 @@ public class Quest
 	/// </summary>
 	public void ManageAfterQuest()
 	{
-		//if (Completed)
-		//{
+		if (Completed)
+		{
 			if (!_needsNPCToComplete)
 			{
 				// Remove the quest from being a listener to the player interactions
@@ -127,7 +127,7 @@ public class Quest
 				// Manage objects after quest
 				ManageObjectsAfterQuest();
 			}
-		//}
+		}
 	}
 
 	/// <summary>
