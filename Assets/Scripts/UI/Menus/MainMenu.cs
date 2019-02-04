@@ -17,9 +17,15 @@ public class MainMenu : MonoBehaviour
 	/// Reference to the canvas animator.
 	/// </summary>
 	private Animator _canvasAnim;
+	/// <summary>
+	/// Reference to the script that saves the data to then send to the database.
+	/// </summary>
+	private DatabaseData _dbData;
+
+	private bool _alreadyCounting;
 
 	/// <summary>
-	/// Unity Awakw Method.
+	/// Unity Awake Method.
 	/// </summary>
 	private void Awake()
 	{
@@ -27,6 +33,7 @@ public class MainMenu : MonoBehaviour
 		_levelChanger = FindObjectOfType<LevelChanger>();
 		_camAnim = FindObjectOfType<Camera>().GetComponent<Animator>();
 		_canvasAnim = GetComponent<Animator>();
+		_dbData = FindObjectOfType<DatabaseData>();
 	}
 
 	/// <summary>
@@ -34,6 +41,12 @@ public class MainMenu : MonoBehaviour
 	/// </summary>
 	public void Play()
 	{
+		// Start couting total time played
+		if (!_alreadyCounting)
+		{
+			_alreadyCounting = true;
+			_dbData.CountTotalTimePLayed(true);
+		}
 		// Fade to game.
 		_levelChanger.FadeOut();
 	}

@@ -37,6 +37,10 @@ public class Player : MonoBehaviour
 	/// </summary>
 	private AudioSource _audioSource;
 	/// <summary>
+	/// Reference to the script that saves the data to then send to the database.
+	/// </summary>
+	private DatabaseData _dbData;
+	/// <summary>
 	/// Caches the mouse sensitivities.
 	/// </summary>
 	private float[] _saveMouseSensitivities;
@@ -82,6 +86,7 @@ public class Player : MonoBehaviour
 		_saveMouseSensitivities = new float[2];
 		_saveMouseSensitivities[0] = _fpc.MouseLook.XSensitivity;
 		_saveMouseSensitivities[1] = _fpc.MouseLook.YSensitivity;
+		_dbData = FindObjectOfType<DatabaseData>();
 	}
 
 	/// <summary>
@@ -247,6 +252,7 @@ public class Player : MonoBehaviour
 		CurrentInteractable.Interact();
 		// Call interaction event
 		OnInteracted(CurrentInteractable);
+		_dbData.IncrementToTimesSpokenWithNPCs();
 	}
 
 	/// <summary>

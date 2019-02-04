@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0757cb9f97e407d429c07ee4be3c7187, type: 3}
+  m_Name: RemoteConnection
+  m_EditorClassIdentifier: 
+  dataSource: 193.137.75.246
+  databaseName: db21701393
+  username: a21701393
+  password: TEstes123
