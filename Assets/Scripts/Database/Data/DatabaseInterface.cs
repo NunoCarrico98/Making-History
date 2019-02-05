@@ -42,8 +42,8 @@ public class DatabaseInterface : MonoBehaviour
 		 * FEITO APENAS UM VEZ PARA A CRIA��O DAS TABELAS
 		 * ClearStructure apenas para apagar as tabelas para testar
 		 */
-		 //ClearStructure();
-		 //if (!CreateStructure()) return;
+		 ClearStructure();
+		 if (!CreateStructure()) return;
 	}
 
 	private void ClearStructure()
@@ -100,7 +100,6 @@ public class DatabaseInterface : MonoBehaviour
 		createPlaythroughsQuery += $"CREATE TABLE {_tablePlaythroughs}(";
 		createPlaythroughsQuery += "  PlaythroughID INT NOT NULL PRIMARY KEY IDENTITY(1,1),";
 		createPlaythroughsQuery += "  TotalTimePlayed VARCHAR(16),";
-		createPlaythroughsQuery += "  CompletedGame INT NOT NULL DEFAULT 0,";
 		createPlaythroughsQuery += "  TimesSpokenWithNPCs INT NOT NULL DEFAULT 0,";
 		createPlaythroughsQuery += "  Day1ID INT REFERENCES Day1(ID),";
 		createPlaythroughsQuery += "  Day15ID INT REFERENCES Day15(ID)";
@@ -144,7 +143,6 @@ public class DatabaseInterface : MonoBehaviour
 		string insertPlaythroughData = "";
 		insertPlaythroughData += $"INSERT INTO {_tablePlaythroughs} VALUES (";
 		insertPlaythroughData += $"  '{_dbData.TotalTimePlayed}',";
-		insertPlaythroughData += $"  {Convert.ToInt32(_dbData.CompletedGame)},";
 		insertPlaythroughData += $"  {_dbData.TimesSpokenWithNPCs},";
 		insertPlaythroughData += $"  IDENT_CURRENT('{_tableDay1}'),";
 		insertPlaythroughData += $"  IDENT_CURRENT('{_tableDay15}')";

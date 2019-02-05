@@ -14,7 +14,6 @@ public class DatabaseData : MonoBehaviour
 	private TimeSpan[] _questTimes;
 	private TimeSpan _totalTimePlayed;
 
-	public bool CompletedGame { get; private set; }
 	public int TimesSpokenWithNPCs { get; private set; }
 	public string TotalTimePlayed { get; private set; }
 	public string[] QuestTimes { get; private set; }
@@ -49,7 +48,6 @@ public class DatabaseData : MonoBehaviour
 	void Update()
 	{
 		if (_questGivers.Length != 0) CountQuestTime();
-		if (SceneManager.GetActiveScene().name == "Day15") IsGameCompleted();
 		CountTotalTime();
 	}
 
@@ -101,12 +99,6 @@ public class DatabaseData : MonoBehaviour
 		_countQuestTime = false;
 		_questTimer = 0;
 		if (_questIndex < _questGivers.Length - 1) _questIndex++;
-	}
-
-	private void IsGameCompleted()
-	{
-		if (_questGivers[0].CompletedQuest)
-			CompletedGame = true;
 	}
 
 	public void IncrementToTimesSpokenWithNPCs() => TimesSpokenWithNPCs++;
