@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
 	/// </summary>
 	private DatabaseData _dbData;
 
-	private bool _alreadyCounting;
+	private bool countingTime;
 
 	/// <summary>
 	/// Unity Awake Method.
@@ -42,10 +42,10 @@ public class MainMenu : MonoBehaviour
 	public void Play()
 	{
 		// Start couting total time played
-		if (!_alreadyCounting)
+		if (!countingTime)
 		{
-			_alreadyCounting = true;
-			_dbData.CountTotalTimePLayed(true);
+			countingTime = true;
+			_dbData.IsCountingTotalTime(true);
 		}
 		// Fade to game.
 		_levelChanger.FadeOut();

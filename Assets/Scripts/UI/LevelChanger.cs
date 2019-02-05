@@ -33,6 +33,7 @@ public class LevelChanger : MonoBehaviour
 	/// </summary>
 	public void FadeOut()
 	{
+		DatabaseInterface.Instance.UpdateDatabase(SceneManager.GetActiveScene().name);
 		_animator.SetTrigger("FadeOut");
 	}
 
